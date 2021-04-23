@@ -1,4 +1,4 @@
-import AllRecipes from "../views/AllRecipes/AllRecipes";
+import AllRecipes from "../../views/AllRecipes/AllRecipes";
 
 
 const App = () => {
