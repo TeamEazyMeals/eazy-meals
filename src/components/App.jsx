@@ -1,9 +1,8 @@
 
 
-function App() {
+const App = () => {
   return (
     <h1>eazy-meals</h1>
-   
   );
 }
 
