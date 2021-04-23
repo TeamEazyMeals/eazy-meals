@@ -1,8 +1,11 @@
+import AllRecipes from "../views/AllRecipes/AllRecipes";
 
 
 const App = () => {
   return (
-    <h1>eazy-meals</h1>
+    <>
+    <AllRecipes></AllRecipes>
+    </>
   );
 }
 
