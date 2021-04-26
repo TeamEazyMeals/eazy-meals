@@ -1,37 +1,43 @@
 import React, { useEffect, useState } from "react";
-
+import uuid from "react-uuid";
 const FetchRecipes = () => {
   const [recipeData, setRecipeData] = useState(null);
-
   const getRecipeData = async () => {
     const response = await fetch("/data/recipeData.json");
     const data = await response.json();
-    console.log(data);
+    console.log({ data });
     //  alert(data);
     setRecipeData(data);
   };
-
-   useEffect (() => getRecipeData(), []);
-
-
+  useEffect(() => getRecipeData(), []);
   if (!recipeData) {
     return <h1> Loading.....</h1>;
-  } 
-    return (
-      
-      <div>
-        <h1>RECIPES</h1>  
-        {
-        recipeData.map((recipe) => {
+  }
+  return (
+    <div>
+      {recipeData.map(({name,image,ingredients,description}) => {
+        //   console.log({ recipe });
+        return (
           <ul>
-            <li key={recipe.id}>{recipe.name}</li>
-            <li key={recipe.id}>{recipe.image}</li>
-            <li key={recipe.id}>{recipe.ingredients}</li>
-            <li key={recipe.id}>{recipe.description}</li>
-          </ul>;
-        })}
-      </div>
-    );
-  
+            <li key={uuid()}>{name}</li>
+            <li key={uuid()}>{image}</li>
+            <li key={uuid()}>{ingredients.map(({name,amount,unit})=>{
+               return (
+                 <ul>
+                   <li key={uuid()}>{name}</li>
+                   <li key={uuid()}>{amount}</li>
+                   <li key={uuid()}>{unit}</li>
+                 </ul>
+               );
+               
+            })
+            
+            }</li>
+            <li key={uuid()}>{description}</li>
+          </ul>
+        );
+      })}
+    </div>
+  );
 };
 export default FetchRecipes;
