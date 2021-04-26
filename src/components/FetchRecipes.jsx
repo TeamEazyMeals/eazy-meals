@@ -19,20 +19,23 @@ const FetchRecipes = () => {
         //   console.log({ recipe });
         return (
           <ul>
-            <li key={uuid()}>{name}</li>
+            <li key={uuid()}>
+              <h1>{name}</h1>
+            </li>
             <li key={uuid()}>{image}</li>
-            <li key={uuid()}>{ingredients.map(({name,amount,unit})=>{
-               return (
-                 <ul>
-                   <li key={uuid()}>{name}</li>
-                   <li key={uuid()}>{amount}</li>
-                   <li key={uuid()}>{unit}</li>
-                 </ul>
-               );
-               
-            })
-            
-            }</li>
+            <h1>Ingredients</h1>
+            <li key={uuid()}>
+              {ingredients.map(({ name, amount, unit }) => {
+                return (
+                  <ul>
+                    <li key={uuid()}>
+                      {name} {amount} {unit}
+                    </li>
+                  </ul>
+                );
+              })}
+            </li>
+            <h1>Method</h1>
             <li key={uuid()}>{description}</li>
           </ul>
         );
