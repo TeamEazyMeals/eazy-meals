@@ -1,10 +1,8 @@
-import FetchRecipes from "../../components/FetchRecipes"
+import FetchRecipes from "../../components/FetchRecipes/FetchRecipes"
 
 const AllRecipes = () => {
   return (
     <>
-      <h1>eazy-meals</h1>
-      <h3>All Recipes</h3>
       <FetchRecipes></FetchRecipes>
     </>
   );
