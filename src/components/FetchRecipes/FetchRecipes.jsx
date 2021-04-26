@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import uuid from "react-uuid";
 import RecipeIngredients from "../RecipeIngredients/RecipeIngredients"
 import styled from "styled-components";
+import SearchBar from "../SearchBar/SearchBar"
 
 const Title = styled.h1`
   font-family: Arial, sans-serif;
@@ -59,6 +60,8 @@ const FetchRecipes = () => {
         return (
           <div>
            <Title>eazy-meals</Title>
+           <SearchBar recipeData={recipeData}>
+           </SearchBar>
             <Title3>All Recipes</Title3>
           <List>
             <li key={uuid()}>
