@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import uuid from "react-uuid";
-import RecipeIngredients from "../RecipeIngredients/RecipeIngredients"
+import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import styled from "styled-components";
-import SearchBar from "../SearchBar/SearchBar"
+import Fuse from "fuse.js";
 
 const Title = styled.h1`
   font-family: Arial, sans-serif;
@@ -25,40 +25,53 @@ const Content = styled.div`
 `;
 const Image = styled.img`
   width: 10%;
-  height:auto;
-`;
-const Button = styled.button`
-  color: white;
-  background: #07393c;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 1px solid black;
-  border-radius: 3px;
-  text-transform: uppercase;
+  height: auto;
 `;
 
 const FetchRecipes = () => {
   const [recipeData, setRecipeData] = useState(null);
-  const [showrecipe, setShowRecipe] = useState(false);
+  const [searchItem, setSearchItem] = useState("");
 
   const getRecipeData = async () => {
     const response = await fetch("/data/recipeData.json");
     const data = await response.json();
     console.log({ data });
-    //  alert(data);
     setRecipeData(data);
   };
+
   useEffect(() => getRecipeData(), []);
+  const handleOnSearch = ({ currentTarget = {} }) => {
+    const { value } = currentTarget;
+    setSearchItem(value);
+  };
+
   if (!recipeData) {
     return <Title> Loading.....</Title>;
   }
+
+  const fuse = new Fuse(recipeData, {
+    keys: ["name", "ingredients", "description", "timeInMinutes", "imageURL"],
+    includeScore: true,
+  });
+
+  const results = fuse.search(searchItem);
+  console.log({ results });
+  if (!results) {
+    console.log("no results");
+  }
+  const searchResults = results.map(result => result.item)
+  
+
   return (
     <Content>
       <Title>eazy-meals</Title>
-      <SearchBar recipeData={recipeData}></SearchBar>
+     
+      <div>
+        <label>search</label>
+        <input type="text" value={searchItem} onChange={handleOnSearch} />
+      </div>
       <Title3>All Recipes</Title3>
-      {recipeData.map(
+      {searchResults.map(
         ({ name, imageUrl, ingredients, description, timeInMinutes }) => {
           return (
             <div>
@@ -70,11 +83,8 @@ const FetchRecipes = () => {
                   <Image src={imageUrl} alt={name} />
                 </li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
-
-                <Button onClick={() => setShowRecipe(!showrecipe)}>
-                  Show Ingredients
-                </Button>
-                {showrecipe && <RecipeIngredients ingredients={ingredients} />}
+                console.log({ingredients})
+                <RecipeIngredients ingredients={ingredients} />
                 <Title>Method</Title>
                 <li key={uuid()}>{description}</li>
               </List>

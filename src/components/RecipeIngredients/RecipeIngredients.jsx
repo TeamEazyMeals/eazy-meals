@@ -1,5 +1,5 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-uuid";
 import styled from "styled-components"
 
 const List = styled.ul`
@@ -12,13 +12,13 @@ const List = styled.ul`
 `;
 
 const RecipeIngredients = ({ ingredients }) => {
+
   return ingredients.map((ingredient) => {
      
     return (
       <>
-       
-        <List key={uuidv4()}>
-          <li>
+        <List >
+          <li key={uuid()}>
             {ingredient.name} {ingredient.amount} {ingredient.unit}
           </li>
         </List>

@@ -1,22 +1,14 @@
-import Fuse from "fuse.js";
-// import RecipeData from "../../../public/data/recipeData.json";
+// import Fuse from "fuse.js";
 
-const SearchBar = ({ recipeData }) => {
-  const fuse = new Fuse(
-    { recipeData },
-    {
-      keys: ["name", "ingredients", "description", "timeInMinutes"],
-    }
-  );
+// const SearchBar = (props) => {
+//  const {searchItem } = props;
+  
+//   return (
+//     <div>
+//       <input type="text" value={searchItem} onChange = {handleOnSearch} />
+//       <button>search</button>
+//     </div>
+//   );
+// };
 
-  const results = fuse.search("Fantastic Metal Shirt");
-  console.log({ results });
-  return (
-    <div>
-      <input type="text" />
-      <button>search</button>
-    </div>
-  );
-};
-
-export default SearchBar;
+// export default SearchBar;
