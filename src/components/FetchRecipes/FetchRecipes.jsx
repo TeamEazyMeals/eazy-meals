@@ -55,33 +55,33 @@ const FetchRecipes = () => {
   }
   return (
     <Content>
-      {recipeData.map(({name,imageUrl,ingredients,description, timeInMinutes}) => {
-      
-        return (
-          <div>
-           <Title>eazy-meals</Title>
-           <SearchBar recipeData={recipeData}>
-           </SearchBar>
-            <Title3>All Recipes</Title3>
-          <List>
-            <li key={uuid()}>
-              <Title>{name}</Title>
-            </li>
-            <li key={uuid()}>
-              <Image src={imageUrl} alt={name} />
-            </li>
-            <h4>Time in minutes:{timeInMinutes}</h4>
+      <Title>eazy-meals</Title>
+      <SearchBar recipeData={recipeData}></SearchBar>
+      <Title3>All Recipes</Title3>
+      {recipeData.map(
+        ({ name, imageUrl, ingredients, description, timeInMinutes }) => {
+          return (
+            <div>
+              <List>
+                <li key={uuid()}>
+                  <Title>{name}</Title>
+                </li>
+                <li key={uuid()}>
+                  <Image src={imageUrl} alt={name} />
+                </li>
+                <h4>Time in minutes:{timeInMinutes}</h4>
 
-            <Button onClick={() => setShowRecipe(!showrecipe)}>
-              Show Ingredients
-            </Button>
-            {showrecipe && (<RecipeIngredients ingredients={ingredients} />)}
-            <Title>Method</Title>
-            <li key={uuid()}>{description}</li>
-          </List>
-          </div>
-        );
-      })}
+                <Button onClick={() => setShowRecipe(!showrecipe)}>
+                  Show Ingredients
+                </Button>
+                {showrecipe && <RecipeIngredients ingredients={ingredients} />}
+                <Title>Method</Title>
+                <li key={uuid()}>{description}</li>
+              </List>
+            </div>
+          );
+        }
+      )}
     </Content>
   );
 };
