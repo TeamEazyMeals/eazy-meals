@@ -40,8 +40,8 @@ const FetchRecipes = () => {
   };
 
   useEffect(() => getRecipeData(), []);
-  const handleOnSearch = ({ currentTarget = {} }) => {
-    const { value } = currentTarget;
+  const handleOnSearch = ({ target }) => {
+    const { value } = target;
     setSearchItem(value);
   };
 
@@ -50,8 +50,8 @@ const FetchRecipes = () => {
   }
 
   const fuse = new Fuse(recipeData, {
-    keys: ["name", "ingredients", "description", "timeInMinutes", "imageURL"],
-    includeScore: true,
+    keys: ["name", "description"],
+    minMatchCharLength: 3,
   });
 
   const results = fuse.search(searchItem);
@@ -59,7 +59,7 @@ const FetchRecipes = () => {
   if (!results) {
     console.log("no results");
   }
-  const searchResults = results.map((result) => result.item);
+  const searchResults = searchItem.length < 3 ? recipeData : results.map((result) => result.item);
 
   return (
     <Content>
@@ -69,24 +69,24 @@ const FetchRecipes = () => {
         <label>search</label>
         <input type="text" value={searchItem} onChange={handleOnSearch} />
       </div>
-     
+
       {searchResults.map(
-        ({ name, imageUrl, ingredients, description, timeInMinutes }) => {
+        ({ id, name, imageUrl, ingredients, description, timeInMinutes }) => {
           return (
-            <div>
+            <div key={id}>
               <Title3>All Recipes</Title3>
               <List>
-                <li key={uuid()}>
+                <li>
                   <Title>{name}</Title>
                 </li>
-                <li key={uuid()}>
+                <li>
                   <Image src={imageUrl} alt={name} />
                 </li>
-                <h4 key={uuid()}>Time in minutes:{timeInMinutes}</h4>
+                <h4>Time in minutes:{timeInMinutes}</h4>
 
                 <RecipeIngredients ingredients={ingredients} />
                 <Title>Method</Title>
-                <li key={uuid()}>{description}</li>
+                <li>{description}</li>
               </List>
             </div>
           );

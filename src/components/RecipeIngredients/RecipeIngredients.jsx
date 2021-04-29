@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import uuid from "react-uuid";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const List = styled.ul`
   list-style: none;
@@ -12,17 +12,15 @@ const List = styled.ul`
 `;
 
 const RecipeIngredients = ({ ingredients }) => {
-
   return ingredients.map((ingredient) => {
-     
     return (
-      <>
-        <List >
-          <li key={uuid()}>
+      <Fragment key={uuid()}>
+        <List>
+          <li>
             {ingredient.name} {ingredient.amount} {ingredient.unit}
           </li>
         </List>
-      </>
+      </Fragment>
     );
   });
 };
