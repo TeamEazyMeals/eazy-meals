@@ -59,22 +59,22 @@ const FetchRecipes = () => {
   if (!results) {
     console.log("no results");
   }
-  const searchResults = results.map(result => result.item)
-  
+  const searchResults = results.map((result) => result.item);
 
   return (
     <Content>
       <Title>eazy-meals</Title>
-     
+
       <div>
         <label>search</label>
         <input type="text" value={searchItem} onChange={handleOnSearch} />
       </div>
-      <Title3>All Recipes</Title3>
+     
       {searchResults.map(
         ({ name, imageUrl, ingredients, description, timeInMinutes }) => {
           return (
             <div>
+              <Title3>All Recipes</Title3>
               <List>
                 <li key={uuid()}>
                   <Title>{name}</Title>
@@ -82,8 +82,8 @@ const FetchRecipes = () => {
                 <li key={uuid()}>
                   <Image src={imageUrl} alt={name} />
                 </li>
-                <h4>Time in minutes:{timeInMinutes}</h4>
-                console.log({ingredients})
+                <h4 key={uuid()}>Time in minutes:{timeInMinutes}</h4>
+
                 <RecipeIngredients ingredients={ingredients} />
                 <Title>Method</Title>
                 <li key={uuid()}>{description}</li>
