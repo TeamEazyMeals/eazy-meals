@@ -7,7 +7,7 @@ const Sort = (props) => {
     <div>
       <select defaultValue="sort" onChange={handleSort}>
         <option value="sort" disabled>
-          Sort
+          Sort Recipes
         </option>
         <option value="shortest time">shortest time</option>
         <option value="longest time">longest time</option>
