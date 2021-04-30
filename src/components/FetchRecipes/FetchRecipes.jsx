@@ -3,6 +3,8 @@ import uuid from "react-uuid";
 import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import styled from "styled-components";
 import Fuse from "fuse.js";
+import SearchIcon from "@material-ui/icons/Search";
+import Sort from "../SortRecipes/SortRecipes"
 
 const Title = styled.h1`
   font-family: Arial, sans-serif;
@@ -31,6 +33,12 @@ const Image = styled.img`
 const FetchRecipes = () => {
   const [recipeData, setRecipeData] = useState(null);
   const [searchItem, setSearchItem] = useState("");
+  const [sort, setSort] = useState("");
+
+const handleSort = (e) => {
+  setSort(e.target.value);
+};
+
 
   const getRecipeData = async () => {
     const response = await fetch("/data/recipeData.json");
@@ -46,7 +54,7 @@ const FetchRecipes = () => {
   };
 
   if (!recipeData) {
-    return <Title> Loading.....</Title>;
+    return <Title> Loading recipes.....</Title>;
   }
 
   const fuse = new Fuse(recipeData, {
@@ -59,15 +67,22 @@ const FetchRecipes = () => {
   if (!results) {
     console.log("no results");
   }
-  const searchResults = searchItem.length < 3 ? recipeData : results.map((result) => result.item);
+  const searchResults =
+    searchItem.length < 3 ? recipeData : results.map((result) => result.item);
 
   return (
     <Content>
       <Title>eazy-meals</Title>
 
       <div>
-        <label>search</label>
-        <input type="text" value={searchItem} onChange={handleOnSearch} />
+       <Sort handleSort={handleSort}></Sort>
+        <SearchIcon fontSize="small"></SearchIcon>
+        <input
+          type="text"
+          value={searchItem}
+          placeholder="search recipes.."
+          onChange={handleOnSearch}
+        />
       </div>
 
       {searchResults.map(
