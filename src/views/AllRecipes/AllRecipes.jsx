@@ -1,4 +1,4 @@
-import FetchRecipes from "../../components/FetchRecipes/FetchRecipes"
+import FetchRecipes from "../../components/FetchRecipes/FetchRecipes";
 
 const AllRecipes = () => {
   return (
