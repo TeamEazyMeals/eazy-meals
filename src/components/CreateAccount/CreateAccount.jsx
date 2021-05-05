@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   padding: 1rem;
 `;
-const LoginAccount = () => {
+const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
@@ -43,7 +43,10 @@ const LoginAccount = () => {
           </Wrapper>
 
           <button type="submit" onClick={handleSubmit}>
-            Submit
+            Sign In
+          </button>
+          <button type="submit" onClick={handleSubmit}>
+            Create Account
           </button>
         </form>
       </div>
@@ -51,4 +54,4 @@ const LoginAccount = () => {
   );
 };
 
-export default LoginAccount;
+export default CreateAccount;

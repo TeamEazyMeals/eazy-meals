@@ -25,7 +25,7 @@ const auth = new GoTrue({
 const Wrapper = styled.div`
   padding: 1rem;
 `;
-const CreateAccount = () => {
+const LoginAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
@@ -84,12 +84,13 @@ const CreateAccount = () => {
             />
           </Wrapper>
           <Wrapper type="submit" required onClick={handleSubmit}>
-            <button>Cancel</button>
-            <button>Create</button>
+          <button >
+            Submit
+          </button>
           </Wrapper>
         </form>
       </div>
     </div>
   );
 };
-export default CreateAccount;
+export default LoginAccount;

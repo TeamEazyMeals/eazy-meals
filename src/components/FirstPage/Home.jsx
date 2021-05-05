@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LoginAccount from "../LoginAccount/LoginAccount";
+import LoginAccount from "../CreateAccount/CreateAccount";
 
 const Wrapper = styled.div`
 padding: 16px 32px
