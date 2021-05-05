@@ -15,7 +15,7 @@ const reducer = (state, action) => {
 };
 
 const defaultState = {
-  recipeData: null,
+  recipeData: [],
   searchItem: "",
   sortValue: "",
 };
@@ -41,6 +41,7 @@ const useFetchRecipes = () => {
     dispatch({ type: "SEARCH_ITEM_VALUE", payload: value });
   };
   console.log(state.recipeData);
+  
   
   const fuse = new Fuse(state.recipeData, {
     keys: ["name", "description"],
