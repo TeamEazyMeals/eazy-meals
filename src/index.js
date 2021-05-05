@@ -1,5 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
+
 import ReactDom from "react-dom";
 import App from '../src/App';
 
