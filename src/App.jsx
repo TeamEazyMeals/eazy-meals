@@ -3,18 +3,18 @@ import GoTrue from "gotrue-js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./components/FirstPage/Home";
-import LoginAccount from "./components/CreateAccount/CreateAccount";
-import CreateAccount from "./components/LoginAccount/LoginAccount";
+import LoginAccount from "./components/LoginAccount/LoginAccount";
+import CreateAccount from "./components/CreateAccount/CreateAccount";
 
 const App = () => {
   return (
     <Router>
       <Switch>
+      <Route path="/Login/">
+          <LoginAccount />
+        </Route>
         <Route path="/Create/">
           <CreateAccount />
-        </Route>
-        <Route path="/Login/">
-          <LoginAccount />
         </Route>
         <Route path="/">
           <Home />
