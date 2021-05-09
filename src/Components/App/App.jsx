@@ -1,12 +1,11 @@
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
-
-
+import SignUp from "../LoginSetUpLoreen/LoginSetUp";
 const App = () => {
   return (
     <>
-    <AllRecipes></AllRecipes>
+      <SignUp/>
+      <AllRecipes></AllRecipes>
     </>
   );
 }
-
 export default App;
