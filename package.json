@@ -11,10 +11,7 @@
     "faker": "^5.5.3",
     "fuse.js": "^6.4.6",
     "gotrue-js": "^0.9.29",
-<<<<<<< HEAD
-=======
     "netlify-identity-widget": "^1.9.1",
->>>>>>> a1f3ff513d340ae2c12ff77b4b0f35d1afaed187
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
