@@ -42,8 +42,8 @@ const LoginAccount = () => {
     //   })
     //   .catch((error) =>
     //     showMessage(`Failed :( ${JSON.stringify(error)}`, form)
-      );
-  };
+  //     );
+   };
 
   return (
     <div>
