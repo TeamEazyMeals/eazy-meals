@@ -1,10 +1,17 @@
 import React from "react";
-import useLogIn from "./useLogIn";
+import useLogIn from "./useSignUp";
 
 const SignUp = () => {
-  const { setEmail, setPassword, handleSignUp } = useLogIn();
+  const {
+    setEmail,
+    setPassword,
+    handleSignUp,
+    handleLogout,
+    isLoggedIn,
+  } = useLogIn();
   return (
     <nav>
+      <div>{isLoggedIn?"loggedIn":"notLoggedIn"}</div>
       <form name="signup" onSubmit={handleSignUp}>
         <p>
           <label>
@@ -31,6 +38,7 @@ const SignUp = () => {
         </p>
         <button type="submit">Sign me up!</button>
       </form>
+      <button onClick={handleLogout}>Log out</button>
     </nav>
   );
 };
