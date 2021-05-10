@@ -1,5 +1,5 @@
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
-import SignUp from "../LoginSetUpLoreen/SignSetUp";
+import SignUp from "../SignUpSetUpLoreen/SignSetUp";
 const App = () => {
   return (
     <>
