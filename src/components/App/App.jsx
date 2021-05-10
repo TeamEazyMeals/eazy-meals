@@ -1,10 +1,11 @@
-import AllRecipes from "../../views/AllRecipes/AllRecipes";
+import Recipe from "../../views/Recipe/Recipe";
+//import FindRecipe from '../FindRecipe/FindRecipe'
 
 
 const App = () => {
   return (
     <>
-    <AllRecipes></AllRecipes>
+    <Recipe></Recipe>
     </>
   );
 }
