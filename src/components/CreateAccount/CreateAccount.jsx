@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GoTrue from "gotrue-js";
 import styled from "styled-components";
+import validator from 'validator';
 
 const Wrapper = styled.div`
   padding: 1rem;
