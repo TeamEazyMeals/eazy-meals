@@ -6,13 +6,11 @@ const SignUp = () => {
     setEmail,
     setPassword,
     handleSignUp,
-    handleLogout,
-    isLoggedIn,
     handleLogIn,
+    handleForgotPassword,
   } = useLogIn();
   return (
     <nav>
-      <div>{isLoggedIn ? "loggedIn" : "notLoggedIn"}</div>
       <form name="signup" onSubmit={handleSignUp}>
         <p>
           <label>
@@ -65,8 +63,9 @@ const SignUp = () => {
         </p>
         <button type="submit">Log In</button>
       </form>
-
-      <button onClick={handleLogout}>Log out</button>
+      <button>
+        <a href="#" onClick={handleForgotPassword}>Forgot your password?</a>
+      </button>
     </nav>
   );
 };
