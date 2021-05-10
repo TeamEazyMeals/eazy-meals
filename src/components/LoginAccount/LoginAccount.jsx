@@ -21,15 +21,10 @@ const UserName = (props) => {
 const Wrapper = styled.div`
   padding: 1rem;
 `;
-
-//  const auth = new goTrue({
-//   auth.login(email, password, remember)
-//    .login(email.value, password.value, true)
-//    .then((response) => {
-//      showMessage(`Success! Response: ${JSON.stringify({ response })}`, form);
-//   })
-//   .catch((error) => showMessage(`Failed :( ${JSON.stringify(error)}`, form));
+// const auth = new GoTrue({
+//   APIUrl: "https://eazy-meals.netlify.app/.netlify/identity",
 // });
+
 const LoginAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +33,16 @@ const LoginAccount = () => {
   const handlePassword = (event) => setPassword(event.target.value);
   const handleSubmit = async (event) => {
     console.log("success", email, password);
+
+    // auth
+
+    //   .login(email.value, password.value, true)
+    //   .then((response) => {
+    //     showMessage(`Success! Response: ${JSON.stringify({ response })}`, form);
+    //   })
+    //   .catch((error) =>
+    //     showMessage(`Failed :( ${JSON.stringify(error)}`, form)
+      );
   };
 
   return (
