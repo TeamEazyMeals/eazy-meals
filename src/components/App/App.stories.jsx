@@ -1,7 +1,7 @@
 import App from "./App";
 
 const config = {
-    title: "App",
+    title: "views/App"
 }
 
 export default config
