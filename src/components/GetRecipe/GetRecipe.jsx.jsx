@@ -89,13 +89,7 @@ const GetRecipe = (props) => {
           <h2>Steps</h2>
           <StepsASwiper recipe={recipe} />
           
-          {recipe.tags.map((step, index) => {
-            console.log(step);
-            return (
-          <p></p>
-            
-            );
-          })}
+         
         </div>
       </Body>
     </>
