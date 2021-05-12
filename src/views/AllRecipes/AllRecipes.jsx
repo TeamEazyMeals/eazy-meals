@@ -1,20 +1,20 @@
-import FetchRecipes from "../../Components/FetchRecipes/FetchRecipes";
-import useLogIn from "../../Components/SignUpSetUpLoreen/useSignUp";
-import SignUp from "../../Components/SignUpSetUpLoreen/SignSetUp";
+import { Redirect } from "react-router-dom";
+
+import FetchRecipes from "../../components/FetchRecipes/FetchRecipes";
+import useLogIn from "../../components/LogInSetUp/useLogIn"
 const AllRecipes = () => {
   const { handleLogout, isLoggedIn } = useLogIn();
+
+  if (!isLoggedIn) {
+    return <Redirect to="/login"></Redirect>;
+  }
+  
   return (
     <>
-      {isLoggedIn ? (
-        <>
-          <nav>
-            <button onClick={handleLogout}>Log out</button>
-          </nav>
-          <FetchRecipes></FetchRecipes>
-        </>
-      ) : (
-        <SignUp></SignUp>
-      )}
+      <nav>
+        <button onClick={handleLogout}>Log out</button>
+      </nav>
+      <FetchRecipes></FetchRecipes>
     </>
   );
 };
