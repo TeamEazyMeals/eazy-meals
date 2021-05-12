@@ -14,6 +14,7 @@ const App = () => {
         <Route path="/forgotpassword" children={<ForgotPassword></ForgotPassword>}/>
         <Route path="/" children={<SignUp></SignUp>} />
       </Switch>
+      <App />
     </BrowserRouter>
   );
   
