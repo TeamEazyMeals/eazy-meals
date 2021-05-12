@@ -34,8 +34,8 @@ const LoginAccount = () => {
     console.log("success", email, password);
        
 
-    // if(!validator.isEmail(email)) return setMessage("Invalid-Email")
-    // if (password !== confirmPassword) return setMessage("no-match-password")
+    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
+    if (password !== confirmPassword) return setMessage("no-match-password")
     // auth
 
     //   .login(email.value, password.value, true)
