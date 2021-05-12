@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import GoTrue from "gotrue-js";
+import validator from 'validator';
+
 
 const UserName = (props) => {
   const [user, setUser] = useState(false);
@@ -21,9 +22,7 @@ const UserName = (props) => {
 const Wrapper = styled.div`
   padding: 1rem;
 `;
-// const auth = new GoTrue({
-//   APIUrl: "https://eazy-meals.netlify.app/.netlify/identity",
-// });
+
 
 const LoginAccount = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +32,10 @@ const LoginAccount = () => {
   const handlePassword = (event) => setPassword(event.target.value);
   const handleSubmit = async (event) => {
     console.log("success", email, password);
+       
 
+    // if(!validator.isEmail(email)) return setMessage("Invalid-Email")
+    // if (password !== confirmPassword) return setMessage("no-match-password")
     // auth
 
     //   .login(email.value, password.value, true)

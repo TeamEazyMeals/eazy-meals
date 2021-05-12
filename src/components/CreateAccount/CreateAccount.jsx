@@ -43,7 +43,10 @@ const CreateAccount = () => {
     } catch (error) {
       setMessage(error.toString());
     }
+    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
+    if (password !== confirmPassword) return setMessage("no-match-password")
   };
+  
   return (
     <div>
       <div>
