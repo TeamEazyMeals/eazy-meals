@@ -12,7 +12,7 @@ const useLogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const isLoggedIn = Boolean(window.localStorage.getItem("user"));
+  const isSignedIn = Boolean(window.localStorage.getItem("user"));
 const isForgotPassword = true;
   const handleSignUp = async (event) => {
     console.log(email, password);
@@ -56,11 +56,10 @@ window.location.reload();
     setPassword,
     handleSignUp,
     handleLogout,
-    isLoggedIn,
     handleLogIn,
     handleForgotPassword,
     isForgotPassword,
-    
+    isSignedIn,
   };
 };
 export default useLogIn;

@@ -1,12 +1,13 @@
 import React from "react";
-import useLogIn from "./UseLogIn";
+import {Redirect} from "react-router-dom"
+import useLogIn from "./useLogIn";
 
 const LogIn = () => {
-  const { setEmail, setPassword, handleLogIn } = useLogIn();
+  const { setEmail, setPassword, handleLogIn, isLoggedIn } = useLogIn();
+  if(isLoggedIn){return <Redirect to="/allrecipes"/>}
   return (
     <div>
       <nav>
-       
         <form name="logIn" onSubmit={handleLogIn}>
           <p>
             <label>
@@ -34,7 +35,9 @@ const LogIn = () => {
           <button type="submit">Log In</button>
         </form>
       </nav>
-      <button>Forgot your password?</button>
+      <button onClick={<Redirect to="/forgotpassword"/>}>
+        Forgot your password?
+      </button>
     </div>
   );
 };

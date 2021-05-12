@@ -4,8 +4,8 @@ import LogIn from "../LogInSetUp/LogIn";
 import SignUp from "../SignUpSetUpLoreen/SignSetUp";
 import ForgotPassword from "../LogInSetUp/ ForgotPassword";
 
-
 const App = () => {
+
   return (
     <BrowserRouter>
       <Switch>
