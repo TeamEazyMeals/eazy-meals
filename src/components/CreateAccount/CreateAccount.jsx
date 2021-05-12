@@ -32,6 +32,9 @@ const CreateAccount = () => {
     fetch("/example", {
       headers: { Authorization: `Bearer ${retrievedToken.access_token}` },
     });
+    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
+    if (password !== confirmPassword) return setMessage("no-match-password"); 
+    
     try {
       setMessage("Logging in...");
       event.preventDefault();
@@ -43,8 +46,7 @@ const CreateAccount = () => {
     } catch (error) {
       setMessage(error.toString());
     }
-    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
-    if (password !== confirmPassword) return setMessage("no-match-password")
+    
   };
   
   return (
