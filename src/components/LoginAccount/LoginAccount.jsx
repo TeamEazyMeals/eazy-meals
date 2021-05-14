@@ -32,7 +32,16 @@ const LoginAccount = () => {
   const handlePassword = (event) => setPassword(event.target.value);
   const handleSubmit = async (event) => {
     console.log("success", email, password);
-       
+       const validator = new Validator();
+          validator.addRules({
+            "email":[
+              {validator: 'isEmail', message:'Invalid-Email'},
+            ],
+             'password': {
+              validator: string,
+              message: string,
+          }.message[any],
+          })
 
     if(!validator.isEmail(email)) return setMessage("Invalid-Email")
     if (password !== confirmPassword) return setMessage("no-match-password")
