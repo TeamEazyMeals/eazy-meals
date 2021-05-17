@@ -32,7 +32,7 @@ const useFetchRecipes = () => {
     const data = await response.json();
 
     dispatch({ type: "RECIPE_DATA", payload: data });
-    return data
+    return data;
   };
 
   useEffect(() => getRecipeData(), []);
@@ -41,8 +41,7 @@ const useFetchRecipes = () => {
     dispatch({ type: "SEARCH_ITEM_VALUE", payload: value });
   };
   console.log(state.recipeData);
-  
-  
+
   const fuse = new Fuse(state.recipeData, {
     keys: ["name", "description"],
     minMatchCharLength: 3,
