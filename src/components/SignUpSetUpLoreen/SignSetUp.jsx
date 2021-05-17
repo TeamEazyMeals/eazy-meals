@@ -3,10 +3,16 @@ import { Redirect } from "react-router-dom";
 import useSignUp from "./useSignUp";
 
 const SignUp = () => {
+<<<<<<< HEAD
   const { setEmail, setPassword, handleSignUp, isSignedIn } = useSignUp();
   if (isSignedIn) {
     return <Redirect to="/allrecipes" />;
   }
+=======
+  const { setEmail, setPassword, handleSignUp , isSignedIn} = useSignUp();
+ if (isSignedIn){ return <Redirect to="/allrecipes"/>}
+
+>>>>>>> 9a9ec008e5fff53e6cf867a87433acf0817191c2
   return (
     <div>
       <nav>
@@ -37,7 +43,8 @@ const SignUp = () => {
           <button type="submit">Sign me up!</button>
         </form>
       </nav>
-      <button>Forgot your password?</button>
+     
+      <a href="/forgotpassword">Forgot your password?</a>
     </div>
   );
 };

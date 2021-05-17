@@ -1,5 +1,5 @@
 import React from "react";
-import useLogIn from "../SignUpSetUpLoreen/useSignUp"
+import useLogIn from "./useLogIn"
 
 
 const ForgotPassword =()=>{
