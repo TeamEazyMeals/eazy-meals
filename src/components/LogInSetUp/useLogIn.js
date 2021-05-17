@@ -28,13 +28,15 @@ const useLogIn = () => {
   };
 
   const handleForgotPassword = (event) => {
+    console.log(1)
     event.preventDefault();
+    console.log(2);
     auth
       .requestPasswordRecovery(email)
       .then((response) => console.log("Recovery email sent", { response }))
       .catch((error) => console.log("Error sending recovery mail: %o", error));
 
-    window.location.reload();
+    // window.location.reload();
   };
 
   return {

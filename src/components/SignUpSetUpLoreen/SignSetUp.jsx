@@ -6,6 +6,7 @@ import useSignUp from "./useSignUp";
 const SignUp = () => {
   const { setEmail, setPassword, handleSignUp , isSignedIn} = useSignUp();
  if (isSignedIn){ return <Redirect to="/allrecipes"/>}
+
   return (
     <div>
       <nav>
@@ -36,7 +37,8 @@ const SignUp = () => {
           <button type="submit">Sign me up!</button>
         </form>
       </nav>
-      <button>Forgot your password?</button>
+     
+      <a href="/forgotpassword">Forgot your password?</a>
     </div>
   );
 };
