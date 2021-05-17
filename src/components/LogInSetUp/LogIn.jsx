@@ -35,9 +35,9 @@ const LogIn = () => {
           <button type="submit">Log In</button>
         </form>
       </nav>
-      <button onClick={<Redirect to="/forgotpassword"/>}>
-        Forgot your password?
-      </button>
+
+
+      <a href="/forgotpassword">Forgot your password?</a>
     </div>
   );
 };

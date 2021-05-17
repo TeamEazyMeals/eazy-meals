@@ -2,19 +2,18 @@ import axios from "axios";
 
 const GET_ALL_RECIPE_DATA_QUERY = `
 {
-    recipe{
-        id
-        name
-        Description
-        time in minutes
-        ingredients{
-            name
-            unit
-            amount
-        }
-        steps
+  recipes {
+    id
+    timeInMinutes
+    name
+    description
+    photo {
+      url
     }
-}`;
+    steps
+  }
+}
+`;
 
 const syncRecipes = async () => {
   const {data:{data: recipe}} = await axios.post(
