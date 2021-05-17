@@ -1,11 +1,12 @@
 import React from "react";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import useSignUp from "./useSignUp";
 
-
 const SignUp = () => {
-  const { setEmail, setPassword, handleSignUp , isSignedIn} = useSignUp();
- if (isSignedIn){ return <Redirect to="/allrecipes"/>}
+  const { setEmail, setPassword, handleSignUp, isSignedIn } = useSignUp();
+  if (isSignedIn) {
+    return <Redirect to="/allrecipes" />;
+  }
   return (
     <div>
       <nav>

@@ -9,12 +9,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/allrecipes" children={<AllRecipes></AllRecipes>} />
-        <Route path="/login" children={<LogIn></LogIn>} />
-        <Route path="/forgotpassword" children={<ForgotPassword></ForgotPassword>}/>
-        <Route path="/" children={<SignUp></SignUp>} />
+        <Route path="/allrecipes" children={<AllRecipes />} />
+        <Route path="/login" children={<LogIn />} />
+        <Route path="/forgotpassword" children={<ForgotPassword />}/>
+        <Route path="/" children={<SignUp />} />
       </Switch>
-      <App />
+    
     </BrowserRouter>
   );
   

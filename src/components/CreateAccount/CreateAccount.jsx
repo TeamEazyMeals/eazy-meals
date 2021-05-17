@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GoTrue from "gotrue-js";
 import styled from "styled-components";
 import validator from 'validator';
@@ -32,8 +32,14 @@ const CreateAccount = () => {
     fetch("/example", {
       headers: { Authorization: `Bearer ${retrievedToken.access_token}` },
     });
-    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
-    if (password !== confirmPassword) return setMessage("no-match-password"); 
+    // validator.addRules({
+    //   email: [{ validator: "isEmail", message: "Invalid-Email" }],
+    //   password: [{validator: ""}]
+      
+    // });
+  //   if (!validator.isEmail(email)) return setMessage("Invalid-Email");
+  //   if (password !== confirmPassword) return setMessage("no-match-password");
+  // };
     
     try {
       setMessage("Logging in...");

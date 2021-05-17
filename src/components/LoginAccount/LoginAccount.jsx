@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import validator from 'validator';
+import validator from "validator";
 
+// const UserName = (props) => {
+//   const [user, setUser] = useState(false);
 
-const UserName = (props) => {
-  const [user, setUser] = useState(false);
+//   async function userData() {
+//     setUser(!user);
+//   }
 
-  async function userData() {
-    setUser(!user);
-  }
+//   const useEffect = () => {
+//     return userData, [];
+//   };
 
-  const useEffect = () => {
-    return userData, [];
-  };
-
-  if (!user) {
-    return "Incorrect Loggin";
-  }
-};
+//   if (!user) {
+//     return "Incorrect Loggin";
+//   }
+// };
 
 const Wrapper = styled.div`
   padding: 1rem;
 `;
-
 
 const LoginAccount = () => {
   const [email, setEmail] = useState("");
@@ -32,29 +30,27 @@ const LoginAccount = () => {
   const handlePassword = (event) => setPassword(event.target.value);
   const handleSubmit = async (event) => {
     console.log("success", email, password);
-       const validator = new Validator();
-          validator.addRules({
-            "email":[
-              {validator: 'isEmail', message:'Invalid-Email'},
-            ],
-             'password': {
-              validator: string,
-              message: string,
-          }.message[any],
-          })
+    // const validator = new Validator();
+    // validator.addRules({
+    //   email: [{ validator: "isEmail", message: "Invalid-Email" }],
 
-    if(!validator.isEmail(email)) return setMessage("Invalid-Email")
-    if (password !== confirmPassword) return setMessage("no-match-password")
-    // auth
-
-    //   .login(email.value, password.value, true)
-    //   .then((response) => {
-    //     showMessage(`Success! Response: ${JSON.stringify({ response })}`, form);
-    //   })
-    //   .catch((error) =>
-    //     showMessage(`Failed :( ${JSON.stringify(error)}`, form)
-  //     );
-   };
+    // });
+    if (!validator.isEmail(email)) return setMessage("Invalid-Email");
+    //if (password !== confirmPassword) return setMessage("no-match-password");
+  };
+  const auth = () => {
+    auth
+      .login(email, password, true)
+      .then((response) => {
+        showMessage(
+          `Success! Response: ${JSON.stringify({ response })}`,
+          form
+        );
+      })
+      .catch((error) =>
+        showMessage(`Failed :( ${JSON.stringify(error)}`, form)
+      );
+  };
 
   return (
     <div>
@@ -82,8 +78,8 @@ const LoginAccount = () => {
               onChange={handlePassword}
             />
           </Wrapper>
-          <Wrapper type="submit" required onClick={handleSubmit}>
-            <button>Submit</button>
+          <Wrapper>
+            <button type="submit">Submit</button>
           </Wrapper>
         </form>
       </div>
