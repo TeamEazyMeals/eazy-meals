@@ -47,10 +47,13 @@ const useFetchRecipes = () => {
     minMatchCharLength: 3,
   });
 
+
   const results = fuse.search(state.searchItem);
+  
   if (!results) {
     console.log("no results");
   }
+  console.log(results);
   const searchResults =
     state.searchItem.length < 3
       ? state.recipeData

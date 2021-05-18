@@ -1,5 +1,5 @@
 import axios from "axios";
-
+// import app from "../app/app"
 const GET_ALL_RECIPE_DATA_QUERY = `
 {
   recipes {
@@ -21,6 +21,7 @@ const syncRecipes = async () => {
     { query: GET_ALL_RECIPE_DATA_QUERY }
   );
   window.localStorage.setItem("recipes", JSON.stringify(recipes))
+return recipes;
 };
 
 export default {

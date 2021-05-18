@@ -24,20 +24,20 @@ const isForgotPassword = true;
 
     window.localStorage.setItem("user", JSON.stringify(user));
     <FetchRecipes></FetchRecipes>;
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleLogIn = async (event) => {
     event.preventDefault();
     const user = await auth.login(email, password);
     window.localStorage.setItem("user", JSON.stringify(user));
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleLogout = () => {
     window.localStorage.removeItem("user");
     <SignUp></SignUp>;
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleForgotPassword = (event)=>{
@@ -47,7 +47,7 @@ const isForgotPassword = true;
       .then((response) => console.log("Recovery email sent", { response }))
       .catch((error) => console.log("Error sending recovery mail: %o", error));
     
-window.location.reload();
+// window.location.reload();
   }
 
   

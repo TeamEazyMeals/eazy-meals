@@ -24,7 +24,7 @@ const useLogIn = () => {
   const handleLogout = () => {
     window.localStorage.clear();
     console.log("MUST RENDER LOG IN PAGE")
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleForgotPassword = (event) => {
