@@ -36,7 +36,7 @@ const LoginAccount = () => {
 
     // });
     if (!validator.isEmail(email)) return setMessage("Invalid-Email");
-    //if (password !== confirmPassword) return setMessage("no-match-password");
+    if (password !== confirmPassword) return setMessage("no-match-password");
   };
   const auth = () => {
     auth
