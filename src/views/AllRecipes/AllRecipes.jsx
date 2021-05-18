@@ -1,9 +1,21 @@
 import { Redirect } from "react-router-dom";
 
 import FetchRecipes from "../../components/FetchRecipes/FetchRecipes";
-import useLogIn from "../../components/LogInSetUp/useLogIn"
+import  useAuth from "../../utility/useAuth"
 const AllRecipes = () => {
-  const { handleLogout, isLoggedIn } = useLogIn();
+  const {
+    error,
+    email,
+    handleEmailInput,
+    password,
+    handlePasswordInput,
+    confirmPassword,
+    handleConfirmPasswordInput,
+    handleSignUpForm,
+    handleLoginForm,
+    handleLogoutButton,
+    handleRequestPasswordForm,
+  } = useAuth();
 
   if (!isLoggedIn) {
     return <Redirect to="/login"></Redirect>;
