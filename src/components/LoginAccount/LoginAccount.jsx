@@ -44,7 +44,7 @@ const LoginAccount = () => {
   //       return [true, "Password must contain minimum 8 letters and one special character"]
   //   else
   //       return [false, ""]
-}
+
   };
   const auth = () => {
     auth
