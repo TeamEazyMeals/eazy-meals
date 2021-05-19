@@ -1,12 +1,21 @@
 import React from "react";
-import useLogIn from "./useLogIn"
+import useAuth from "../../utility/useAuth"
 
 
 const ForgotPassword =()=>{
     const {
-      setEmail,
-      handleForgotPassword,
-    } = useLogIn();
+      error,
+      email,
+      handleEmailInput,
+      password,
+      handlePasswordInput,
+      confirmPassword,
+      handleConfirmPasswordInput,
+      handleSignUpForm,
+      handleLoginForm,
+      handleLogoutButton,
+      handleRequestPasswordForm,
+    } = useAuth();
    return (
      <>
      <h1>Find your easy meals account</h1>

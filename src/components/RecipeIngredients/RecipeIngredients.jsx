@@ -11,7 +11,9 @@ const List = styled.ul`
   align-items: center;
 `;
 
-const RecipeIngredients = ({ ingredients }) => {
+
+const RecipeIngredients = ({ ingredients=[] }) => {
+  console.log(ingredients);
   return ingredients.map((ingredient) => {
     return (
       <Fragment key={uuid()}>
