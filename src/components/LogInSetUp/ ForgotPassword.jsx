@@ -1,76 +1,30 @@
 import React from "react";
-import useAuth from "../../utility/useAuth"
+import useAuth from "../../utility/useAuth";
 
+const ForgotPassword = () => {
+  const {
+    handleEmailInput,
+    handleRequestPasswordForm,
+  } = useAuth();
+  return (
+    <>
+      <h1>Find your easy meals account</h1>
+      <form name="forgotpassword" onSubmit={handleRequestPasswordForm}>
+        <p>
+          <label>
+            Enter Your Email
+            <input
+              type="email"
+              name="email"
+              required
+              onChange={handleEmailInput}
+            />
+          </label>
+        </p>
 
-const ForgotPassword =()=>{
-    const {
-      error,
-      email,
-      setEmail,
-      handleEmailInput,
-      password,
-      handlePasswordInput,
-      confirmPassword,
-      handleConfirmPasswordInput,
-      handleSignUpForm,
-      handleLoginForm,
-      handleLogoutButton,
-      handleRequestPasswordForm,
-      handleForgotPassword
-    } = useAuth();
-   return (
-     <>
-     <h1>Find your easy meals account</h1>
-       <form name="forgotpassword" onSubmit={handleForgotPassword}>
-         <p>
-           <label>
-             Enter Your Email
-             <input
-               type="email"
-               name="email"
-               required
-               onChange={(event) => setEmail(event.target.value)}
-             />
-           </label>
-         </p>
-         
-         <button type="submit">Reset password</button>
-       </form>
-     
-     </>
-   ); 
-}
+        <button type="submit">Reset password</button>
+      </form>
+    </>
+  );
+};
 export default ForgotPassword;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
