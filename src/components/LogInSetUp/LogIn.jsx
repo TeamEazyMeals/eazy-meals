@@ -1,6 +1,6 @@
 import React from "react";
-import {Redirect} from "react-router-dom"
-import useAuth from "../../utility/useAuth"
+import {Redirect} from "react-router-dom";
+import useAuth from "../../utility/useAuth";
 
 const LogIn = () => {
   const {
