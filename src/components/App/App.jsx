@@ -15,7 +15,6 @@ const App = () => {
       <Switch>
         <Route path="/allrecipes" children={<AllRecipes />} />
         <Route path="/login" children={<LogIn />} />
-        <Route path="/forgotpassword" children={<ForgotPassword />}/>
         <Route path="/forgotpassword" children={<ForgotPassword />} />
         <Route path="/" children={<SignUp />} />
       </Switch>
