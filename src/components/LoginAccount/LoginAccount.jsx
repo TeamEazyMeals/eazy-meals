@@ -36,7 +36,15 @@ const LoginAccount = () => {
 
     // });
     if (!validator.isEmail(email)) return setMessage("Invalid-Email");
-    if (password !== confirmPassword) return setMessage("no-match-password");
+   // if (password !== confirmPassword) return setMessage("no-match-password");
+  //  export function validatePassword(value) {
+  //    var user = JSON.parse(localStorage.getItem('User Details'))
+  //   const symbl = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+  //   if (symbl.test(value) === false)
+  //       return [true, "Password must contain minimum 8 letters and one special character"]
+  //   else
+  //       return [false, ""]
+}
   };
   const auth = () => {
     auth
