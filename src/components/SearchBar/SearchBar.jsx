@@ -1,17 +1,12 @@
-// import React from "react";
-// import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+// import Fuse from "fuse.js";
 
 // const SearchBar = (props) => {
-//   const { handleOnSearch,searchItem } = useFetchRecipes();
+//  const {searchItem } = props;
   
 //   return (
 //     <div>
-//       <input
-//         type="text"
-//         value={searchItem}
-//         placeholder="search recipes.."
-//         onChange={handleOnSearch}
-//       />
+//       <input type="text" value={searchItem} onChange = {handleOnSearch} />
+//       <button>search</button>
 //     </div>
 //   );
 // };
