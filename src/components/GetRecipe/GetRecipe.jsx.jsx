@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
 import SetServings from "../../components/SetServings/SetServings";
-import StepsSwiper from "../StepsSwiper/StepsSwiper"
+import StepsSwiper from "../StepsSwiper/StepsSwiper";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-
-
 const GetRecipe = (props) => {
   const Body = styled.div`
-    text-align:center;
+    text-align: center;
   `;
   const Header = styled.header`
-    background:#07393c;
+    background: #07393c;
     color: white;
-    text-align:center;
+    text-align: center;
   `;
   const Title = styled.h1`
     font-family: Arial, sans-serif;
     letter-spacing: -1px;
   `;
   const List = styled.ul`
-    justify-content:center;
+    justify-content: center;
   `;
   const Button = styled.button`
     color: white;
@@ -33,24 +31,22 @@ const GetRecipe = (props) => {
     text-transform uppercase;
   `;
   const Text = styled.p`
-    line-hieght:25px;
+    line-hieght: 25px;
   `;
   const { id } = props;
 
-  //console.log(props);
   const [recipe, setRecipe] = useState(null);
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
-  
-  console.log(recipe)
+
+  console.log(recipe);
 
   const getRecipe = async () => {
     const response = await fetch("/data/recipeData.json");
     const result = await response.json();
-    //console.log(result);
+
     const foundRecipe = result.find((recipe) => recipe.id === id);
     setRecipe(foundRecipe);
-    //console.log(foundRecipe);
   };
   useEffect(() => getRecipe(), []);
 
@@ -88,9 +84,8 @@ const GetRecipe = (props) => {
         )}
         <div>
           <h2>Steps</h2>
-         
-        <StepsSwiper steps={recipe.steps}/>
-         
+
+          <StepsSwiper steps={recipe.steps} />
         </div>
       </Body>
     </>

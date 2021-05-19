@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 function SetServings(props) {
- 
   const { count, setCount } = props;
 
   const Serve = styled.span`
@@ -24,7 +23,7 @@ function SetServings(props) {
           variant="contained"
           color="primary"
           style={{ justifyContent: "center" }}
-          disabled={count ===1 }
+          disabled={count === 1}
           onClick={() => setCount(count - 1)}
         >
           -
