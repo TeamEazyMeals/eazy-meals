@@ -1,23 +1,19 @@
 import React from "react";
-import {Redirect} from "react-router-dom"
-import useAuth from "../../utility/useAuth"
-
+import useAuth from "../../utility/useAuth";
 
 const SignUp = () => {
-const {
-  error,
-  email,
-  password,
-  handleEmailInput,
-  handlePasswordInput,
-  handleSignUpForm,
-} = useAuth();
- 
-
+  const {
+    error,
+    email,
+    password,
+    handleEmailInput,
+    handlePasswordInput,
+    handleSignUpForm,
+  } = useAuth({ shouldBeLoggedIn: false });
 
   return (
     <div>
-      {error && <div>{error}</div>}
+      {/* {error && <div>{error}</div>} */}
       <nav>
         <form name="signup" onSubmit={handleSignUpForm}>
           <p>

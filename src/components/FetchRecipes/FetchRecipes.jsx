@@ -32,8 +32,8 @@ const Image = styled.img`
 const FetchRecipes = () => {
   const {
     recipeData,
-   searchItem,
-   handleOnSearch,
+    searchItem,
+    handleOnSearch,
     handleSort,
     searchResults,
   } = useFetchRecipes();
@@ -41,7 +41,7 @@ const FetchRecipes = () => {
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
   }
-
+console.log(searchResults)
   return (
     <Content>
       <Title>eazy-meals</Title>
@@ -59,7 +59,8 @@ const FetchRecipes = () => {
       </div>
 
       {searchResults.map(
-        ({ id, name, imageUrl, ingredients, description, timeInMinutes }) => {
+        ({ id, name, photo, ingredients, description, timeInMinutes }) => {
+          console.log(ingredients);
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -68,7 +69,7 @@ const FetchRecipes = () => {
                   <Title>{name}</Title>
                 </li>
                 <li>
-                  <Image src={imageUrl} alt={name} />
+                  {photo && <Image src={photo} alt={name} />}
                 </li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
 

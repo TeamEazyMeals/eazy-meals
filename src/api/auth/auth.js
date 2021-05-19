@@ -58,17 +58,19 @@ export const handleReset = async () => {
   }
 };
 
-export const getUser=()=>{
-const userString = window.localStorage.getItem("user")
-if(!userString){
-    return null
-}return JSON.parse(userString);
-}
+export const getUser = () => {
+  const userString = window.localStorage.getItem("user");
+  if (!userString) {
+    return null;
+  }
 
-export const calcIfLoggedIn=()=>{
-const user=getUser();
-return Boolean(user);
-}
+  return JSON.parse(userString);
+};
+
+export const calcIfLoggedIn = () => {
+  const user = getUser();
+  return Boolean(user);
+};
 
 const auth = {
   calcIfLoggedIn,
