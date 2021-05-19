@@ -3,11 +3,15 @@ import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import SignUp from "../SignUpSetUpLoreen/SignSetUp";
 import ForgotPassword from "../LogInSetUp/ ForgotPassword";
-import GetRecipe from "../GetRecipe/GetRecipe.jsx";
-import StepsSwiper from "../StepsSwiper/StepsSwiper";
+// import cms from "../../api/cms/cms"
+
+
 const App = () => {
+ 
+
   return (
     <BrowserRouter>
+      {/* <button onClick={cms.syncRecipes}>GET ALLRECIPES</button> */}
       <Switch>
       
         <Route
@@ -22,6 +26,10 @@ const App = () => {
           children={<ForgotPassword></ForgotPassword>}
         />
         <Route path="/" children={<SignUp></SignUp>} />
+        <Route path="/allrecipes" children={<AllRecipes />} />
+        <Route path="/login" children={<LogIn />} />
+        <Route path="/forgotpassword" children={<ForgotPassword />} />
+        <Route path="/" children={<SignUp />} />
       </Switch>
     </BrowserRouter>
   );
