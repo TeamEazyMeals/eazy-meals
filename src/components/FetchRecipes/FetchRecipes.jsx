@@ -41,7 +41,7 @@ const FetchRecipes = () => {
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
   }
-// console.log(searchResults)
+
   return (
     <Content>
       <Title>eazy-meals</Title>
