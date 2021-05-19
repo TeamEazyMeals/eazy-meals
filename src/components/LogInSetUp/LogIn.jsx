@@ -1,14 +1,18 @@
 import React from "react";
 import {Redirect} from "react-router-dom"
-import useLogIn from "./useLogIn";
+import useAuth from "../../utility/useAuth"
 
 const LogIn = () => {
-  const { setEmail, setPassword, handleLogIn, isLoggedIn } = useLogIn();
-  if(isLoggedIn){return <Redirect to="/allrecipes"/>}
+  const {
+    handleEmailInput,
+    handlePasswordInput,
+    handleLoginForm,
+  } = useAuth({shouldNotBeLoggedIn:true});
+ 
   return (
     <div>
       <nav>
-        <form name="logIn" onSubmit={handleLogIn}>
+        <form name="logIn" onSubmit={handleLoginForm}>
           <p>
             <label>
               Email
@@ -16,7 +20,7 @@ const LogIn = () => {
                 type="email"
                 name="email"
                 required
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={handleEmailInput}
               />
             </label>
           </p>
@@ -28,7 +32,7 @@ const LogIn = () => {
                 name="password"
                 autoComplete="on"
                 required
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={handlePasswordInput}
               />
             </label>
           </p>
