@@ -59,7 +59,9 @@ import React from "react";
 //   );
 // };
 const StepsSwiper = (props) => {
-  const { steps } = props;
+  
+   const { steps } = props;
+   console.log(props)
   return (
     <div>
       {steps.map(({ description, timerInMinutes }) => (

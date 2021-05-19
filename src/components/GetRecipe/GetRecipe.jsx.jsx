@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SetServings from "../../components/SetServings/SetServings";
-import StepsASwiper from "../StepsSwiper/StepsSwiper"
+import StepsSwiper from "../StepsSwiper/StepsSwiper"
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+
 
 
 const GetRecipe = (props) => {
@@ -40,11 +41,11 @@ const GetRecipe = (props) => {
   const [recipe, setRecipe] = useState(null);
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pages] = useState([]);
+  
+  console.log(recipe)
 
   const getRecipe = async () => {
-    const response = await fetch("data/recipeData.json");
+    const response = await fetch("/data/recipeData.json");
     const result = await response.json();
     //console.log(result);
     const foundRecipe = result.find((recipe) => recipe.id === id);
@@ -87,8 +88,8 @@ const GetRecipe = (props) => {
         )}
         <div>
           <h2>Steps</h2>
-          <StepsASwiper recipe={recipe} />
-          
+         
+        <StepsSwiper steps={recipe.steps}/>
          
         </div>
       </Body>

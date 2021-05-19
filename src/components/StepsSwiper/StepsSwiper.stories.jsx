@@ -1,18 +1,17 @@
-import StepSwiper from "./StepsSwiper";
+import StepsSwiper from "./StepsSwiper";
 import faker from "faker";
 
 const config = {
-  title: "StepSwiper",
+  title: "StepsSwiper",
 };
+export default config;
 
 const mockSteps = new Array(12).fill(null).map(() => ({
   description: faker.lorem.paragraph(),
   timerInMinutes:
     faker.datatype.boolean() && faker.datatype.number({ min: 4, max: 200 }),
 }));
-
-export default config;
-
-const Default = () => <StepSwiper steps={mockSteps} />;
+console.log(mockSteps)
+const Default = () => <StepsSwiper steps={mockSteps} />
 
 export { Default };
