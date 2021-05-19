@@ -6,6 +6,7 @@ const ForgotPassword =()=>{
     const {
       error,
       email,
+      setEmail,
       handleEmailInput,
       password,
       handlePasswordInput,
@@ -15,6 +16,7 @@ const ForgotPassword =()=>{
       handleLoginForm,
       handleLogoutButton,
       handleRequestPasswordForm,
+      handleForgotPassword
     } = useAuth();
    return (
      <>
