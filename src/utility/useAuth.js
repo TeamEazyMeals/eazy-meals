@@ -9,10 +9,10 @@ export const useAuth = (props) => {
         auth.handleReset();
 
         if (shouldBeLoggedIn && auth.calcIfLoggedIn()) {
-          history.push("/login");
+          history.push("/allrecipes");
         }
         if(shouldNotBeLoggedIn && auth.calcIfLoggedIn()){
-            history.push("/allrecipes")
+            history.push("/login")
         }
       }, []);
   
