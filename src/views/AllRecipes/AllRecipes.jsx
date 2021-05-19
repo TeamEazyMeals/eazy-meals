@@ -1,20 +1,19 @@
-import FetchRecipes from "../../Components/FetchRecipes/FetchRecipes";
-import useLogIn from "../../Components/SignUpSetUpLoreen/useSignUp";
-import SignUp from "../../Components/SignUpSetUpLoreen/SignSetUp";
+import { Redirect } from "react-router-dom";
+
+import FetchRecipes from "../../components/FetchRecipes/FetchRecipes";
+import useAuth from "../../utility/useAuth";
 const AllRecipes = () => {
-  const { handleLogout, isLoggedIn } = useLogIn();
+  const {
+    error,
+    handleLogoutButton,
+  } = useAuth({ shouldBeLoggedIn: true });
+
   return (
     <>
-      {isLoggedIn ? (
-        <>
-          <nav>
-            <button onClick={handleLogout}>Log out</button>
-          </nav>
-          <FetchRecipes></FetchRecipes>
-        </>
-      ) : (
-        <SignUp></SignUp>
-      )}
+      <nav>
+        <button onClick={handleLogoutButton}>Log out</button>
+      </nav>
+      <FetchRecipes></FetchRecipes>
     </>
   );
 };

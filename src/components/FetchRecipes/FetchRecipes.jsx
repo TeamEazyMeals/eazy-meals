@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
+// import SearchBar from "../SearchBar/SearchBar";
 const Title = styled.h1`
   font-family: Arial, sans-serif;
   letter-spacing: -1px;
@@ -40,7 +41,7 @@ const FetchRecipes = () => {
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
   }
-
+console.log(searchResults)
   return (
     <Content>
       <Title>eazy-meals</Title>
@@ -53,11 +54,13 @@ const FetchRecipes = () => {
           placeholder="search recipes.."
           onChange={handleOnSearch}
         />
+        {/* <SearchBar/> */}
         <Sort handleSort={handleSort}></Sort>
       </div>
 
       {searchResults.map(
-        ({ id, name, imageUrl, ingredients, description, timeInMinutes }) => {
+        ({ id, name, photo, ingredients, description, timeInMinutes }) => {
+          console.log(ingredients);
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -66,7 +69,7 @@ const FetchRecipes = () => {
                   <Title>{name}</Title>
                 </li>
                 <li>
-                  <Image src={imageUrl} alt={name} />
+                  {photo && <Image src={photo} alt={name} />}
                 </li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
 

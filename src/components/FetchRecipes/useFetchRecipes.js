@@ -1,5 +1,7 @@
 import { useEffect, useReducer } from "react";
 import Fuse from "fuse.js";
+import app from "../../api/app/app";
+import cms from "../../api/cms/cms";
 
 const reducer = (state, action) => {
   if (action.type === "SEARCH_ITEM_VALUE") {
@@ -28,11 +30,17 @@ const useFetchRecipes = () => {
   };
 
   const getRecipeData = async () => {
-    const response = await fetch("/data/recipeData.json");
-    const data = await response.json();
+    // const response = await fetch("/data/recipeData.json");
+    // const data = await response.json();
+
+    if (app.calcIfShouldSync()) {
+      await cms.syncRecipes();
+    }
+    const recipesString = window.localStorage.getItem("recipes");
+    const data = JSON.parse(recipesString);
 
     dispatch({ type: "RECIPE_DATA", payload: data });
-    return data
+    return data;
   };
 
   useEffect(() => getRecipeData(), []);
@@ -40,18 +48,14 @@ const useFetchRecipes = () => {
     const { value } = target;
     dispatch({ type: "SEARCH_ITEM_VALUE", payload: value });
   };
-  console.log(state.recipeData);
-  
-  
+
   const fuse = new Fuse(state.recipeData, {
     keys: ["name", "description"],
     minMatchCharLength: 3,
   });
 
   const results = fuse.search(state.searchItem);
-  if (!results) {
-    console.log("no results");
-  }
+
   const searchResults =
     state.searchItem.length < 3
       ? state.recipeData
