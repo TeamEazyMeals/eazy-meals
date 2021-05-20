@@ -3,6 +3,8 @@ import SetServings from "../../components/SetServings/SetServings";
 import StepsSwiper from "../StepsSwiper/StepsSwiper";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import app from "../../api/app/app";
+import cms from "../../api/cms/cms";
 
 const GetRecipe = (props) => {
   const Body = styled.div`
@@ -34,23 +36,30 @@ const GetRecipe = (props) => {
     line-hieght: 25px;
   `;
   const { id } = props;
+  console.log(id);
 
-  const [recipe, setRecipe] = useState(null);
+  const [recipes, setrecipe] = useState([]);
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
-  console.log(recipe);
+  console.log(recipes);
 
   const getRecipe = async () => {
-    const response = await fetch("/data/recipeData.json");
-    const result = await response.json();
+    if (app.calcIfShouldSync()) {
+      const response = await cms.syncRecipes();
+      setrecipe(response);
+    }
+    const response = JSON.parse(window.localStorage.getItem("recipes"));
+    setrecipe(response);
+    console.log(response);
 
-    const foundRecipe = result.find((recipe) => recipe.id === id);
-    setRecipe(foundRecipe);
+    const foundRecipe = response.find((recipe) => recipe.id === id);
+     setrecipe(foundRecipe);
+    //   console.log(foundRecipe)
   };
   useEffect(() => getRecipe(), []);
 
-  if (!recipe) {
+  if (!recipes) {
     return <h1>loading......</h1>;
   }
 
@@ -60,19 +69,19 @@ const GetRecipe = (props) => {
         <Title>Eazy Meals</Title>
       </Header>
       <Body>
-        <h1>{recipe.name}</h1>
+        <h1>{recipes.name}</h1>
 
-        <img src={recipe.imageUrl} alt={recipe.imageUrl} />
+      {recipes.photo &&<img src={recipes.photo} alt={recipes.photo} />}
         <h2>Description</h2>
-        <h2>Time in Minutes:{recipe.timeInMinutes}</h2>
-        <p>{recipe.description}</p>
+        <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
+        <p>{recipes.description}</p>
         <h2>Set Servings</h2>
         <SetServings count={count} setCount={setCount} />
 
         <Button onClick={() => setShowRecipe(!showrecipe)}>ingredients</Button>
         {showrecipe && (
           <div>
-            {recipe.ingredients.map((recp) => {
+            {recipes.ingredients.map((recp) => {
               return (
                 <ul key={uuidv4()}>
                   <span>{recp.name} </span> {recp.amount * count}
@@ -85,12 +94,12 @@ const GetRecipe = (props) => {
         <div>
           <h2>Steps</h2>
 
-          <StepsSwiper steps={recipe.steps} />
+          {/* <StepsSwiper steps={recipe.steps} /> */}
         </div>
       </Body>
     </>
   );
 };
-const MockedApp = () => <GetRecipe id="c9e81d9a-778d-41bc-a4cf-7a1c0a12d1c0" />;
+const MockedApp = () => <GetRecipe id="ckoioil141axu0a09lbw6hfjw" />;
 
 export default MockedApp;

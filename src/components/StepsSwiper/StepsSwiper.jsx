@@ -58,19 +58,19 @@ import React from "react";
 //     </div>
 //   );
 // };
-const StepsSwiper = (props) => {
+// const StepsSwiper = (props) => {
   
-   const { steps } = props;
-   console.log(props)
-  return (
-    <div>
-      {steps.map(({ description, timerInMinutes }) => (
-        <div>
-          {description}-{timerInMinutes}
-        </div>
-      ))}
-    </div>
-  );
-};
+//    const { steps } = props;
+//    console.log(props)
+//   return (
+//     <div>
+//       {steps.map(({ description, timerInMinutes }) => (
+//         <div>
+//           {description}-{timerInMinutes}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-export default StepsSwiper;
+// export default StepsSwiper;
