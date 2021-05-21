@@ -7,7 +7,6 @@ const AllRecipes = () => {
     error,
     handleLogoutButton,
   } = useAuth({ shouldBeLoggedIn: true });
-
   return (
     <>
       <nav>

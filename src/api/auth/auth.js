@@ -1,4 +1,6 @@
+import { Email } from "@material-ui/icons";
 import GoTrue from "gotrue-js";
+import validator from "validator";
 
 const gotTrueInstance = new GoTrue({
   APIUrl: "https://eazy-meals.netlify.app/.netlify/identity",
@@ -14,6 +16,17 @@ export const logIn = async (email, password) => {
     return error.toString();
   }
 };
+
+export const validateEmail = (email) => {
+  if (!validator.isEmail(email)) return ("Invalid-Email");
+}
+export const validatePassword = () => {
+  const symbl = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+  if (symbl === false)
+      return [true, "Password must contain minimum 8 letters and one special character"]
+  else
+      return [false, ""]
+}
 
 export const logOut = () => {
   try {
@@ -76,6 +89,8 @@ const auth = {
   calcIfLoggedIn,
   getUser,
   logIn,
+  validateEmail,
+  validatePassword,
   logOut,
   signup,
   sendResetLink,
