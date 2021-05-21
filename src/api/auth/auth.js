@@ -17,7 +17,7 @@ export const logIn = async (email, password) => {
   }
 };
 
-export const validateEmail = () => {
+export const validateEmail = (email) => {
   if (!validator.isEmail(email)) return ("Invalid-Email");
 }
 export const validatePassword = () => {
