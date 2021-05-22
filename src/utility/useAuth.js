@@ -12,7 +12,7 @@ export const useAuth = (props) => {
       history.push("/allrecipes");
     }
     if (shouldNotBeLoggedIn && auth.calcIfLoggedIn()) {
-      history.push("/login");
+      history.push("/homepage/login");
     }
   }, []);
 
