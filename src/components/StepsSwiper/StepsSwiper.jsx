@@ -6,9 +6,9 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import MobileStepper from "@material-ui/core/MobileStepper";
 
 const StepsSwiper = (props) => {
- ;
-  const { steps=[] } = props;
+  const { steps = [] } = props;
 
+  console.log(steps);
   const theme = useTheme();
 
   const forwardButton = () => {
@@ -59,6 +59,5 @@ const StepsSwiper = (props) => {
     </div>
   );
 };
-
 
 export default StepsSwiper;
