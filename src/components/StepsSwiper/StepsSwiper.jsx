@@ -9,7 +9,6 @@ const StepsSwiper = (props) => {
  ;
   const { steps=[] } = props;
 
-  console.log(steps)
   const theme = useTheme();
 
   const forwardButton = () => {
@@ -60,17 +59,6 @@ const StepsSwiper = (props) => {
     </div>
   );
 };
-//   const StepsSwiper = ({steps}) => {
 
-//     console.log(props)
-//  return (
-//      <div>
-//        {steps.map(({ description, timerInMinutes }) => (
-//          <div>
-//            {description}-{timerInMinutes}
-//         </div>
-//       ))}
-//      </div>
-//    );
 
 export default StepsSwiper;

@@ -30,18 +30,18 @@ export const useAuth = (props) => {
   const handleLoginForm = async (event) => {
     if (event.preventDefault) event.preventDefault();
     const error = await auth.logIn(email, password);
-    if (error) {
+    if (!email || !password) {
       setError(error);
-      return;
+      return "Invalid-Email or Password";
     }
     history.push("/allrecipes");
   };
+
   const validateEmail = (email) => {
-    console.log(email);
     if (!validator.isEmail(email)) return [false, "Invalid-Email"];
   };
+  
   const validatePassword = () => {
-    console.log(password);
     const symbl = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
     if (symbl === false)
       return [
@@ -53,7 +53,6 @@ export const useAuth = (props) => {
   const handleSignUpForm = async (event) => {
     if (event.preventDefault) event.preventDefault();
     if (validateEmail(email) || !validatePassword(password)) {
-      console.log("Singup Success");
       const error = await auth.signup(email, password);
       if (error) {
         setError(error);
