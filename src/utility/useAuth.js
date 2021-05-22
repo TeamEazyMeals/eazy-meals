@@ -30,20 +30,23 @@ export const useAuth = (props) => {
   const handleLoginForm = async (event) => {
     if (event.preventDefault) event.preventDefault();
     const error = await auth.logIn(email, password);
-    if (error) {
+    if (!email || !password) {
       setError(error);
-      return;
+      return "Invalid-Email or Password";
     }
     history.push("/allrecipes");
   };
+
   const handleSignUpForm = async (event) => {
     if (event.preventDefault) event.preventDefault();
     const symbl = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+
     if (!validator.isEmail(email)) {
-      return console.log("Invalid-Email");
+      return setError("Invalid-Email");
     }
+
     if (symbl.test(password) === false) {
-      return console.log(
+      return setError(
         "Password must contain minimum 8 letters and one special character"
       );
     }

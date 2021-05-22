@@ -59,7 +59,6 @@ const FetchRecipes = () => {
 
       {searchResults.map(
         ({ id, name, photo, ingredients, description, timeInMinutes }) => {
-          console.log(ingredients);
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
