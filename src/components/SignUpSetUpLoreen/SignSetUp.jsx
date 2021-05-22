@@ -1,4 +1,6 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import useSignUp from "../SignUpSetUpLoreen/SignUp.stories";
 import useAuth from "../../utility/useAuth";
 
 const SignUp = () => {
@@ -13,14 +15,13 @@ const SignUp = () => {
 
   return (
     <div>
-      {/* {error && <div>{error}</div>} */}
+      {error && <div>{error}</div>}
       <nav>
         <form name="signup" onSubmit={handleSignUpForm}>
           <p>
             <label>
               Email
               <input
-                type="email"
                 name="email"
                 value={email}
                 required
