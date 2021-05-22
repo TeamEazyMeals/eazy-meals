@@ -5,8 +5,9 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
+import{useParams} from "react-router-dom";
 
-const GetRecipe = (props) => {
+const GetRecipe = () => {
   const Body = styled.div`
     text-align: center;
   `;
@@ -35,14 +36,14 @@ const GetRecipe = (props) => {
   const Text = styled.p`
     line-hieght: 25px;
   `;
-  const { id } = props;
-  console.log(id);
-
+  
+ 
+const{recipeId:id}= useParams()
   const [recipes, setrecipe] = useState([]);
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
-  console.log(recipes);
+
 
   const getRecipe = async () => {
     if (app.calcIfShouldSync()) {
@@ -51,11 +52,11 @@ const GetRecipe = (props) => {
     }
     const response = JSON.parse(window.localStorage.getItem("recipes"));
     setrecipe(response);
-    console.log(response);
+    
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
      setrecipe(foundRecipe);
-    //   console.log(foundRecipe)
+  
   };
   useEffect(() => getRecipe(), []);
 
@@ -72,8 +73,9 @@ const GetRecipe = (props) => {
         <h1>{recipes.name}</h1>
 
       {recipes.photo &&<img src={recipes.photo} alt={recipes.photo} />}
-        <h2>Description</h2>
+       
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
+        <h2>Description</h2>
         <p>{recipes.description}</p>
         <h2>Set Servings</h2>
         <SetServings count={count} setCount={setCount} />
@@ -94,12 +96,12 @@ const GetRecipe = (props) => {
         <div>
           <h2>Steps</h2>
 
-          {/* <StepsSwiper steps={recipe.steps} /> */}
+            <StepsSwiper steps={recipes.steps} /> 
         </div>
       </Body>
     </>
   );
 };
-const MockedApp = () => <GetRecipe id="ckoioil141axu0a09lbw6hfjw" />;
+// const MockedApp = () => <GetRecipe id="ckoioil141axu0a09lbw6hfjw" />;
 
-export default MockedApp;
+export default GetRecipe;

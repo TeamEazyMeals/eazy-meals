@@ -66,7 +66,7 @@ const FetchRecipes = () => {
               <Title3>All Recipes</Title3>
               <List>
                 <li>
-                  <Title>{name}</Title>
+                  <Title><a href={`/allrecipes/${id}`}>{name}</a></Title>
                 </li>
                 <li>
                   {photo && <Image src={photo} alt={name} />}
