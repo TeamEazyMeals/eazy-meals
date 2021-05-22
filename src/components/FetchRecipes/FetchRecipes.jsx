@@ -53,7 +53,7 @@ const FetchRecipes = () => {
           placeholder="search recipes.."
           onChange={handleOnSearch}
         />
-        {/* <SearchBar/> */}
+
         <Sort handleSort={handleSort}></Sort>
       </div>
 
@@ -65,11 +65,11 @@ const FetchRecipes = () => {
               <Title3>All Recipes</Title3>
               <List>
                 <li>
-                  <Title><a href={`/allrecipes/${id}`}>{name}</a></Title>
+                  <Title>
+                    <a href={`/allrecipes/${id}`}>{name}</a>
+                  </Title>
                 </li>
-                <li>
-                  {photo && <Image src={photo} alt={name} />}
-                </li>
+                <li>{photo && <Image src={photo} alt={name} />}</li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
 
                 <RecipeIngredients ingredients={ingredients} />
