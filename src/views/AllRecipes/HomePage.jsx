@@ -7,7 +7,6 @@ import { Button } from "@material-ui/core";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `;
 
@@ -18,7 +17,9 @@ const Header = styled.h1`
 
 const Wrapper = styled.nav`
   padding: 4em;
-  background: #34a853; ;
+  background: #34a853;
+  border: 15px solid #f3f5f6;
+  border-radius: 15px;
 `;
 
 const Title = styled.h3`
@@ -31,7 +32,7 @@ const Title = styled.h3`
 `;
 
 const Section = styled.section`
-  display: flex;
+  justify-content: space-around;
 `;
 
 const StyledButton = styled(Button)`
@@ -39,7 +40,9 @@ const StyledButton = styled(Button)`
     background-color: #34a853;
     color: white;
     font-weight: 600;
-    margin-top: 1rem;
+    margin: 2rem 8rem 0 8rem;
+
+    text-align: center;
   }
 `;
 const Text = styled.p`
@@ -52,23 +55,27 @@ const HomePage = () => {
       <Wrapper>
         <Header>EAZY MEALS</Header>
       </Wrapper>
-      <Section>
-        <Text>
-          <EmojiFoodBeverageIcon />
-          Convert ingredients into recipes
-        </Text>
-      </Section>
+
+      <Text>
+        <EmojiFoodBeverageIcon />
+        Convert ingredients into recipes
+      </Text>
+
       <Title>OR</Title>
+
+      <Text>
+        <MenuBookIcon />
+        Convert recipes into shopping lists
+      </Text>
+
       <Section>
-        <Text>
-          <MenuBookIcon />
-          Convert recipes into shopping lists
-        </Text>
+        <StyledButton size="large" variant="contained" href="/homepage/signup">
+          CREATE ACCOUNT
+        </StyledButton>
+        <StyledButton size="large" href="/homepage/login">
+          SIGN IN
+        </StyledButton>
       </Section>
-      <StyledButton variant="contained" href="/homepage/signup">
-        CREATE ACCOUNT
-      </StyledButton>
-      <StyledButton href="/homepage/login">SIGN IN</StyledButton>
     </Container>
   );
 };
