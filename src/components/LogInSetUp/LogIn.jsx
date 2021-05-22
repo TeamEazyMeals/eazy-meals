@@ -1,6 +1,16 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 import useAuth from "../../utility/useAuth";
+import styled from "styled-components";
+
+const Header = styled.h1`
+font-size: 64px;
+color: white;
+font: Robot;
+background: #34a853
+`;
+
+
 
 const LogIn = () => {
   const {
@@ -12,6 +22,7 @@ const LogIn = () => {
   return (
     <div>
       <nav>
+        <Header>SIGN IN</Header>
         <form name="logIn" onSubmit={handleLoginForm}>
           <p>
             <label>
