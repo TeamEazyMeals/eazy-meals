@@ -5,44 +5,42 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
+import { useParams } from "react-router-dom";
 
-const GetRecipe = (props) => {
-  const Body = styled.div`
-    text-align: center;
-  `;
-  const Header = styled.header`
-    background: #07393c;
-    color: white;
-    text-align: center;
-  `;
-  const Title = styled.h1`
-    font-family: Arial, sans-serif;
-    letter-spacing: -1px;
-  `;
-  const List = styled.ul`
-    justify-content: center;
-  `;
-  const Button = styled.button`
-    color: white;
-    background: #07393c;
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 1px solid black;
-    border-radius: 3px;
-    text-transform uppercase;
-  `;
-  const Text = styled.p`
-    line-hieght: 25px;
-  `;
-  const { id } = props;
-  console.log(id);
+const Body = styled.div`
+  text-align: center;
+`;
+const Header = styled.header`
+  background: #07393c;
+  color: white;
+  text-align: center;
+`;
+const Title = styled.h1`
+  font-family: Arial, sans-serif;
+  letter-spacing: -1px;
+`;
+const List = styled.ul`
+  justify-content: center;
+`;
+const Button = styled.button`
+color: white;
+background: #07393c;
+font-size: 1em;
+margin: 1em;
+padding: 0.25em 1em;
+border: 1px solid black;
+border-radius: 3px;
+text-transform uppercase;
+`;
+const Text = styled.p`
+  line-hieght: 25px;
+`;
+const GetRecipe = () => {
 
+  const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
-
-  console.log(recipes);
 
   const getRecipe = async () => {
     if (app.calcIfShouldSync()) {
@@ -51,11 +49,9 @@ const GetRecipe = (props) => {
     }
     const response = JSON.parse(window.localStorage.getItem("recipes"));
     setrecipe(response);
-    console.log(response);
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
-     setrecipe(foundRecipe);
-    //   console.log(foundRecipe)
+    setrecipe(foundRecipe);
   };
   useEffect(() => getRecipe(), []);
 
@@ -71,9 +67,10 @@ const GetRecipe = (props) => {
       <Body>
         <h1>{recipes.name}</h1>
 
-      {recipes.photo &&<img src={recipes.photo} alt={recipes.photo} />}
-        <h2>Description</h2>
+        {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
+
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
+        <h2>Description</h2>
         <p>{recipes.description}</p>
         <h2>Set Servings</h2>
         <SetServings count={count} setCount={setCount} />
@@ -94,12 +91,12 @@ const GetRecipe = (props) => {
         <div>
           <h2>Steps</h2>
 
-          {/* <StepsSwiper steps={recipe.steps} /> */}
+          <StepsSwiper steps={recipes.steps} />
         </div>
       </Body>
     </>
   );
 };
-const MockedApp = () => <GetRecipe id="ckoioil141axu0a09lbw6hfjw" />;
 
-export default MockedApp;
+
+export default GetRecipe;

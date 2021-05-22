@@ -10,6 +10,8 @@ const Sort = (props) => {
         <option value="z-a">z-a</option>
         <option value="shortest time">shortest time</option>
         <option value="longest time">longest time</option>
+        <option value="least steps">least steps</option>
+        <option value="most steps">most steps</option>
       </select>
     </div>
   );

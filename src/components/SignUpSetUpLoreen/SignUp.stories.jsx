@@ -8,4 +8,4 @@ export default config;
 
 const Default = () => <SignUp></SignUp>;
 
-export { Default };
+export { Default};

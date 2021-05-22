@@ -12,7 +12,6 @@ const useLogIn = () => {
   const isLoggedIn = Boolean(window.localStorage.getItem("user"));
  
   const handleSignUp = async (event) => {
-    console.log(email, password);
     event.preventDefault();
     await auth
       .signup(email, password)

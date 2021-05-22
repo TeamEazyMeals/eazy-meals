@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/App";
+import Global from "./components/Global/Global";
 
 ReactDOM.render(
-  <App />,  
-  document.getElementById('root')   
+  <Global>
+    <App />
+  </Global>,
+  document.getElementById("root")
 );
 
 

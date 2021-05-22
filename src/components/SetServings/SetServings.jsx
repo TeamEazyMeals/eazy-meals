@@ -1,20 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+const Serve = styled.span`
+font-size: 15px;
+  padding:1rem;
+  background-colour;grey;
+  
+`;
+const Content = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
 
 function SetServings(props) {
   const { count, setCount } = props;
-
-  const Serve = styled.span`
-  font-size: 15px;
-    padding:1rem;
-    background-colour;grey;
-    
-  `;
-  const Content = styled.ul`
-    display: flex;
-    justify-content: center;
-  `;
 
   return (
     <>
