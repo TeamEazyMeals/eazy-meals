@@ -22,7 +22,6 @@ const SignUp = () => {
             <label>
               Email
               <input
-                type="email"
                 name="email"
                 value={email}
                 required
