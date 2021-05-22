@@ -4,7 +4,6 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
-
 const Title = styled.h1`
   font-family: Arial, sans-serif;
   letter-spacing: -1px;
