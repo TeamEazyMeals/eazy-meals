@@ -12,6 +12,6 @@ const mockSteps = new Array(12).fill(null).map(() => ({
     faker.datatype.boolean() && faker.datatype.number({ min: 4, max: 200 }),
 }));
 console.log(mockSteps)
-const Default = () => <StepsSwiper steps={mockSteps} />
+const Default = () => <StepsSwiper  />
 
 export { Default };

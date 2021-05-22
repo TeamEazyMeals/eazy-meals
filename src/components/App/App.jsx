@@ -9,7 +9,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
+        <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
         <Route path="/allrecipes" children={<AllRecipes />} />
 
         <Route path="/login" children={<LogIn />} />
