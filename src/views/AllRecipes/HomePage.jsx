@@ -1,42 +1,82 @@
 import React from "react";
 import styled from "styled-components";
 import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
-import {useHistory} from "react-router-dom"
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import { Button } from "@material-ui/core";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Header = styled.h1`
-  font-size: 5em;
+  font-size: 4em;
   color: white;
 `;
 
-const Wrapper = styled.section`
+const Wrapper = styled.nav`
   padding: 4em;
-  background: #34a853; ;
+  background: #34a853;
+  border: 15px solid #f3f5f6;
+  border-radius: 15px;
 `;
+
 const Title = styled.h3`
   font-family: Roboto;
   font-size: 14px;
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
+  color: #2c323a;
+  text-align: center;
+`;
+
+const Section = styled.section`
+  justify-content: space-around;
+`;
+
+const StyledButton = styled(Button)`
+  && {
+    background-color: #34a853;
+    color: white;
+    font-weight: 600;
+    margin: 2rem 8rem 0 8rem;
+
+    text-align: center;
+  }
+`;
+const Text = styled.p`
+  color: #2c323a;
 `;
 
 const HomePage = () => {
-  const history = useHistory()
   return (
-    <div>
+    <Container>
       <Wrapper>
         <Header>EAZY MEALS</Header>
       </Wrapper>
-      <EmojiFoodBeverageIcon />
-      <h4>Convert ingredients into recipes</h4>
-      <button onClick={() => history.push("/homepage/signup")}>
-        CREATE ACCOUNT
-      </button>
-      <button onClick={() => history.push("/homepage/login")}>
-        SIGN IN
-      </button>
-    </div>
+
+      <Text>
+        <EmojiFoodBeverageIcon />
+        Convert ingredients into recipes
+      </Text>
+
+      <Title>OR</Title>
+
+      <Text>
+        <MenuBookIcon />
+        Convert recipes into shopping lists
+      </Text>
+
+      <Section>
+        <StyledButton size="large" variant="contained" href="/homepage/signup">
+          CREATE ACCOUNT
+        </StyledButton>
+        <StyledButton size="large" href="/homepage/login">
+          SIGN IN
+        </StyledButton>
+      </Section>
+    </Container>
   );
 };
 
