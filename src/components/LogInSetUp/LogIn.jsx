@@ -3,6 +3,7 @@ import {Redirect} from "react-router-dom";
 import useAuth from "../../utility/useAuth";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button"
+import { Checkbox } from "@material-ui/core/Checkbox";
 
 const Header = styled.h1`
 font-size: 64px;
@@ -97,8 +98,11 @@ const LogIn = () => {
               />
             </Label>
           </p>
+            <Checkbox>Remember Me</Checkbox>
+          
           <Label>
           <Button type="submit">Log In </Button>
+          <Button type="submit">Cancel </Button>
           </Label>
           
         </Form>
