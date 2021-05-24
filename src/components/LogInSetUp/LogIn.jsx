@@ -35,9 +35,10 @@ background: #34a853
     cursor: default;
     margin-left: 0;
     margin-right: 0;
-      
- `;
 
+ `;
+   
+   
  const Input = styled.input`
  width: 95%;
  padding: 12px 20px;
@@ -98,11 +99,11 @@ const LogIn = () => {
               />
             </Label>
           </p>
-            <Checkbox>Remember Me</Checkbox>
           
-          <Label>
-          <Button type="submit">Log In </Button>
-          <Button type="submit">Cancel </Button>
+          
+          <Label> 
+          <Button type="submit" style={{ background: "#34A853" , "&:hover":"#f0f0f0", margin: "0em", position: "relative", justifyContent: "space-around"}}>Log In </Button> 
+          <Button type="submit" style={{ background: "#34A853", "&:hover":"#f0f0f0" }}>Cancel </Button>
           </Label>
           
         </Form>
