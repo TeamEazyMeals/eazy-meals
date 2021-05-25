@@ -102,7 +102,10 @@ const LogIn = () => {
           
           
           <Label> 
-          <Button type="submit" style={{ background: "#34A853" , "&:hover":"#f0f0f0", margin: "0em", position: "relative", justifyContent: "space-around"}}>Log In </Button> 
+          <Button type="submit" style={{ background: "#34A853" , "&:hover":"#f0f0f0", margin: "0em", position: "relative", justifyContent: "space-around"}}>Log In 
+          </Button> 
+          </Label>
+          <Label>
           <Button type="submit" style={{ background: "#34A853", "&:hover":"#f0f0f0" }}>Cancel </Button>
           </Label>
           
