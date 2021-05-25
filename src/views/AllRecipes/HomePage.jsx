@@ -11,15 +11,30 @@ const Container = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 4em;
   color: white;
+  font-family: Roboto;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 66px;
+  letter-spacing: 0px;
+  text-align: center;
+`;
+const HeaderWrapper = styled.div`
+  
+  background-color: white;
+  width: 40em;
+  display:flex;
+  justify-content:center;
 `;
 
 const Wrapper = styled.nav`
+  // transform: rotate(7.64deg);
   padding: 4em;
   background: #34a853;
-  border: 15px solid #f3f5f6;
-  border-radius: 15px;
+  margin-top: -3em;
+  margin-bottom: 4em;
+  width:100em;
 `;
 
 const Title = styled.h3`
@@ -27,55 +42,130 @@ const Title = styled.h3`
   font-size: 14px;
   font-weight: 600;
   line-height: 17px;
-  color: #2c323a;
+  color: #61768f;
   text-align: center;
+  margins: 0;
 `;
 
-const Section = styled.section`
-  justify-content: space-around;
-`;
-
-const StyledButton = styled(Button)`
+const CreateAccountButton = styled(Button)`
   && {
-    background-color: #34a853;
+    width: 256px;
+    height: 48px;
+    font-weight: 700;
+    background: #34a853;
+    border: 1px solid #34a853;
+    border-radius: 3px;
     color: white;
-    font-weight: 600;
-    margin: 2rem 8rem 0 8rem;
-
-    text-align: center;
+    margin-bottom: 2rem;
   }
 `;
+
+const SignInButton = styled(Button)`
+  && {
+    height: 48px;
+    width: 256px;
+    border: 1px solid #34a853;
+    color: #34a853;
+    font-weight: 700;
+    border-radius: 3px;
+    background: rgba(52, 168, 83, 0.1);
+  }
+`;
+
+const ButtonsDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem;
+`;
+
+const IconTextWrap = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+  justify-content: center;
+`;
 const Text = styled.p`
-  color: #2c323a;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #61768f;
+`;
+
+const TitleWrap = styled.div`
+  margin: -2rem;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Line = styled.div`
+  height: 1px;
+  width: 50%;
+  margin: 3rem;
+  background-color: #b9c5ca;
+`;
+
+const IconCircle = styled.div`
+  height: 55px;
+  width: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border-radius: 50%;
+  border: 1px solid #b9c5ca;
+  color: #61768f;
 `;
 
 const HomePage = () => {
   return (
     <Container>
-      <Wrapper>
-        <Header>EAZY MEALS</Header>
-      </Wrapper>
+      <HeaderWrapper>
+        <Wrapper>
+          <Header>EAZY MEALS</Header>
+        </Wrapper>
+      </HeaderWrapper>
 
-      <Text>
-        <EmojiFoodBeverageIcon />
-        Convert ingredients into recipes
-      </Text>
+      <IconTextWrap>
+        <IconCircle>
+          <EmojiFoodBeverageIcon />
+        </IconCircle>
+        <Text>Convert ingredients into recipes</Text>
+      </IconTextWrap>
 
-      <Title>OR</Title>
+      <TitleWrap>
+        <Line />
+        <Title>OR</Title>
+        <Line />
+      </TitleWrap>
 
-      <Text>
-        <MenuBookIcon />
-        Convert recipes into shopping lists
-      </Text>
-
-      <Section>
-        <StyledButton size="large" variant="contained" href="/homepage/signup">
+      <IconTextWrap>
+        <IconCircle>
+          <MenuBookIcon />
+        </IconCircle>
+        <Text>Convert recipes into shopping lists</Text>
+      </IconTextWrap>
+      <ButtonsDiv>
+        <CreateAccountButton
+          size="large"
+          variant="contained"
+          href="/homepage/signup"
+        >
           CREATE ACCOUNT
-        </StyledButton>
-        <StyledButton size="large" href="/homepage/login">
+        </CreateAccountButton>
+        <SignInButton size="large" href="/homepage/login">
           SIGN IN
-        </StyledButton>
-      </Section>
+        </SignInButton>
+      </ButtonsDiv>
     </Container>
   );
 };

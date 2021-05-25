@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import useSignUp from "./SignUp.stories";
 import useAuth from "../../utility/useAuth";
-import { TextField,Button } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -11,10 +11,15 @@ const Form = styled.form`
   align-items: center;
   padding: 2rem;
 `;
+const Link = styled.div`
+  text-align: center;
+`;
 
 const StyledButton = styled(Button)`
-&&{}
-`
+  && {
+    background: #34a853;
+  }
+`;
 
 const SignUp = () => {
   const {
@@ -27,15 +32,14 @@ const SignUp = () => {
   } = useAuth({ shouldBeLoggedIn: false });
 
   return (
-    <div>
+    <>
       {error && <div>{error}</div>}
       <nav>
-        < Form name="signup" onSubmit={handleSignUpForm}>
+        <Form name="signup" onSubmit={handleSignUpForm}>
           <p>
             <label>
-              Email
               <TextField
-              variant="outlined" 
+                variant="outlined"
                 label="email"
                 value={email}
                 required
@@ -45,9 +49,8 @@ const SignUp = () => {
           </p>
           <p>
             <label>
-              Password
-              <TextField 
-              variant="outlined"
+              <TextField
+                variant="outlined"
                 type="password"
                 label="password"
                 autoComplete="on"
@@ -57,12 +60,15 @@ const SignUp = () => {
               />
             </label>
           </p>
-          <button type="submit">Sign me up!</button>
-        </ Form>
+          <StyledButton type="submit" variant="contained">
+            Sign me up!
+          </StyledButton>
+        </Form>
       </nav>
-
-      <a href="/forgotpassword">Forgot your password?</a>
-    </div>
+      <Link>
+        <a href="/forgotpassword">Forgot your password?</a>
+      </Link>
+    </>
   );
 };
 export default SignUp;
