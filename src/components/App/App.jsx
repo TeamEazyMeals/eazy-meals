@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import GetRecipe from "../GetRecipe/GetRecipe.jsx";
-import SignUp from "../SignUpSetUpLoreen/SignSetUp";
+import SignUp from "../SignUpSetUp/SignUpSetUp";
 import ForgotPassword from "../LogInSetUp/ ForgotPassword";
 import Config from "../../views/Config";
 import Allergies from "../../views/Allergies";
