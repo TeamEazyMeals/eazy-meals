@@ -30,9 +30,6 @@ const useFetchRecipes = () => {
   };
 
   const getRecipeData = async () => {
-    // const response = await fetch("/data/recipeData.json");
-    // const data = await response.json();
-
     if (app.calcIfShouldSync()) {
       await cms.syncRecipes();
     }
@@ -68,6 +65,12 @@ const useFetchRecipes = () => {
     if (state.sortValue === "longest time") {
       return parseInt(b.timeInMinutes) - parseInt(a.timeInMinutes);
     }
+     if (state.sortValue === "least steps") {
+       return parseInt(a.steps.length) - parseInt(b.steps.length);
+     }
+     if (state.sortValue === "most steps") {
+       return parseInt(b.steps.length) - parseInt(a.steps.length);
+     }
     if (state.sortValue === "a-z") {
       return a.name.toUpperCase() === b.name.toUpperCase()
         ? 0
