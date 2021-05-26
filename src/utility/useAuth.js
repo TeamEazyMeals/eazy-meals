@@ -3,6 +3,7 @@ import auth, { getUser } from "../api/auth/auth";
 import { useHistory } from "react-router-dom";
 import validator from "validator";
 
+
 export const useAuth = (props) => {
   const { shouldBeLoggedIn, shouldNotBeLoggedIn } = props;
   useEffect(() => {
