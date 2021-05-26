@@ -25,14 +25,12 @@ const HeaderWrapper = styled.div`
   background-color: white;
   width: 40em;
   display:flex;
-  justify-content:center;
+  align-items:center;
 `;
 
+
 const Wrapper = styled.nav`
-  // transform: rotate(7.64deg);
-  padding: 4em;
   background: #34a853;
-  margin-top: -3em;
   margin-bottom: 4em;
   width:100em;
 `;
@@ -74,7 +72,7 @@ const SignInButton = styled(Button)`
 
 const ButtonsDiv = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 3rem;
 `;
@@ -84,7 +82,6 @@ const IconTextWrap = styled.div`
   display: flex;
   width: 100%;
   max-width: 600px;
-  align-items: center;
   justify-content: center;
 `;
 const Text = styled.p`
@@ -104,7 +101,7 @@ const TitleWrap = styled.div`
   width: 100%;
   max-width: 600px;
   align-items: center;
-  justify-content: center;
+ 
 `;
 
 const Line = styled.div`
