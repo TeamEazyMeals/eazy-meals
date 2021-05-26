@@ -27,7 +27,7 @@ const StepsSwiper = (props) => {
     >
       <MobileStepper
         steps={5}
-        variant="text"
+        variant="dots"
         style={{
           flexGrow: 1,
           maxWidth: 400,

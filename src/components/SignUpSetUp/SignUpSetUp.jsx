@@ -4,21 +4,48 @@ import useSignUp from "./SignUp.stories";
 import useAuth from "../../utility/useAuth";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
+import Visibility from "@material-ui/icons/Visibility";
+import IconButton from "@material-ui/core/IconButton";
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  color:white
 `;
-const Link = styled.div`
+const Butt = styled.div`
   text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
 `;
 
 const StyledButton = styled(Button)`
   && {
     background: #34a853;
-  }
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 17px 60px;
+    
+`;
+const Label = styled.label`
+  padding: 1rem;
+`;
+const Nav = styled.nav`
+padding 2rem;
+`;
+const Title =styled.h1`
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: large;
+
+`
+const CancelButton= styled(Button)`
+&&{
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 17px 100px;
+  display: flex;  
+}
 `;
 
 const SignUp = () => {
@@ -34,40 +61,38 @@ const SignUp = () => {
   return (
     <>
       {error && <div>{error}</div>}
-      <nav>
+      <Nav>
+        <Title>REGISTER</Title>
         <Form name="signup" onSubmit={handleSignUpForm}>
-          <p>
-            <label>
-              <TextField
-                variant="outlined"
-                label="email"
-                value={email}
-                required
-                onChange={handleEmailInput}
-              />
-            </label>
-          </p>
-          <p>
-            <label>
-              <TextField
-                variant="outlined"
-                type="password"
-                label="password"
-                autoComplete="on"
-                required
-                value={password}
-                onChange={handlePasswordInput}
-              />
-            </label>
-          </p>
+          <Label>
+            <TextField
+              variant="filled"
+              label="email"
+              value={email}
+              required
+              onChange={handleEmailInput}
+            />
+          </Label>
+
+          <Label>
+            <TextField
+              variant="filled"
+              type="password"
+              label="password"
+              autoComplete="on"
+              required
+              value={password}
+              onChange={handlePasswordInput}
+            />
+          </Label>
+          <Butt >
           <StyledButton type="submit" variant="contained">
-            Sign me up!
+            CREATE ACCOUNT
           </StyledButton>
+          </Butt >
+          <CancelButton variant="contained" href="/">CANCEL</CancelButton>
         </Form>
-      </nav>
-      <Link>
-        <a href="/forgotpassword">Forgot your password?</a>
-      </Link>
+      </Nav>
     </>
   );
 };
