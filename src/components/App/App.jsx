@@ -1,9 +1,9 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import SignUp from "../SignUpSetUpLoreen/SignSetUp";
 import ForgotPassword from "../LogInSetUp/ ForgotPassword";
-// import cms from "../../api/cms/cms"
+//import MealPlan from '../MealPlan/MealPlan';
 
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
       {/* <button onClick={cms.syncRecipes}>GET ALLRECIPES</button> */}
       <Switch>
         <Route path="/allrecipes" children={<AllRecipes />} />
+        {/* <Router path="/mealplan" children={<MealPlan />} /> */}
         <Route path="/login" children={<LogIn />} />
         <Route path="/forgotpassword" children={<ForgotPassword />} />
         <Route path="/" children={<SignUp />} />

@@ -15,6 +15,8 @@ const ForgotPassword =()=>{
       handleLoginForm,
       handleLogoutButton,
       handleRequestPasswordForm,
+      handleForgotPassword,
+      setEmail
     } = useAuth();
    return (
      <>
@@ -34,7 +36,6 @@ const ForgotPassword =()=>{
          
          <button type="submit">Reset password</button>
        </form>
-     
      </>
    ); 
 }
