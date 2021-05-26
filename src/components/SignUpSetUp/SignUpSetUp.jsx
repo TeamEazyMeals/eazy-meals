@@ -4,9 +4,7 @@ import useSignUp from "./SignUp.stories";
 import useAuth from "../../utility/useAuth";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
-import Visibility from "@material-ui/icons/Visibility";
-import IconButton from "@material-ui/core/IconButton";
-
+import InputAdornment from "@material-ui/core/InputAdornment";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -26,6 +24,7 @@ const StyledButton = styled(Button)`
     background: #34a853;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     padding: 17px 60px;
+    color:white;
     
 `;
 const Label = styled.label`
@@ -38,6 +37,7 @@ const Title =styled.h1`
 text-align: center;
 font-family: Arial, Helvetica, sans-serif;
 font-size: large;
+
 
 `
 const CancelButton= styled(Button)`
