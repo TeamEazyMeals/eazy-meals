@@ -62,13 +62,17 @@ text-align: center;
 white-space: nowrap;
 
 `;
+
+
 const LogIn = () => {
   const {
     handleEmailInput,
     handlePasswordInput,
     handleLoginForm,
   } = useAuth({shouldNotBeLoggedIn:true});
- 
+
+  
+     
   return (
     <div>
       <nav>
@@ -99,8 +103,13 @@ const LogIn = () => {
               />
             </Label>
           </p>
-          
-          
+{/*          
+          <Checkbox
+        onclick={checked}
+        onChange={handleChange}
+      /> */}
+        
+        
           <Label> 
           <Button type="submit" style={{ background: "#34A853" , "&:hover":"#f0f0f0", margin: "0em", position: "relative", justifyContent: "space-around"}}>Log In 
           </Button> 
