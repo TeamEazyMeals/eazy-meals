@@ -9,23 +9,12 @@ import Allergies from "../../views/Allergies";
 import Health from "../../views/Health";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
+import MealPlan from "../MealPlan/MealPlan";
 import { CssBaseline } from "@material-ui/core";
 import HomePage from "../../views/AllRecipes/HomePage";
 
 const App = () => {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      {/* <button onClick={cms.syncRecipes}>GET ALLRECIPES</button> */}
-      <Switch>
-        <Route path="/allrecipes" children={<AllRecipes />} />
-        {/* <Router path="/mealplan" children={<MealPlan />} /> */}
-        <Route path="/login" children={<LogIn />} />
-        <Route path="/forgotpassword" children={<ForgotPassword />} />
-        <Route path="/" children={<SignUp />} />
-      </Switch>
-    </BrowserRouter>
-=======
     <>
       <CssBaseline />
 
@@ -39,6 +28,7 @@ const App = () => {
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
+          <Route path="/mealplan" children={<MealPlan />} />
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
@@ -46,7 +36,6 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </>
->>>>>>> 9ff4a5410bce15e4f7b8e5dbb6ad7604bd622afa
   );
 };
 export default App;
