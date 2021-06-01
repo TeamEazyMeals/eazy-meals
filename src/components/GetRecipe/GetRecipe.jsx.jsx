@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
+import Timer from "../Timer/Timer";
 
 const Body = styled.div`
   text-align: center;
@@ -88,11 +89,13 @@ const GetRecipe = () => {
             })}
           </div>
         )}
+        
         <div>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
         </div>
+        <Timer/>
       </Body>
     </>
   );
