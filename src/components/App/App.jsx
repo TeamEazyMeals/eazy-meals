@@ -19,7 +19,7 @@ import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
 
 const App = () => {
   return (
-    <>
+    <React.Fragment>
       <BrowserRouter>
         <Switch>
           <Route path="/config/allergies" children={<Allergies />} />
@@ -50,7 +50,7 @@ const App = () => {
           <Route path="/" children={<HomePage />} />
         </Switch>
       </BrowserRouter>
-    </>
+    </React.Fragment>
   );
 };
 
