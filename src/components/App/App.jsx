@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import GetRecipe from "../GetRecipe/GetRecipe.jsx";
@@ -9,6 +9,7 @@ import Allergies from "../../views/Allergies";
 import Health from "../../views/Health";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
+import MealPlan from "../MealPlan/MealPlan";
 import { CssBaseline } from "@material-ui/core";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
+          <Route path="/mealplan" children={<MealPlan />} />
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
