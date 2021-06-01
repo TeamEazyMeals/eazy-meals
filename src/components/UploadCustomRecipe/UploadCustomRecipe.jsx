@@ -93,7 +93,7 @@ const UploadCustomRecipe = () => {
               onChange={selectedFileHandler}
             />
 
-            <label for="servings">Number of servings</label>
+            <label htmlFor="servings">Number of servings</label>
             <Input
               type="number"
               min="1"
@@ -103,7 +103,7 @@ const UploadCustomRecipe = () => {
               onChange={servingsHandler}
             />
 
-            <label for="ingredents">Ingredients</label>
+            <label htmlFor="ingredents">Ingredients</label>
             <Input
               type="textField"
               id="ingredients"
@@ -111,7 +111,7 @@ const UploadCustomRecipe = () => {
               onChange={ingredientsHandler}
             />
 
-            <label for="method">Method</label>
+            <label htmlFor="method">Method</label>
             <Input
               type="textField"
               id="method"
@@ -142,7 +142,6 @@ const UploadCustomRecipe = () => {
           <StyledButton href="/findrecipes/uploadcustomrecipe">
             Edit Recipe
           </StyledButton>
-
         </div>
       )}
     </>
