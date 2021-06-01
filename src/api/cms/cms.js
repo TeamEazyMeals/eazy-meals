@@ -34,6 +34,7 @@ const syncRecipes = async () => {
     };
 
   });
+  
   window.localStorage.setItem("recipes", JSON.stringify(transformedRecipes));
   return transformedRecipes;
 };

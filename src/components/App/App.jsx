@@ -12,6 +12,8 @@ import Goals from "../../views/Goals";
 import MealPlan from "../MealPlan/MealPlan";
 import { CssBaseline } from "@material-ui/core";
 import HomePage from "../../views/AllRecipes/HomePage";
+import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
+import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe"
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/config/preferences" children={<Preferences />} />
           <Route path="/config/goals" children={<Goals />} />
           <Route path="/config" children={<Config />} />
+          <Route exact path="/findrecipes" children={<AddOrFindRecipes/>}/>
+          <Route path="/findrecipes/uploadcustomrecipe" children={<UploadCustomRecipe/>} />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />

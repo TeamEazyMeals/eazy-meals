@@ -43,11 +43,24 @@ const MealPlan = () => {
         <br />
         <input type="submit" value="Submit" />
       </form>
+<<<<<<< HEAD
       
       {/* {mealTypeValue === true && dayValue === true ? (<b>Selected Day: </b>{" "}
       {dayValue} <br />
       <b>Selected Type: </b> {mealTypeValue}):{" "}
       <p>Please select Meal Type and Day.</p> } */}
+=======
+      {mealTypeValue === "" ? (
+        <b></b>
+      ) : dayValue !== "" ? (
+        <div>
+          <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
+          <b>Selected Day:{dayValue}</b>
+        </div>
+      ) : (
+        <p>Please select Meal Type and Day.</p>
+      )}
+>>>>>>> be521515701299ce25868eca174f514f3d87ee81
     </div>
   );
 };
