@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import { Dropdown } from "react-dropdown";
+import Dropdown from "react-dropdown";
 
-const MealPlan = (props) => {
-  const [optionValue, setOptionValue] = useState("");
-  const handleSelect = (e) => {
+const MealPlan = () => {
+  const [dayValue, setDayValue] = useState("");
+  const [mealTypeValue, setMealTypeValue] = useState("");
+  const handleDaySelect = (e) => {
     console.log(e.target.value);
-    setOptionValue(e.target.value);
+    setDayValue(e.target.value);
   };
-  
+
+  const handleMealTypeSelect = (e) => {
+    console.log(e.target.value);
+    setMealTypeValue(e.target.value);
+  };
+
   return (
     <div>
       <h1>Welcome Busi...</h1>
-
       <p> Please select your meal plan</p>
-
       <form>
         <label for="days">Please select a day:</label>
 
-        <select id="dropdown" onChange={handleSelect}>
+        <select id="dropdown" onChange={handleDaySelect}>
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -29,7 +33,7 @@ const MealPlan = (props) => {
         <br />
 
         <label for="days">Please select a Type:</label>
-        <select id="dropdown" onChange={handleSelect}>
+        <select id="dropdown" onChange={handleMealTypeSelect}>
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
@@ -39,6 +43,11 @@ const MealPlan = (props) => {
         <br />
         <input type="submit" value="Submit" />
       </form>
+      
+      {/* {mealTypeValue === true && dayValue === true ? (<b>Selected Day: </b>{" "}
+      {dayValue} <br />
+      <b>Selected Type: </b> {mealTypeValue}):{" "}
+      <p>Please select Meal Type and Day.</p> } */}
     </div>
   );
 };
