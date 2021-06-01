@@ -1,52 +1,54 @@
 import React from "react";
-import Radio from "@material-ui/core/RadioGroup";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import { useState } from "react";
 
+const Allergies = () => {
+  const [allergies, setAllergies] = useState([]);
 
- const Allergies = ()=>{
-    
- const [value, setValue] = React.useState('allergies');
+  console.log(Array.isArray(allergies));
 
-const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleAllergiesInput = (event) => {
+    //console.log(event.target.value);
+    console.log(Array.isArray(allergies));
+    //console.log(typeof allergies, allergies);
+    setAllergies(allergies.push(event.target.value));
+
+    //console.log(allergies);
+  };
+  return (
+    <div>
+      <h2>Allergies</h2>
+      <input
+        type="checkbox"
+        value="I don't have allergies"
+        onChange={handleAllergiesInput}
+      />
+      I don't have allergies
+      <input type="checkbox" value="Nuts" onChange={handleAllergiesInput} />
+      Nuts
+      <input type="checkbox" value="Diary" onChange={handleAllergiesInput} />
+      Diary
+      <input type="checkbox" value="Gluten" onChange={handleAllergiesInput} />
+      Gluten
+      <input type="checkbox" value="Fish" onChange={handleAllergiesInput} />
+      Fish
+      <button type="submit">Continue</button>
+      {/* <div>
+        {(allergies.length > 0) ? (
+          <div>
+            {allergies.map((allergy) => {
+              return (
+                <ul>
+                  <li>{allergy}</li>
+                </ul>
+              );
+            })}
+          </div>
+        // ) : (
+        //   <div>*********HLOSANI*********</div> */}
+      {/* // )} */}
+      {/* </div> */}
+    </div>
+  );
 };
-return (
-<div>
-  <h2>Allergies</h2>
-  <label for="name">Default Servings</label>
-  <br></br>
-  <input
-    type="text"
-    id="name"
-    name="name"
-    required
-    minLength="4"
-    maxLength="8"
-    size="10"
-  ></input>
-  <br></br>
-  <br></br>
-  <FormControl component="fieldset">
-      <FormLabel component="legend">YourFamily</FormLabel>
-      <RadioGroup aria-label="family" name="family1" value={value} onChange={handleChange}>
-          <FormControlLabel value="allergies" control={<Radio />} label="Add Allergies" />
-          <FormControlLabel value="health condition" control={<Radio />} label="Add Health Condition" />
-          <FormControlLabel value="preferences" control={<Radio />} label="Add Preferences" />
-          <FormControlLabel value="goals" control={<Radio />} label="Add Goals" />
 
-      </RadioGroup>
-
-  </FormControl>
-
-  <br></br>
-  <br></br>
-  <button type="submit">Continue</button>
-</div>
-);
-}
-     
- 
- export default Allergies
+export default Allergies;
