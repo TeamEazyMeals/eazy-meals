@@ -1,7 +1,7 @@
-import SignUp from "./SignSetUp";
+import SignUp from "./SignUpSetUp";
 
 const config = {
-  title: "views/SignUp",
+  title: "component/SignUpSetUp",
 };
 
 export default config;

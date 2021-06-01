@@ -1,13 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
 import { Button } from "@material-ui/core";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const UploadCustomRecipeButton = styled(Button)`
+  && {
+    width: 256px;
+    height: 48px;
+    font-weight: 700;
+    background: #34a853;
+    border: 1px solid #34a853;
+    border-radius: 3px;
+    color: white;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Header = styled.h1`
@@ -21,18 +32,10 @@ const Header = styled.h1`
   text-align: center;
 `;
 const HeaderWrapper = styled.div`
-  
   background-color: white;
   width: 40em;
-  display:flex;
-  align-items:center;
-`;
-
-
-const Wrapper = styled.nav`
-  background: #34a853;
-  margin-bottom: 4em;
-  width:100em;
+  display: flex;
+  align-items: center;
 `;
 
 const Title = styled.h3`
@@ -43,19 +46,6 @@ const Title = styled.h3`
   color: #61768f;
   text-align: center;
   margins: 0;
-`;
-
-const CreateAccountButton = styled(Button)`
-  && {
-    width: 256px;
-    height: 48px;
-    font-weight: 700;
-    background: #34a853;
-    border: 1px solid #34a853;
-    border-radius: 3px;
-    color: white;
-    margin-bottom: 2rem;
-  }
 `;
 
 const SignInButton = styled(Button)`
@@ -101,13 +91,12 @@ const TitleWrap = styled.div`
   width: 100%;
   max-width: 600px;
   align-items: center;
- 
 `;
 
 const Line = styled.div`
   height: 1px;
   width: 50%;
-  margin: 3rem;
+  margin: 10rem;
   background-color: #b9c5ca;
 `;
 
@@ -123,48 +112,17 @@ const IconCircle = styled.div`
   color: #61768f;
 `;
 
-const HomePage = () => {
+const AddOrFindRecipes = () => {
   return (
-    <Container>
-      <HeaderWrapper>
-        <Wrapper>
-          <Header>EAZY MEALS</Header>
-        </Wrapper>
-      </HeaderWrapper>
-
-      <IconTextWrap>
-        <IconCircle>
-          <EmojiFoodBeverageIcon />
-        </IconCircle>
-        <Text>Convert ingredients into recipes</Text>
-      </IconTextWrap>
-
-      <TitleWrap>
-        <Line />
-        <Title>OR</Title>
-        <Line />
-      </TitleWrap>
-
-      <IconTextWrap>
-        <IconCircle>
-          <MenuBookIcon />
-        </IconCircle>
-        <Text>Convert recipes into shopping lists</Text>
-      </IconTextWrap>
-      <ButtonsDiv>
-        <CreateAccountButton
-          size="large"
-          variant="contained"
-          href="/homepage/signup"
-        >
-          CREATE ACCOUNT
-        </CreateAccountButton>
-        <SignInButton size="large" href="/homepage/login">
-          SIGN IN
-        </SignInButton>
-      </ButtonsDiv>
-    </Container>
+    <Wrapper>
+      <Line>
+        <h1>Create your own recipe with these easy steps!</h1>;
+      </Line>
+      <UploadCustomRecipeButton href="/findrecipes/uploadcustomrecipe">
+        Upload Custom Recipe
+      </UploadCustomRecipeButton>
+    </Wrapper>
   );
 };
 
-export default HomePage;
+export default AddOrFindRecipes;
