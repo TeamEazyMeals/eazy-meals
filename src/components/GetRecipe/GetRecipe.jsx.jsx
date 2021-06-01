@@ -67,15 +67,13 @@ const GetRecipe = () => {
       </Header>
       <Body>
         <h1>{recipes.name}</h1>
-
+        {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
-
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
         <h2>Set Servings</h2>
         <SetServings count={count} setCount={setCount} />
-
         <Button onClick={() => setShowRecipe(!showrecipe)}>ingredients</Button>
         {showrecipe && (
           <div>
