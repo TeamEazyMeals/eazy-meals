@@ -2,10 +2,7 @@ import React from "react";
 import useAuth from "../../utility/useAuth";
 
 const ForgotPassword = () => {
-  const {
-    handleEmailInput,
-    handleRequestPasswordForm,
-  } = useAuth();
+  const { handleEmailInput, handleRequestPasswordForm } = useAuth();
   return (
     <>
       <h1>Find your easy meals account</h1>

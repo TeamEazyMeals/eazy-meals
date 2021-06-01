@@ -11,7 +11,7 @@ const Timer = () => {
   useEffect(() => {
     if (start === true) {
       pauseTimer.current =
-        counter > 0 && setTimeout(() => setCounter(counter - 1), 1000 *60);
+        counter > 0 && setTimeout(() => setCounter(counter - 1), 1000 * 60);
     }
 
     return () => {

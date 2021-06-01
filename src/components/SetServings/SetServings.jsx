@@ -16,7 +16,7 @@ function SetServings(props) {
   const { count, setCount } = props;
 
   return (
-    <>
+    <div>
       <Content>
         <Button
           variant="contained"
@@ -36,7 +36,7 @@ function SetServings(props) {
           +
         </Button>
       </Content>
-    </>
+    </div>
   );
 }
 

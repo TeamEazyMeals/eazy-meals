@@ -61,7 +61,7 @@ const GetRecipe = () => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Header>
         <Title>Eazy Meals</Title>
       </Header>
@@ -95,7 +95,7 @@ const GetRecipe = () => {
         </div>
         <Timer/>
       </Body>
-    </>
+    </React.Fragment>
   );
 };
 
