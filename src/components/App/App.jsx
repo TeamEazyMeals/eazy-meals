@@ -11,14 +11,15 @@ import Health from "../../views/Health";
 import HealthCondition from "../../views/Health/HealthCondition";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
-import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
+import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe"
 import MealPlan from "../MealPlan/MealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
-import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
+import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
+
 
 const App = () => {
   return (
-    <>
+    <React.Fragment>
       <BrowserRouter>
         <Switch>
           <Route path="/config/allergies" children={<Allergies />} />
@@ -49,7 +50,7 @@ const App = () => {
           <Route path="/" children={<HomePage />} />
         </Switch>
       </BrowserRouter>
-    </>
+    </React.Fragment>
   );
 };
 
