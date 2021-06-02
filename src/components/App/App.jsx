@@ -15,10 +15,6 @@ import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe"
 import MealPlan from "../MealPlan/MealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
-import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
-import MealPlan from "../MealPlan/MealPlan";
-import HomePage from "../../views/AllRecipes/HomePage";
-import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 
 const App = () => {
   return (
