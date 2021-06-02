@@ -4,20 +4,22 @@ import { Button } from "@material-ui/core";
 import Config from "../Config";
 import { useHistory } from "react-router-dom";
 
+
 const Allergies = (props) => {
-  const { inputId } = props;
+ 
   const history = useHistory();
   const [allergies, setAllergies] = useState([]);
 
   const checkedRadioButton = () => {
     return (
-      (<Config inputChecked={true}></Config>),
+      (<Config isChecked={true}/>),
       history.push("/config"),
       console.log("buttonchecked")
     );
   };
 
   const handleAllergiesInput = (event) => {
+    
     setAllergies([...allergies, event.target.value]);
   };
   return (
