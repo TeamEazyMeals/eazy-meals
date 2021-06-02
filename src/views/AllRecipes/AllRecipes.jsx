@@ -1,12 +1,7 @@
-
-
 import FetchRecipes from "../../components/FetchRecipes/FetchRecipes";
 import useAuth from "../../utility/useAuth";
 const AllRecipes = () => {
-  const {
-    error,
-    handleLogoutButton,
-  } = useAuth({ shouldBeLoggedIn: true });
+  const { error, handleLogoutButton } = useAuth({ shouldBeLoggedIn: true });
   return (
     <>
       <nav>

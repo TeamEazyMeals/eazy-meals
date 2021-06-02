@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
@@ -7,8 +8,7 @@ import ForgotPassword from "../LogInSetUp/ ForgotPassword";
 import Config from "../../views/Config";
 import Allergies from "../../views/Allergies";
 import FamilyAllergies from "../../views/Allergies/FamilyAllergies";
-import Health from "../../views/Health";
-import HealthCondition from "../../views/Health/HealthCondition";
+import HealthConditions from "../../views/HealthConditions/HealthConditions"
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe"
@@ -26,10 +26,10 @@ const App = () => {
             path="/config/familyallergies"
             children={<FamilyAllergies />}
           />
-          <Route path="/config/health" children={<Health />} />
+        
           <Route
-            path="/config/healthcondition"
-            children={<HealthCondition />}
+            path="/config/healthconditions"
+            children={<HealthConditions />}
           />
           <Route path="/config/preferences" children={<Preferences />} />
           <Route path="/config/goals" children={<Goals />} />
