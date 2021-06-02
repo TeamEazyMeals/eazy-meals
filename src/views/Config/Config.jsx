@@ -1,26 +1,29 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import {useState} from "react";
-import {useHistory} from "react-router-dom"
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Allergies from "../Allergies/Allergies";
 
-const Config = () => {
-
- 
+const Config = (props) => {
+  const { inputChecked } = props;
 
   const history = useHistory();
-  
+
   return (
     <div>
       <label htmlFor="allergies"> Allergies</label>
       <input
-        type="radio"
-        value="allergies"
+        checked={inputChecked ? inputChecked : false}
         id="allergies"
-        onChange={()=>history.push("/config/allergies")}
-        
+        type="checkbox"
+        value="allergies"
+        onChange={() => {
+          return (
+            (<Allergies inputId={"allergies"} />),
+            history.push("/config/allergies")
+          );
+        }}
       />
-
-     
     </div>
   );
 };

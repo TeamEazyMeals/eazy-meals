@@ -1,18 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { Button } from "@material-ui/core";
+import Config from "../Config";
+import { useHistory } from "react-router-dom";
 
-const Allergies = () => {
+const Allergies = (props) => {
+  const { inputId } = props;
+  const history = useHistory();
   const [allergies, setAllergies] = useState([]);
 
-  console.log(Array.isArray(allergies));
+  const checkedRadioButton = () => {
+    return (
+      (<Config inputChecked={true}></Config>),
+      history.push("/config"),
+      console.log("buttonchecked")
+    );
+  };
 
   const handleAllergiesInput = (event) => {
-    //console.log(event.target.value);
-    console.log(Array.isArray(allergies));
-    //console.log(typeof allergies, allergies);
-    setAllergies(allergies.push(event.target.value));
-
-    //console.log(allergies);
+    setAllergies([...allergies, event.target.value]);
   };
   return (
     <div>
@@ -31,9 +37,11 @@ const Allergies = () => {
       Gluten
       <input type="checkbox" value="Fish" onChange={handleAllergiesInput} />
       Fish
-      <button type="submit">Continue</button>
-      {/* <div>
-        {(allergies.length > 0) ? (
+      <Button type="submit" onClick={checkedRadioButton}>
+        Continue
+      </Button>
+      <div>
+        {allergies.length > 0 ? (
           <div>
             {allergies.map((allergy) => {
               return (
@@ -43,10 +51,10 @@ const Allergies = () => {
               );
             })}
           </div>
-        // ) : (
-        //   <div>*********HLOSANI*********</div> */}
-      {/* // )} */}
-      {/* </div> */}
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };
