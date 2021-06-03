@@ -28,7 +28,7 @@ const Preferences = (props) => {
         value="I don't have Preferences"
         onChange={handlePreferencesInput}
       />
-      I don't have allergies
+      I don't have preferences
       <input type="checkbox" value="Nuts" onChange={handlePreferencesInput} />
       Nuts
       <input type="checkbox" value="Diary" onChange={handlePreferencesInput} />

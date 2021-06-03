@@ -11,10 +11,10 @@ import FamilyAllergies from "../../views/Allergies/FamilyAllergies";
 import HealthConditions from "../../views/HealthConditions/HealthConditions"
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
-import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe"
+import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../MealPlan/MealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
-import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes"
+import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 
 const App = () => {
   return (

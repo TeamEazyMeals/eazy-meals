@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import Dropdown from "react-dropdown";
+import styled from "styled-components";
+import { Button } from "@material-ui/core"
+ 
+const Header = styled.h1`
+  font-size: 64px;
+  text-align: center;
+  color: white;
+  font: Robot;
+  background: #34a853;
+`;
+
+
 
 const MealPlan = () => {
   const [dayValue, setDayValue] = useState("");
@@ -16,12 +28,14 @@ const MealPlan = () => {
 
   return (
     <div>
-      <h1>Welcome Busi...</h1>
+      <h1>Select Meal Plan</h1>
+      <h2>Welcome Busi...</h2>
       <p> Please select your meal plan</p>
       <form>
         <label for="days">Please select a day:</label>
 
         <select id="dropdown" onChange={handleDaySelect}>
+        <option value=""></option>
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -34,15 +48,14 @@ const MealPlan = () => {
 
         <label for="days">Please select a Type:</label>
         <select id="dropdown" onChange={handleMealTypeSelect}>
+        <option value=""></option>
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
           <option value="Snack">Snack</option>
         </select>
 
-        <br />
-        <input type="submit" value="Submit" />
-
+      
         {mealTypeValue === "" ? (
         <b></b>
       ) : dayValue !== "" ? (
@@ -55,7 +68,10 @@ const MealPlan = () => {
       )}
       
       </form>
-      
+      <Button variant="contained" href="/allrecipes">
+            Submit
+          </Button>
+
     </div>
   );
 };
