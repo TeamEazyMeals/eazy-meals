@@ -17,10 +17,10 @@ body{
 const Global = (props) => {
   const { children } = props;
   return (
-    <>
+    <div>
       <GlobalStyles />
       {children}
-    </>
+    </div>
   );
 };
 export default Global;
