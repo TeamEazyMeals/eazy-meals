@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Dropdown from "react-dropdown";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
@@ -33,11 +32,6 @@ const StyledButton = styled(Button)`
     float: center;
   }
 `;
-
-const Wrapper = styled.div`
-
-`;
-
 
 const MealPlan = () => {
   const [dayValue, setDayValue] = useState("");
@@ -91,10 +85,10 @@ const MealPlan = () => {
           <b></b>
         ) : dayValue !== "" ? (
           <Wrapper>
-          <div>
-            <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
-            <b>Selected Day:{dayValue}</b>
-          </div>
+            <div>
+              <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
+              <b>Selected Day:{dayValue}</b>
+            </div>
           </Wrapper>
         ) : (
           <p>Please select Meal Type and Day.</p>
