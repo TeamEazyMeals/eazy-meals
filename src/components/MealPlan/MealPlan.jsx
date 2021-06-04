@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+import { Email } from "@material-ui/icons";
+import { name } from "faker";
 
 const Header = styled.h1`
   font-size: 64px;
@@ -32,6 +34,9 @@ const StyledButton = styled(Button)`
     float: center;
   }
 `;
+const Wrapper = styled.div`
+   text-align : center;
+`;
 
 const MealPlan = () => {
   const [dayValue, setDayValue] = useState("");
@@ -50,7 +55,7 @@ const MealPlan = () => {
     <div>
       <Header>Select Meal Plan</Header>
       <Container>
-        <h2>Welcome Busi...</h2>
+        <h2>Welcome</h2>
         <p> Please select your meal plan</p>
       </Container>
 
