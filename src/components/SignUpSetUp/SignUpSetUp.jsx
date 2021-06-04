@@ -1,39 +1,28 @@
 import React from "react";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
-import useSignUp from "./SignUp.stories";
+import SignUpSetUp from "./SignUp.stories";
 import useAuth from "../../utility/useAuth";
 import { TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { InputAdornment, IconButton } from "@material-ui/core";
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  color: white;
-`;
-const Butt = styled.div`
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 2rem;
-`;
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
+const Form = styled.form`
+  text-align: center;
+  display: block;
+`;
+const Input = styled.div`
+  padding: 1rem;
+`;
 const StyledButton = styled(Button)`
   && {
     background: #34a853;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    padding: 17px 60px;
+    padding: 17px 70px;
     color:white;
+    margin-top:70px;
+
     
-`;
-const Label = styled.label`
-  padding: 1rem;
-`;
-const Nav = styled.nav`
-padding 2rem;
 `;
 const Title = styled.h1`
   text-align: center;
@@ -42,39 +31,24 @@ const Title = styled.h1`
 `;
 const CancelButton = styled(Button)`
   && {
+    margin-top: 10px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    padding: 17px 100px;
-    display: flex;
+    padding: 17px 110px;
+    background: #e5e5e5;
   }
 `;
-const StyledIoIosEye = styled(IoIosEye)`
-  && {
-    fill: black;
-    width: 2rem;
-    height: auto;
-  }
-`;
-const StyledIoIosEyeOff = styled(IoIosEyeOff)`
-  && {
-    fill: black;
-    width: 2rem;
-    height: auto;
-  }
-`;
+const Nav = styled.nav`
+bacground-color:grey;
+`
 
-const PasswordAndEyeDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+const PasswordAndEyeDiv = styled.div``;
 
 const SignUp = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+ 
   const {
     error,
     email,
@@ -87,49 +61,55 @@ const SignUp = () => {
   return (
     <>
       {error && <div>{error}</div>}
-      <Nav>
+      <nav>
         <Title>REGISTER</Title>
         <Form name="signup" onSubmit={handleSignUpForm}>
-          <Label>
-            <TextField
-              variant="filled"
-              label="email"
-              value={email}
-              required
-              onChange={handleEmailInput}
-            />
-          </Label>
-
-          <Label>
+          <Input>
+            <label>
+              <TextField
+                variant="filled"
+                label="email"
+                value={email}
+                required
+                onChange={handleEmailInput}
+                inputProps={{
+                  style: { padding: "20px 30px" },
+                }}
+              />
+            </label>
+          </Input>
+          <label>
             <PasswordAndEyeDiv>
               <TextField
                 variant="filled"
                 type={passwordShown ? "text" : "password"}
                 label="password"
-                autoComplete="on"
+                autoComplete="off"
                 required
                 value={password}
                 onChange={handlePasswordInput}
-                
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton edge="end" onClick={togglePasswordVisiblity}>
+                        {passwordShown ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
-              {passwordShown ? (
-                <StyledIoIosEyeOff onClick={togglePasswordVisiblity} />
-              ) : (
-                <StyledIoIosEye onClick={togglePasswordVisiblity} />
-              )}
             </PasswordAndEyeDiv>
-          </Label>
+          </label>
 
-          <Butt>
-            <StyledButton type="submit" variant="contained">
-              CREATE ACCOUNT
-            </StyledButton>
-          </Butt>
+          <StyledButton type="submit" variant="contained">
+            CREATE ACCOUNT
+          </StyledButton>
+          <br></br>
           <CancelButton variant="contained" href="/">
             CANCEL
           </CancelButton>
         </Form>
-      </Nav>
+      </nav>
     </>
   );
 };
