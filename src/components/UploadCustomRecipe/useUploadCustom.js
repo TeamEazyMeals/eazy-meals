@@ -7,6 +7,7 @@ const useUploadCustom = () => {
   const [servings, setServings] = useState();
   const [ingredients, setIngredients] = useState("");
   const [method, setMethod] = useState("");
+  const [duration, setDuration] = useState("");
   const [uploading, setUploading] = useState(false);
 
   const history = useHistory();
@@ -18,6 +19,10 @@ const useUploadCustom = () => {
 
   const servingsHandler = (e) => {
     setServings(e.target.value);
+  };
+
+  const durationHandler = (e) => {
+    setDuration(e.value);
   };
 
   const selectedFileHandler = (e) => {
@@ -39,30 +44,30 @@ const useUploadCustom = () => {
         photo: selectedFile,
         ingredientList: ingredients,
         steps: method,
+        timeInMinutes: duration,
       },
     ];
 
     console.log(customRecipe);
     localStorage.setItem("customRecipe", JSON.stringify(customRecipe));
-    
-    
   };
-const recipeObject = JSON.parse(localStorage.getItem("customRecipe"));
+  const recipeObject = JSON.parse(localStorage.getItem("customRecipe"));
 
-  
-  return{
-      method,
-      methodHandler,
-      recipeObject,
-      selectedFileHandler,
-      servings,
-      servingsHandler,
-      ingredients,
-      ingredientsHandler,
-      recipeName,
-      recipeNameHandler,
-      fileDataHandler,
-  }
+  return {
+    method,
+    methodHandler,
+    recipeObject,
+    selectedFileHandler,
+    servings,
+    servingsHandler,
+    duration,
+    durationHandler,
+    ingredients,
+    ingredientsHandler,
+    recipeName,
+    recipeNameHandler,
+    fileDataHandler,
+  };
 };
 
 export default useUploadCustom;

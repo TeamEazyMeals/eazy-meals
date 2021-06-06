@@ -63,6 +63,8 @@ const UploadCustomRecipe = () => {
     recipeObject,
     selectedFileHandler,
     servings,
+    duration,
+    durationHandler,
     servingsHandler,
     ingredients,
     ingredientsHandler,
@@ -101,6 +103,16 @@ const UploadCustomRecipe = () => {
               id="servings"
               value={servings}
               onChange={servingsHandler}
+            />
+
+<label htmlFor="duration">Time in minutes</label>
+             <Input
+              type="number"
+              min="1"
+              max="20"
+              id="duration"
+              value={duration}
+              onChange={durationHandler}
             />
 
             <label htmlFor="ingredents">Ingredients</label>
