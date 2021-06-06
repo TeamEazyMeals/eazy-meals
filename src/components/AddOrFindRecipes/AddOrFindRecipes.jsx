@@ -116,7 +116,7 @@ const AddOrFindRecipes = () => {
   return (
     <Wrapper>
       <Line>
-        <h1>Create your own recipe with these easy steps!</h1>;
+        <h1>Create your own recipe with these easy steps!</h1>
       </Line>
       <UploadCustomRecipeButton href="/findrecipes/uploadcustomrecipe">
         Upload Custom Recipe

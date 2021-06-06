@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import recipes from "../../api/app/indexedDB";
+import { v4 as createId } from "uuid";
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
@@ -36,27 +38,28 @@ const useUploadCustom = () => {
   const methodHandler = (e) => {
     setMethod(e.target.value);
   };
-  const fileDataHandler = () => {
-    const customRecipe = [
-      {
-        name: recipeName,
-        serves: servings,
-        photo: selectedFile,
-        ingredientList: ingredients,
-        steps: method,
-        timeInMinutes: duration,
-      },
-    ];
+  const fileDataHandler = (e) => {
+    e.preventDefault();
+    const id =  createId();
+  console.log(recipeName, servings, ingredients, method, duration);
+    recipes.createRecipe(
+     id,
+      recipeName,
+      servings,
+      ingredients,
+      method,
+      duration,
+    ).catch((error)=>{
+      console.log("creation error", error)
+    });
 
-    console.log(customRecipe);
-    localStorage.setItem("customRecipe", JSON.stringify(customRecipe));
   };
-  const recipeObject = JSON.parse(localStorage.getItem("customRecipe"));
+  // const recipeObject = recipes.readRecipe();
 
   return {
     method,
     methodHandler,
-    recipeObject,
+    // recipeObject,
     selectedFileHandler,
     servings,
     servingsHandler,

@@ -1,6 +1,5 @@
-import { duration } from "@material-ui/core";
+
 import { openDB } from "idb";
-import { v4 as createId } from "uuid";
 
 const dbConnection = openDB("recipes", 1, {
   upgrade: (db, oldVersion) => {
@@ -11,19 +10,20 @@ const dbConnection = openDB("recipes", 1, {
 });
 
 const createRecipe = async ({
+    id,
   recipeName,
   servings,
-  selectedFile,
   ingredients,
   method,
   duration
 }) => {
+    console.log("creating recipe")
   const db = await dbConnection;
   db.add({
-    id: createId(),
+    id,
     name: recipeName,
     serves: servings,
-    photo: selectedFile,
+    // photo: selectedFile,
     ingredientList: ingredients,
     steps: method,
     timeInMinutes: duration,
@@ -38,13 +38,14 @@ const readRecipe = async (id) => {
 };
 
 const updateRecipe = async (props) => {
+    const db = await dbConnection;
   if (!props.id) throw new Error("ID required to update");
 
-  const newTask = {
-    ...(await readTask(props.id)),
+  const newRecipe = {
+    ...(await readRecipe(props.id)),
     ...props,
   };
-  db.put("recipes", newTask, props.id);
+  db.put("recipes", newRecipe, props.id);
 };
 
 const deleteRecipe = async (id) => {
@@ -52,11 +53,11 @@ const deleteRecipe = async (id) => {
   db.delete("recipes", id);
 };
 
-const recipes = {
+const recipesDB = {
   createRecipe,
   readRecipe,
   updateRecipe,
   deleteRecipe,
 };
 
-export default recipes;
+export default recipesDB;

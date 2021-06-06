@@ -2,6 +2,7 @@ import React from "react";
 import useUploadCustom from "./useUploadCustom";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+import recipesDB from "../../api/app/indexedDB"
 
 const Wrapper = styled.div`
   display: flex;
@@ -77,7 +78,7 @@ const UploadCustomRecipe = () => {
     <>
       {!localStorage.getItem("customRecipe") && (
         <Wrapper>
-          (
+          
           <Form name="uploadCustomRecipe" onSubmit={fileDataHandler}>
             <Header> Upload Custom Recipe</Header>
 
@@ -131,7 +132,6 @@ const UploadCustomRecipe = () => {
               onChange={methodHandler}
             />
             <StyledButton type="submit" href="/findrecipes/uploadcustomrecipe">
-              {" "}
               Upload Recipe
             </StyledButton>
           </Form>
