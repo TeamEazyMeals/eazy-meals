@@ -1,4 +1,3 @@
-
 import { openDB } from "idb";
 
 const dbConnection = openDB("recipes", 1, {
@@ -10,35 +9,38 @@ const dbConnection = openDB("recipes", 1, {
 });
 
 const createRecipe = async ({
-    id,
+  id,
   recipeName,
   servings,
   ingredients,
   method,
-  duration
+  duration,
+  selectedFile,
 }) => {
-    console.log("creating recipe")
+  console.log("creating recipe");
   const db = await dbConnection;
-  db.add({
+  console.log(id);
+  await db.add("recipes", {
     id,
     name: recipeName,
     serves: servings,
-    // photo: selectedFile,
+    photo: selectedFile,
     ingredientList: ingredients,
     steps: method,
     timeInMinutes: duration,
   });
 };
 
+
 const readRecipe = async (id) => {
   const db = await dbConnection;
-  if (typeof id === "string") return await db.get(id);
-  if (Array.isArray(id)) return await db.getAll();
+  if (typeof id === "string") return db.get("recipes",id);
+  if (Array.isArray(id)) return db.getAll();
   throw new Error("invalid ID query");
 };
 
 const updateRecipe = async (props) => {
-    const db = await dbConnection;
+  const db = await dbConnection;
   if (!props.id) throw new Error("ID required to update");
 
   const newRecipe = {

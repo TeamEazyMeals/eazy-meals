@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useUploadCustom from "./useUploadCustom";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
@@ -57,11 +57,14 @@ const StyledButton = styled(Button)`
   }
 `;
 
+
 const UploadCustomRecipe = () => {
+  
+
   const {
+    recipeObj,
     method,
     methodHandler,
-    recipeObject,
     selectedFileHandler,
     servings,
     duration,
@@ -74,8 +77,16 @@ const UploadCustomRecipe = () => {
     fileDataHandler,
   } = useUploadCustom();
 
+      console.log(typeof recipeObj);
+       console.log(Array.isArray(recipeObj));
+       useEffect(() => {
+         console.log("recipeObjrender",recipeObj);
+       }, [recipeObj]);
+       
   return (
+
     <>
+    
       {!localStorage.getItem("customRecipe") && (
         <Wrapper>
           
@@ -131,29 +142,29 @@ const UploadCustomRecipe = () => {
               value={method}
               onChange={methodHandler}
             />
-            <StyledButton type="submit" href="/findrecipes/uploadcustomrecipe">
+            <StyledButton type="submit">
               Upload Recipe
             </StyledButton>
           </Form>
         </Wrapper>
       )}
 
-      {localStorage.getItem("customRecipe") && (
+      {recipeObj!==undefined &&(
         <div>
-          {recipeObject.map((item) => {
+          {Object.keys(recipeObj).map((item) => {
             return (
               <ul>
                 <li>{item.name}</li>
                 <li>{item.serves}</li>
-                {/* <li>{item.photo}</li> */}
+                <li>{item.photo}</li>
                 <li>{item.ingredients}</li>
                 <li>{item.method}</li>
               </ul>
             );
           })}
-          <StyledButton href="/findrecipes/uploadcustomrecipe">
+          {/* <StyledButton href="/findrecipes/uploadcustomrecipe">
             Edit Recipe
-          </StyledButton>
+          </StyledButton> */}
         </div>
       )}
     </>

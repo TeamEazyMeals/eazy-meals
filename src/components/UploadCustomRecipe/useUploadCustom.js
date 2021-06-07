@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import recipes from "../../api/app/indexedDB";
 import { v4 as createId } from "uuid";
+import recipesDB from "../../api/app/indexedDB";
+import ReactFileReader from "react-file-reader";
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [servings, setServings] = useState();
+  const [servings, setServings] = useState(0);
   const [ingredients, setIngredients] = useState("");
   const [method, setMethod] = useState("");
-  const [duration, setDuration] = useState("");
-  const [uploading, setUploading] = useState(false);
-
-  const history = useHistory();
+  const [duration, setDuration] = useState(0);
+  // const [uploading, setUploading] = useState(false);
 
   const recipeNameHandler = (e) => {
     setRecipeName(e.target.value);
@@ -24,15 +22,18 @@ const useUploadCustom = () => {
   };
 
   const durationHandler = (e) => {
-    setDuration(e.value);
+    setDuration(e.target.value);
   };
 
   const selectedFileHandler = (e) => {
-    setSelectedFile(e.target.files[0]);
+     const file = e.target.files[0];
+      setSelectedFile(file)
   };
 
+
+
   const ingredientsHandler = (e) => {
-    setIngredients(e.value);
+    setIngredients(e.target.value);
   };
 
   const methodHandler = (e) => {
@@ -40,26 +41,28 @@ const useUploadCustom = () => {
   };
   const fileDataHandler = (e) => {
     e.preventDefault();
+    console.log("hello")
     const id =  createId();
-  console.log(recipeName, servings, ingredients, method, duration);
-    recipes.createRecipe(
-     id,
-      recipeName,
-      servings,
-      ingredients,
-      method,
-      duration,
-    ).catch((error)=>{
-      console.log("creation error", error)
-    });
+  console.log( selectedFile);
+    recipesDB
+      .createRecipe({ id, recipeName, servings, ingredients, method, selectedFile, duration })
+      .catch((error) => {
+        console.log("creation error", error);
+      });
 
   };
-  // const recipeObject = recipes.readRecipe();
+
+  const recipeObj = recipesDB
+    .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
+    .then((result) => {
+      return result;
+    });
+   
 
   return {
+    recipeObj,
     method,
     methodHandler,
-    // recipeObject,
     selectedFileHandler,
     servings,
     servingsHandler,
