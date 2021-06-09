@@ -99,7 +99,7 @@ const MealPlan = () => {
           <p>Please select Meal Type and Day.</p>
         )}
       </Form>
-      <StyledButton variant="contained" href="/allrecipes">
+      <StyledButton variant="contained" href="/findrecipes">
         Submit
       </StyledButton>
     </div>
