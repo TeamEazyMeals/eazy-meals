@@ -10,7 +10,7 @@ const useUploadCustom = () => {
   const [ingredients, setIngredients] = useState("");
   const [method, setMethod] = useState("");
   const [duration, setDuration] = useState(0);
-  // const [uploading, setUploading] = useState(false);
+  const [recipeObject, setRecipeObject] = useState({});
 
   const recipeNameHandler = (e) => {
     setRecipeName(e.target.value);
@@ -52,15 +52,40 @@ const useUploadCustom = () => {
 
   };
 
-  const recipeObj = recipesDB
-    .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
-    .then((result) => {
-      return result;
-    });
+  const getRecipeObject =()=>{
+    return (recipesDB
+      .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
+    .then((result) => { 
+       console.log(result);
+      setRecipeObject({...result,photo: URL.createObjectURL(result.photo)})}))
    
+  }
+  console.log(recipeObject)
+
+  // const RecipeObj =()=>{
+  //   {recipesDB
+  //     .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
+  //     .then((result) => {
+  //       const customRecipe = Object.keys(result);
+  //       console.log(Array.isArray(customRecipe),customRecipe);
+  //       Object.keys(result).map((item) => {
+  //         return (
+  //           <ul>
+  //             <li>{item.name}</li>
+  //             <li>{item.serves}</li>
+  //             <li>{item.photo}</li>
+  //             <li>{item.ingredients}</li>
+  //             <li>{item.method}</li>
+  //           </ul>
+  //         );
+  //       });
+  //     });
+  // } 
+    // 
 
   return {
-    recipeObj,
+     getRecipeObject,
+    recipeObject,
     method,
     methodHandler,
     selectedFileHandler,
