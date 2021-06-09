@@ -7,7 +7,7 @@ import SignUp from "../SignUpSetUp/SignUpSetUp";
 import ForgotPassword from "../LogInSetUp/ ForgotPassword";
 import Config from "../../views/Config";
 import Allergies from "../../views/Allergies";
-import FamilyAllergies from "../../views/Allergies/FamilyAllergies";
+// iport FamilyAllergies from "../../views/Allergies/FamilyAllergies";m
 import HealthConditions from "../../views/HealthConditions/HealthConditions"
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
@@ -22,10 +22,11 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route path="/config/allergies" children={<Allergies />} />
-          <Route
+
+          {/* <Route
             path="/config/familyallergies"
             children={<FamilyAllergies />}
-          />
+          /> */}
         
           <Route
             path="/config/healthconditions"
