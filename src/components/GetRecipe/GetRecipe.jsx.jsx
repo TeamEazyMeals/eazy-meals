@@ -40,6 +40,7 @@ const GetRecipe = () => {
 
   const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
+  console.log(recipes)
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
