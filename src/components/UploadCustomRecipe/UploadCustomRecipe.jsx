@@ -2,6 +2,7 @@ import React from "react";
 import useUploadCustom from "./useUploadCustom";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+import recipesDB from "../../api/app/indexedDB"
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,13 +57,19 @@ const StyledButton = styled(Button)`
   }
 `;
 
+
 const UploadCustomRecipe = () => {
+  
+
   const {
+     getRecipeObject,
+    recipeObject,
     method,
     methodHandler,
-    recipeObject,
     selectedFileHandler,
     servings,
+    duration,
+    durationHandler,
     servingsHandler,
     ingredients,
     ingredientsHandler,
@@ -71,11 +78,16 @@ const UploadCustomRecipe = () => {
     fileDataHandler,
   } = useUploadCustom();
 
+      console.log(typeof recipeObject);
+       console.log(Object.keys(recipeObject));
+       
   return (
+
     <>
+    
       {!localStorage.getItem("customRecipe") && (
         <Wrapper>
-          (
+          
           <Form name="uploadCustomRecipe" onSubmit={fileDataHandler}>
             <Header> Upload Custom Recipe</Header>
 
@@ -103,6 +115,16 @@ const UploadCustomRecipe = () => {
               onChange={servingsHandler}
             />
 
+<label htmlFor="duration">Time in minutes</label>
+             <Input
+              type="number"
+              min="1"
+              max="20"
+              id="duration"
+              value={duration}
+              onChange={durationHandler}
+            />
+
             <label htmlFor="ingredents">Ingredients</label>
             <Input
               type="textField"
@@ -118,30 +140,32 @@ const UploadCustomRecipe = () => {
               value={method}
               onChange={methodHandler}
             />
-            <StyledButton type="submit" href="/findrecipes/uploadcustomrecipe">
-              {" "}
+            <StyledButton type="submit" >
               Upload Recipe
             </StyledButton>
+            <button onClick={()=>getRecipeObject()}>view custom recipe</button>
           </Form>
         </Wrapper>
       )}
 
-      {localStorage.getItem("customRecipe") && (
+      {recipeObject!=={} &&(
         <div>
-          {recipeObject.map((item) => {
+          {Object.values(recipeObject).map((item) => {
             return (
               <ul>
-                <li>{item.name}</li>
-                <li>{item.serves}</li>
-                {/* <li>{item.photo}</li> */}
-                <li>{item.ingredients}</li>
-                <li>{item.method}</li>
+                <li>id: {item}</li>
+                <li>name: {item}</li>
+                <li>serves: {item}</li>
+                <li>photo: <img src={item} alt="recipe image"></img></li>
+                <li>ingredients: {item}</li>
+                <li>steps: {item}</li>
+                <li>timeInMinutes: {item}</li>
               </ul>
             );
           })}
-          <StyledButton href="/findrecipes/uploadcustomrecipe">
+          {/* <StyledButton href="/findrecipes/uploadcustomrecipe">
             Edit Recipe
-          </StyledButton>
+          </StyledButton> */}
         </div>
       )}
     </>
