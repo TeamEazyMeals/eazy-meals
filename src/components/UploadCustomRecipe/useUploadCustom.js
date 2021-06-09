@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { v4 as createId } from "uuid";
+import recipesDB from "../../api/app/indexedDB";
+import ReactFileReader from "react-file-reader";
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [servings, setServings] = useState();
+  const [servings, setServings] = useState(0);
   const [ingredients, setIngredients] = useState("");
   const [method, setMethod] = useState("");
-  const [uploading, setUploading] = useState(false);
-
-  const history = useHistory();
+  const [duration, setDuration] = useState(0);
+  const [recipeObject, setRecipeObject] = useState({});
 
   const recipeNameHandler = (e) => {
     setRecipeName(e.target.value);
@@ -20,49 +21,84 @@ const useUploadCustom = () => {
     setServings(e.target.value);
   };
 
-  const selectedFileHandler = (e) => {
-    setSelectedFile(e.target.files[0]);
+  const durationHandler = (e) => {
+    setDuration(e.target.value);
   };
 
+  const selectedFileHandler = (e) => {
+     const file = e.target.files[0];
+      setSelectedFile(file)
+  };
+
+
+
   const ingredientsHandler = (e) => {
-    setIngredients(e.value);
+    setIngredients(e.target.value);
   };
 
   const methodHandler = (e) => {
     setMethod(e.target.value);
   };
-  const fileDataHandler = () => {
-    const customRecipe = [
-      {
-        name: recipeName,
-        serves: servings,
-        photo: selectedFile,
-        ingredientList: ingredients,
-        steps: method,
-      },
-    ];
+  const fileDataHandler = (e) => {
+    e.preventDefault();
+    console.log("hello")
+    const id =  createId();
+  console.log( selectedFile);
+    recipesDB
+      .createRecipe({ id, recipeName, servings, ingredients, method, selectedFile, duration })
+      .catch((error) => {
+        console.log("creation error", error);
+      });
 
-    console.log(customRecipe);
-    localStorage.setItem("customRecipe", JSON.stringify(customRecipe));
-    
-    
   };
-const recipeObject = JSON.parse(localStorage.getItem("customRecipe"));
 
-  
-  return{
-      method,
-      methodHandler,
-      recipeObject,
-      selectedFileHandler,
-      servings,
-      servingsHandler,
-      ingredients,
-      ingredientsHandler,
-      recipeName,
-      recipeNameHandler,
-      fileDataHandler,
+  const getRecipeObject =()=>{
+    return (recipesDB
+      .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
+    .then((result) => { 
+       console.log(result);
+      setRecipeObject({...result,photo: URL.createObjectURL(result.photo)})}))
+   
   }
+  console.log(recipeObject)
+
+  // const RecipeObj =()=>{
+  //   {recipesDB
+  //     .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
+  //     .then((result) => {
+  //       const customRecipe = Object.keys(result);
+  //       console.log(Array.isArray(customRecipe),customRecipe);
+  //       Object.keys(result).map((item) => {
+  //         return (
+  //           <ul>
+  //             <li>{item.name}</li>
+  //             <li>{item.serves}</li>
+  //             <li>{item.photo}</li>
+  //             <li>{item.ingredients}</li>
+  //             <li>{item.method}</li>
+  //           </ul>
+  //         );
+  //       });
+  //     });
+  // } 
+    // 
+
+  return {
+     getRecipeObject,
+    recipeObject,
+    method,
+    methodHandler,
+    selectedFileHandler,
+    servings,
+    servingsHandler,
+    duration,
+    durationHandler,
+    ingredients,
+    ingredientsHandler,
+    recipeName,
+    recipeNameHandler,
+    fileDataHandler,
+  };
 };
 
 export default useUploadCustom;
