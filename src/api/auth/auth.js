@@ -2,6 +2,7 @@ import { Email } from "@material-ui/icons";
 import GoTrue from "gotrue-js";
 import validator from "validator";
 
+
 const gotTrueInstance = new GoTrue({
   APIUrl: "https://eazy-meals.netlify.app/.netlify/identity",
 });

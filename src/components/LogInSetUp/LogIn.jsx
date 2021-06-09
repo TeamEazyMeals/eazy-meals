@@ -14,37 +14,38 @@ const Header = styled.h1`
 `;
 
 const Form = styled.form`
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
   padding: 2rem;
   color: white;
+  position: relative;
 `;
 
 const Label = styled.label`
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
+  
 `;
 
 const Input = styled.input`
   width: 95%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
+  display: inline-flex;
+  border: none;
+  border-bottom: 2px solid grey;
+  
 `;
 
-// const Lable = styled.Button`
-//   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-//   padding: 17px 100px;
-//   display: flex;
-// `;
 
 const Link = styled.a`
   color: black;
   font-weight: bold;
-  display: block;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction:column;
   padding: 1rem;
   text-transform: uppercase;
   user-select: none;
