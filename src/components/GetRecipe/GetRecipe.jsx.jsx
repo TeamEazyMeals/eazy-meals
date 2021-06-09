@@ -40,6 +40,7 @@ const GetRecipe = () => {
 
   const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
+  console.log(recipes)
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
@@ -69,6 +70,7 @@ const GetRecipe = () => {
         <h1>{recipes.name}</h1>
         {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
+        <a href="/addrecipetomealplan">Add {recipes.name}to meal plan</a>
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>

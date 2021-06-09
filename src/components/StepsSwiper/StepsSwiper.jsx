@@ -4,6 +4,12 @@ import { useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import MobileStepper from "@material-ui/core/MobileStepper";
+import styled from "styled-components"
+
+
+const Container =styled.div`
+justify-content: center;
+`
 
 const StepsSwiper = (props) => {
   const { steps = [] } = props;
@@ -20,7 +26,7 @@ const StepsSwiper = (props) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   return (
-    <div
+    <Container 
       style={{
         marginLeft: "40%",
       }}
@@ -56,7 +62,7 @@ const StepsSwiper = (props) => {
         }
       />
       <p>{steps[INDEX]}</p>
-    </div>
+    </Container >
   );
 };
 
