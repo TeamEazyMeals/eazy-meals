@@ -8,12 +8,12 @@ import ForgotPassword from "../LogInSetUp/ ForgotPassword";
 import Config from "../../views/Config";
 import Allergies from "../../views/Allergies";
 import FamilyAllergies from "../../views/Allergies/FamilyAllergies";
-import HealthConditions from "../../views/HealthConditions/HealthConditions"
+import HealthConditions from "../../views/HealthConditions/HealthConditions";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../MealPlan/MealPlan";
-import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan"
+import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 
@@ -27,7 +27,7 @@ const App = () => {
             path="/config/familyallergies"
             children={<FamilyAllergies />}
           />
-        
+
           <Route
             path="/config/healthconditions"
             children={<HealthConditions />}
@@ -41,10 +41,13 @@ const App = () => {
             children={<UploadCustomRecipe />}
           />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
+          <Route path="/allrecipes/:recipeId/addrecipetomealplan"
+            children={<AddRecipeToMealPlan />}
+          />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
           <Route path="/mealplan" children={<MealPlan />} />
-          <Route path="/addrecipetomealplan" children={<AddRecipeToMealPlan />} /> 
+
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
