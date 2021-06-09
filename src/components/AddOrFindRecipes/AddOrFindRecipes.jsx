@@ -63,7 +63,8 @@ const SignInButton = styled(Button)`
 const ButtonsDiv = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content:space-around;
   padding: 3rem;
 `;
 
@@ -116,11 +117,16 @@ const AddOrFindRecipes = () => {
   return (
     <Wrapper>
       <Line>
-        <h1>Create your own recipe with these easy steps!</h1>
+        <h1>Create or Find recipes with these easy steps!</h1>
       </Line>
-      <UploadCustomRecipeButton href="/findrecipes/uploadcustomrecipe">
-        Upload Custom Recipe
-      </UploadCustomRecipeButton>
+      <ButtonsDiv>
+        <UploadCustomRecipeButton href="/findrecipes/uploadcustomrecipe">
+          Upload Custom Recipe
+        </UploadCustomRecipeButton>
+        <UploadCustomRecipeButton href="/allrecipes">
+          Find Recipe In Eazy Meals App
+        </UploadCustomRecipeButton>
+      </ButtonsDiv>
     </Wrapper>
   );
 };
