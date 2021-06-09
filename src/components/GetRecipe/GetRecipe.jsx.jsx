@@ -70,6 +70,7 @@ const GetRecipe = () => {
         <h1>{recipes.name}</h1>
         {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
+        <a href="/addrecipetomealplan">Add {recipes.name}to meal plan</a>
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
