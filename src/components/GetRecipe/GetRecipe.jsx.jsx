@@ -70,7 +70,9 @@ const GetRecipe = () => {
         <h1>{recipes.name}</h1>
         {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
-        <a href="/addrecipetomealplan">Add {recipes.name}to meal plan</a>
+        <a href={`/allrecipes/${id}/addrecipetomealplan`}>
+          Add {recipes.name}to meal plan
+        </a>
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
@@ -89,13 +91,13 @@ const GetRecipe = () => {
             })}
           </div>
         )}
-        
+
         <div>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
         </div>
-        <Timer/>
+        <Timer />
       </Body>
     </React.Fragment>
   );
