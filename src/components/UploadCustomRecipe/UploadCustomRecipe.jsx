@@ -1,18 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import EditRecipe from "./EditRecipe";
-import UploadRecipe from "./UploadRecipe";
+import UploadRecipe from "./CreateOwnRecipe";
 import useUploadCustom from "./useUploadCustom";
 import ViewCustomRecipe from "./ViewCustomRecipe";
 
 const UploadCustomRecipe = () => {
-  const { recipeObject, editRecipe } = useUploadCustom();
-
-  return recipeObject === "" ? (
-    <UploadRecipe />
-  ) : editRecipe ? (
-    <EditRecipe />
-  ) : (
-    <ViewCustomRecipe />
+  const { recipeObject, editRecipe, getRecipeObject ,getEditRecipe} = useUploadCustom();
+  
+  useEffect(() => {
+     getRecipeObject();
+  },[]);
+   useEffect(() => {
+     getEditRecipe();
+   }, []);
+  
+ console.log(editRecipe,29);
+  return (
+    <div>
+      {recipeObject === "" ? (
+        <UploadRecipe />
+      ) : editRecipe ? (
+        <EditRecipe />
+      ) : (
+        <ViewCustomRecipe />
+      )}
+      ;
+    </div>
   );
 };
 

@@ -3,8 +3,6 @@ import useUploadCustom from "./useUploadCustom";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
-
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,7 +136,7 @@ const StyledButton = styled(Button)`
           placeholder={recipeObject.steps}
           onChange={methodHandler}
         />
-        <StyledButton type="submit" onClick={() => getRecipeObject()}>
+        <StyledButton type="submit">
           Upload Recipe
         </StyledButton>
       </Form>

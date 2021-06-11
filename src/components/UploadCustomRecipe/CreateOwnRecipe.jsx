@@ -59,8 +59,6 @@ const StyledButton = styled(Button)`
 
 
 const UploadRecipe = () => {
-  
-
   const {
      getRecipeObject,
     recipeObject,
@@ -134,7 +132,7 @@ const UploadRecipe = () => {
               value={method}
               onChange={methodHandler}
             />
-            <StyledButton type="submit" onClick={()=> getRecipeObject()}>
+            <StyledButton type="submit" onClick={()=>getRecipeObject()}>
               Upload Recipe
             </StyledButton>
           </Form>

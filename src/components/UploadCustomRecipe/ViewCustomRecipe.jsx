@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import useUploadCustom from "./useUploadCustom";
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,19 +57,29 @@ const StyledButton = styled(Button)`
 `;
 
 const UL = styled.ul`
-list-style:none;
-`
+  list-style: none;
+`;
 const ImgWrapper = styled.div`
-display:flex;
-justify-content:space-around;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const StyledImage= styled.img`
+width:200px;
+hight:auto;
 `
 const ViewCustomRecipe = () => {
-    const {handleEditRecipe, recipeObject} = useUploadCustom();
+  const { handleEditRecipe, getRecipeObject, recipeObject } = useUploadCustom();
+
+  useEffect(() => {
+    getRecipeObject();
+  }, []);
+
   return (
     <Wrapper>
       <h3> {recipeObject.name}</h3>
       <ImgWrapper>
-        <img src={recipeObject.photo} alt="recipe image"></img>
+        <StyledImage src={recipeObject.photo} alt="recipe image"></StyledImage>
 
         <UL>
           <li>timeInMinutes: {recipeObject.timeInMinutes}</li>

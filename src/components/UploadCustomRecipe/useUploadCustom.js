@@ -42,6 +42,10 @@ const useUploadCustom = () => {
   const handleEditRecipe = () => {
     setEditRecipe(true);
   };
+
+  const getEditRecipe=()=>{
+    return editRecipe;
+  }
   const fileDataHandler = (e) => {
     e.preventDefault();
     const id = createId();
@@ -91,6 +95,7 @@ const useUploadCustom = () => {
     fileDataHandler,
     handleEditRecipe,
     editRecipe,
+    getEditRecipe,
   };
 };
 
