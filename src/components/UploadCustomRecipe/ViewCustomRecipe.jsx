@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import useUploadCustom from "./useUploadCustom";
 import { Button } from "@material-ui/core";
 
 const Wrapper = styled.div`
@@ -64,34 +63,35 @@ const ImgWrapper = styled.div`
   justify-content: space-around;
 `;
 
-const StyledImage= styled.img`
-width:200px;
-hight:auto;
-`
-const ViewCustomRecipe = () => {
-  const { handleEditRecipe, getRecipeObject, recipeObject } = useUploadCustom();
+const StyledImage = styled.img`
+  width: 200px;
+  hight: auto;
+`;
 
-  useEffect(() => {
-    getRecipeObject();
-  }, []);
+const ViewCustomRecipe = ({...state }) => {
 
   return (
+
     <Wrapper>
-      <h3> {recipeObject.name}</h3>
+      <h3> {state.recipeObject.name}</h3>
       <ImgWrapper>
-        <StyledImage src={recipeObject.photo} alt="recipe image"></StyledImage>
+
+        <StyledImage
+          src={state.recipeObject.photo}
+          alt="recipe image"
+        ></StyledImage>
 
         <UL>
-          <li>timeInMinutes: {recipeObject.timeInMinutes}</li>
-          <li>serves: {recipeObject.serves}</li>
+          <li>timeInMinutes: {state.recipeObject.timeInMinutes}</li>
+          <li>serves: {state.recipeObject.serves}</li>
         </UL>
+
       </ImgWrapper>
       <h4>Ingredients</h4>
-      <p> {recipeObject.ingredientList}</p>
+      <p> {state.recipeObject.ingredientList}</p>
       <h4>Steps</h4>
-      <p> {recipeObject.steps}</p>
-
-      <StyledButton onClick={handleEditRecipe}>Edit Recipe</StyledButton>
+      <p> {state.recipeObject.steps}</p>
+      <button onClick={state.handleEditRecipe}>Edit Recipe</button>
     </Wrapper>
   );
 };

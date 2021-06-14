@@ -1,6 +1,7 @@
-import React from "react"
+import useUploadCustom from "./useUploadCustom";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -57,25 +58,24 @@ const StyledButton = styled(Button)`
 
 
 
-    const EditRecipe = ({...state})=>{
-       
+const UploadRecipe = ({...state}) => {
+    
   return (
     <Wrapper>
       <Form name="uploadCustomRecipe" onSubmit={state.fileDataHandler}>
-        <Header> Edit Custom Recipe</Header>
+        <Header> Upload Custom Recipe</Header>
 
         <Input
           type="text"
-          placeholder={state.recipeObject.name}
+          placeholder="recipe name"
           value={state.recipeName}
           onChange={state.recipeNameHandler}
         />
+        <Title>UPLOAD RECIPE PHOTO</Title>
 
-        <img src={state.recipeObject.photo}></img>
         <Input
           type="file"
           accept="image/*, file"
-          placeholder="change recipe photo"
           onChange={state.selectedFileHandler}
         />
 
@@ -86,7 +86,6 @@ const StyledButton = styled(Button)`
           max="20"
           id="servings"
           value={state.servings}
-          placeholder={state.recipeObject.serves}
           onChange={state.servingsHandler}
         />
 
@@ -97,7 +96,6 @@ const StyledButton = styled(Button)`
           max="20"
           id="duration"
           value={state.duration}
-          placeholder={state.recipeObject.timeInMintes}
           onChange={state.durationHandler}
         />
 
@@ -106,7 +104,6 @@ const StyledButton = styled(Button)`
           type="textField"
           id="ingredients"
           value={state.ingredients}
-          placeholder={state.recipeObject.ingredientList}
           onChange={state.ingredientsHandler}
         />
 
@@ -115,15 +112,12 @@ const StyledButton = styled(Button)`
           type="textField"
           id="method"
           value={state.method}
-          placeholder={state.recipeObject.steps}
           onChange={state.methodHandler}
         />
-        <StyledButton type="submit" onClick={state.handleEditRecipe}>
-          Update Recipe
-        </StyledButton>
+        <StyledButton type="submit">Upload Recipe</StyledButton>
       </Form>
     </Wrapper>
   );
-    }
+}
 
-    export default EditRecipe;
+export default UploadRecipe;

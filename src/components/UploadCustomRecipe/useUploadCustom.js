@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { v4 as createId } from "uuid";
 import recipesDB from "../../api/app/indexedDB";
-import ReactFileReader from "react-file-reader";
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
@@ -33,24 +32,22 @@ const useUploadCustom = () => {
 
   const ingredientsHandler = (e) => {
     setIngredients(e.target.value);
+    console.log(ingredients);
   };
 
   const methodHandler = (e) => {
     setMethod(e.target.value);
+    console.log(method);
   };
 
   const handleEditRecipe = () => {
-    setEditRecipe(true);
+    setEditRecipe(!editRecipe);
   };
 
-  const getEditRecipe=()=>{
-    return editRecipe;
-  }
-  const fileDataHandler = (e) => {
+  const fileDataHandler = async (e) => {
     e.preventDefault();
     const id = createId();
-
-    recipesDB
+    const customRecipe = await recipesDB
       .createRecipe({
         id,
         recipeName,
@@ -63,23 +60,14 @@ const useUploadCustom = () => {
       .catch((error) => {
         console.log("creation error", error);
       });
+    console.log(customRecipe);
+    setRecipeObject({
+      ...customRecipe,
+      photo: URL.createObjectURL(customRecipe.photo),
+    });
   };
-
-  const getRecipeObject = () => {
-    return recipesDB
-      .readRecipe("5925e4ba-896a-4034-a959-ef314b854889")
-      .then((result) => {
-        console.log(result);
-        setRecipeObject({
-          ...result,
-          photo: URL.createObjectURL(result.photo),
-        });
-      });
-  };
-  console.log(recipeObject);
 
   return {
-    getRecipeObject,
     recipeObject,
     method,
     methodHandler,
@@ -95,7 +83,6 @@ const useUploadCustom = () => {
     fileDataHandler,
     handleEditRecipe,
     editRecipe,
-    getEditRecipe,
   };
 };
 
