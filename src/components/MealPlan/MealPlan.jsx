@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
-import { Email } from "@material-ui/icons";
-import { name } from "faker";
+import app from "../../api/app/app";
+import cms from "../../api/cms/cms";
+import { useParams } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
+import Sort from "../SortRecipes/SortRecipes";
+import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+//import Dropdownlist from "react-dropdown";
 
 const Header = styled.h1`
   font-size: 64px;
@@ -35,22 +40,49 @@ const StyledButton = styled(Button)`
   }
 `;
 const Wrapper = styled.div`
-   text-align : center;
+  text-align: center;
 `;
 
 const MealPlan = () => {
   const [dayValue, setDayValue] = useState("");
   const [mealTypeValue, setMealTypeValue] = useState("");
+  const { recipeId: id } = useParams();
+  const [recipes, setrecipe] = useState([]);
+  const [mealSelectValue, setMealSelect] = useState("");
+  const {
+    recipeData,
+    searchItem,
+    handleOnSearch,
+    handleSort,
+    searchResults,
+  } = useFetchRecipes();
+  const getRecipe = async () => {
+    if (app.calcIfShouldSync()) {
+      const response = await cms.syncRecipes();
+      setrecipe(response);
+    }
+    const response = JSON.parse(window.localStorage.getItem("recipes"));
+    setrecipe(response);
+
+    const foundRecipe = response.find((recipe) => recipe.id === id);
+    setrecipe(foundRecipe);
+  };
+  useEffect(() => getRecipe(), []);
+  const handleMealSelection = (e) => {
+    setMealSelect(e.target.value);
+  };
   const handleDaySelect = (e) => {
     console.log(e.target.value);
     setDayValue(e.target.value);
   };
-
   const handleMealTypeSelect = (e) => {
     console.log(e.target.value);
     setMealTypeValue(e.target.value);
   };
 
+  if (!recipeData) {
+    return <title> Loading recipes.....</title>;
+  }
   return (
     <div>
       <Header>Select Meal Plan</Header>
@@ -58,6 +90,24 @@ const MealPlan = () => {
         <h2>Welcome</h2>
         <p> Please select your meal plan</p>
       </Container>
+      <content>
+        <div>
+          <SearchIcon fontSize="small"></SearchIcon>
+          <input
+            type="text"
+            value={searchItem}
+            placeholder="search recipes.."
+            onChange={handleOnSearch}
+          />
+        </div>
+        <div key={id}>
+          <select id="dropdown" onChange={handleMealSelection}>
+            {searchResults.map(({ id, name }) => (
+              <option key={id}>{name}</option>
+            ))}
+          </select>
+        </div>
+      </content>
 
       <Form>
         <label for="days">
@@ -73,8 +123,7 @@ const MealPlan = () => {
             <option value="Saturday">Saturday</option>
           </select>
         </label>
-        <br />
-        <br />
+
         <label for="days">
           Please select a Type:
           <select id="dropdown" onChange={handleMealTypeSelect}>
@@ -93,15 +142,17 @@ const MealPlan = () => {
             <div>
               <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
               <b>Selected Day:{dayValue}</b>
+              <br />
             </div>
           </Wrapper>
         ) : (
           <p>Please select Meal Type and Day.</p>
         )}
+
+        <StyledButton variant="contained" href="/findrecipes">
+          Submit
+        </StyledButton>
       </Form>
-      <StyledButton variant="contained" href="/findrecipes">
-        Submit
-      </StyledButton>
     </div>
   );
 };
