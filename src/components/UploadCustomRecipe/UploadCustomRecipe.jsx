@@ -5,10 +5,9 @@ import useUploadCustom from "./useUploadCustom";
 import ViewCustomRecipe from "./ViewCustomRecipe";
 
 const UploadCustomRecipe = () => {
+  
   const state = useUploadCustom();
-  console.log(state,"state")
 
-useEffect(()=>console.log(state.recipeObject),[state.recipeObject])
   if (state.editRecipe && state.recipeObject != "") {
     return <EditRecipe {...state} />;
   }

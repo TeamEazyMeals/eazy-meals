@@ -55,6 +55,11 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const StyledImage = styled.img`
+  width: 200px;
+  hight: auto;
+`;
+
 
 
     const EditRecipe = ({...state})=>{
@@ -71,7 +76,7 @@ const StyledButton = styled(Button)`
           onChange={state.recipeNameHandler}
         />
 
-        <img src={state.recipeObject.photo}></img>
+        <StyledImage src={state.recipeObject.photo}></StyledImage>
         <Input
           type="file"
           accept="image/*, file"
