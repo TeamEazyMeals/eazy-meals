@@ -107,7 +107,6 @@ const MealPlan = () => {
             ))}
           </select>
         </div>
-       
       </content>
 
       <Form>
@@ -142,8 +141,8 @@ const MealPlan = () => {
           <Wrapper>
             <div>
               <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
-              <b>Selected Day:{dayValue}</b><br />
-              
+              <b>Selected Day:{dayValue}</b>
+              <br />
             </div>
           </Wrapper>
         ) : (
