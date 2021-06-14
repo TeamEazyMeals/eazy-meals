@@ -36,9 +36,9 @@ const Text = styled.p`
 const AddRecipeToMealPlan = () => {
   const { recipeId: id } = useParams();
   const [recipes, setRecipe] = useState([]);
-
   const [count, setCount] = useState(1);
-
+  const [mealTypeValue, setmealTypeValue] = useState([]);
+  const [dayValue, setDayValue] = useState([]);
   const getRecipe = async () => {
     if (app.calcIfShouldSync()) {
       const response = await cms.syncRecipes();
@@ -55,17 +55,20 @@ const AddRecipeToMealPlan = () => {
   if (!recipes) {
     return <h1>loading......</h1>;
   }
-
+  
   return (
     <React.Fragment>
       <div>
-        <h1>{recipes.name}</h1>
+        <h1>Plan selected</h1>
+        {/* <SetMeal mealTypeValue={mealTypeValue} setMealTypeValue={setmealTypeValue} /> */}
 
-        <h2>Set Servings</h2>
+        <h3>Set Servings</h3>
         <SetServings count={count} setCount={setCount} />
+        <button variant="contained" href="/">
+        Confirm submission
+      </button>
       </div>
     </React.Fragment>
   );
 };
-
 export default AddRecipeToMealPlan;
