@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { v4 as createId } from "uuid";
 import recipesDB from "../../api/app/indexedDB";
-<<<<<<< HEAD
-//import ReactFileReader from "react-file-reader";
-=======
->>>>>>> 9e42d29258f734b9c6438d73b689fbb440054557
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
