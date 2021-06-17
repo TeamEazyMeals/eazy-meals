@@ -13,7 +13,7 @@ import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../MealPlan/MealPlan";
-import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
+import AddMealPlanTypeTable from "../MealPlan/AddMealPlanTypeTable";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 
@@ -41,13 +41,11 @@ const App = () => {
             children={<UploadCustomRecipe />}
           />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
-          <Route path="/allrecipes/:recipeId/addrecipetomealplan"
-            children={<AddRecipeToMealPlan />}
-          />
+        
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
           <Route path="/mealplan" children={<MealPlan />} />
-
+          <Route path="/addmealplantable" children={<AddMealPlanTypeTable />} />
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />

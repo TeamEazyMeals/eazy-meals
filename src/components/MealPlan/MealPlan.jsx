@@ -5,7 +5,6 @@ import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
-import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
 //import Dropdownlist from "react-dropdown";
 
