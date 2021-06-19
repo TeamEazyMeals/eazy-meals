@@ -16,10 +16,6 @@
     "idb": "^6.1.2",
     "netlify-identity-widget": "^1.9.1",
     "react": "^17.0.2",
-<<<<<<< HEAD
-    "react-data-table-component": "^6.11.7",
-=======
->>>>>>> 9371a518de81b0a69b2ef68855aecacd8a85bb59
     "react-dom": "^17.0.2",
     "react-dropdown": "^1.9.2",
     "react-file-reader": "^1.1.4",
