@@ -76,14 +76,15 @@ const UploadRecipe = ({...state}) => {
         <Input
           type="file"
           accept="image/*, file"
+          required
           onChange={state.selectedFileHandler}
         />
 
         <label htmlFor="servings">Number of servings</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="servings"
           value={state.servings}
           onChange={state.servingsHandler}
@@ -92,8 +93,8 @@ const UploadRecipe = ({...state}) => {
         <label htmlFor="duration">Time in minutes</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="duration"
           value={state.duration}
           onChange={state.durationHandler}

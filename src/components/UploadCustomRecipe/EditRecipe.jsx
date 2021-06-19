@@ -55,13 +55,21 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const StyledImage = styled.img`
+  width: 200px;
+  hight: auto;
+`;
+
 
 
     const EditRecipe = ({...state})=>{
        
   return (
     <Wrapper>
-      <Form name="uploadCustomRecipe" onSubmit={state.fileDataHandler}>
+      <Form
+        name="editCustomRecipe"
+        onSubmit={state.editRecipeSubmitForm}
+      >
         <Header> Edit Custom Recipe</Header>
 
         <Input
@@ -71,7 +79,7 @@ const StyledButton = styled(Button)`
           onChange={state.recipeNameHandler}
         />
 
-        <img src={state.recipeObject.photo}></img>
+        <StyledImage src={state.recipeObject.photo}></StyledImage>
         <Input
           type="file"
           accept="image/*, file"
@@ -82,8 +90,8 @@ const StyledButton = styled(Button)`
         <label htmlFor="servings">Number of servings</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="servings"
           value={state.servings}
           placeholder={state.recipeObject.serves}
@@ -93,8 +101,8 @@ const StyledButton = styled(Button)`
         <label htmlFor="duration">Time in minutes</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="duration"
           value={state.duration}
           placeholder={state.recipeObject.timeInMintes}
@@ -118,9 +126,7 @@ const StyledButton = styled(Button)`
           placeholder={state.recipeObject.steps}
           onChange={state.methodHandler}
         />
-        <StyledButton type="submit" onClick={state.handleEditRecipe}>
-          Update Recipe
-        </StyledButton>
+        <button type="submit">Update Recipe</button>
       </Form>
     </Wrapper>
   );
