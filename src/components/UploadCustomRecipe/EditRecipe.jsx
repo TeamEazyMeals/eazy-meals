@@ -66,7 +66,10 @@ const StyledImage = styled.img`
        
   return (
     <Wrapper>
-      <Form name="uploadCustomRecipe" onSubmit={state.fileDataHandler}>
+      <Form
+        name="editCustomRecipe"
+        onSubmit={state.editRecipeSubmitForm}
+      >
         <Header> Edit Custom Recipe</Header>
 
         <Input
@@ -87,8 +90,8 @@ const StyledImage = styled.img`
         <label htmlFor="servings">Number of servings</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="servings"
           value={state.servings}
           placeholder={state.recipeObject.serves}
@@ -98,8 +101,8 @@ const StyledImage = styled.img`
         <label htmlFor="duration">Time in minutes</label>
         <Input
           type="number"
-          min="1"
-          max="20"
+          // min="1"
+          // max="20"
           id="duration"
           value={state.duration}
           placeholder={state.recipeObject.timeInMintes}
@@ -123,9 +126,7 @@ const StyledImage = styled.img`
           placeholder={state.recipeObject.steps}
           onChange={state.methodHandler}
         />
-        <StyledButton type="submit" onClick={state.handleEditRecipe}>
-          Update Recipe
-        </StyledButton>
+        <button type="submit">Update Recipe</button>
       </Form>
     </Wrapper>
   );
