@@ -4,6 +4,7 @@ import Allergies from "../Allergies/Allergies";
 import HealthConditions from "../HealthConditions/HealthConditions"
 import styled from "styled-components";
 import Preferences from "../Preferences";
+import Goals from "../Goals/Goals";
 
 const Wrapper = styled.div`
   display: flex;
@@ -65,6 +66,22 @@ const Config = (props) => {
             return (
               (<Preferences inputId={"preferences"} />),
               history.push("/config/preferences")
+            );
+          }}
+        />
+      </InputWrapper>
+
+      <InputWrapper>
+        <label htmlFor="Goals"> Add Goals</label>
+        <input
+          checked={isChecked ? true : false}
+          id="goals"
+          type="checkbox"
+          value="goals"
+          onChange={() => {
+            return (
+              (<Goals inputId={"goals"} />),
+              history.push("/config/goals")
             );
           }}
         />

@@ -38,6 +38,70 @@ const Allergies = (props) => {
 
     setAllergies([...allergies, event.target.value]);
   };
+
+  // const handleAllergiesNuts = (event) => {
+  //   const { value } = event.target;
+  //   if (
+  //     value === "Nuts" &&
+  //     allergies.Nuts
+  //   ) {
+  //     return setAllergies();
+  //   }
+
+  //   if (value === "Nuts") {
+  //     return setAllergies([value]);
+  //   }
+
+  //   setAllergies([...allergies, event.target.value]);
+  // };
+   
+  // const handleAllergiesGluten = (event) => {
+  //   const { value } = event.target;
+  //   if (
+  //     value === "gluten" &&
+  //     allergies.gluten
+  //   ) {
+  //     return setAllergies();
+  //   }
+
+  //   if (value === "gluten") {
+  //     return setAllergies([value]);
+  //   }
+
+  //   setAllergies([...allergies, event.target.value]);
+  // };
+
+  // const handleAllergiesDiary = (event) => {
+  //   const { value } = event.target;
+  //   if (
+  //     value === "dairy" &&
+  //     allergies.dairy
+  //   ) {
+  //     return setAllergies();
+  //   }
+
+  //   if (value === "dairy") {
+  //     return setAllergies([value]);
+  //   }
+
+  //   setAllergies([...allergies, event.target.value]);
+  // };
+
+  // const handleAllergiesFish = (event) => {
+  //   const { value } = event.target;
+  //   if (
+  //     value === "fish" &&
+  //     allergies.fish
+  //   ) {
+  //     return setAllergies();
+  //   }
+
+  //   if (value === "fish") {
+  //     return setAllergies([value]);
+  //   }
+
+  //   setAllergies([...allergies, event.target.value]);
+  // };
   return (
     <div>
       <h2>Allergies</h2>
@@ -56,9 +120,9 @@ const Allergies = (props) => {
       />
       Nuts
       <input
-        selected={allergies.includes("Diary")}
+        selected={allergies.includes("Dairy")}
         type="checkbox"
-        value="Diary"
+        value="Dairy"
         onChange={handleAllergiesInput}
       />
       Diary
