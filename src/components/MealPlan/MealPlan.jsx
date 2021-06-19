@@ -79,12 +79,12 @@ const MealPlan = () => {
     console.log(e.target.value);
     setMealTypeValue(e.target.value);
   };
-  const { recipeId } = useParams()
+  // const { recipeId } = useParams()
 
-  useEffect(() =>  {
-    fetch(`http://localhost:3001/mealplan/addmealplantable${recipeId}`)
-      .then(setrecipe)
-  }, recipeId)
+  // useEffect(() =>  {
+  //   fetch(`http://localhost:3001/mealplan/addmealplantable${recipeId}`)
+  //     .then(setrecipe)
+  // }, recipeId)
 
   if (!recipeData) {
     return <title> Loading recipes.....</title>;
