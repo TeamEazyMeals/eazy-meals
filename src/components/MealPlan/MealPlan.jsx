@@ -52,9 +52,9 @@ const MealPlan = () => {
     recipeData,
     searchItem,
     handleOnSearch,
-    handleSort,
     searchResults,
   } = useFetchRecipes();
+
   const getRecipe = async () => {
     if (app.calcIfShouldSync()) {
       const response = await cms.syncRecipes();
@@ -67,6 +67,7 @@ const MealPlan = () => {
     setrecipe(foundRecipe);
   };
   useEffect(() => getRecipe(), []);
+
   const handleMealSelection = (e) => {
     setMealSelect(e.target.value);
   };
@@ -78,6 +79,12 @@ const MealPlan = () => {
     console.log(e.target.value);
     setMealTypeValue(e.target.value);
   };
+  const { recipeId } = useParams()
+
+  useEffect(() =>  {
+    fetch(`http://localhost:3001/mealplan/addmealplantable${recipeId}`)
+      .then(setrecipe)
+  }, recipeId)
 
   if (!recipeData) {
     return <title> Loading recipes.....</title>;
@@ -102,7 +109,8 @@ const MealPlan = () => {
         <div key={id}>
           <select id="dropdown" onChange={handleMealSelection}>
             {searchResults.map(({ id, name }) => (
-              <option key={id}>{name}</option>
+              <option key={id}>{name}
+              </option>
             ))}
           </select>
         </div>
@@ -147,8 +155,13 @@ const MealPlan = () => {
         ) : (
           <p>Please select Meal Type and Day.</p>
         )}
+        {mealSelectValue === "" ? (
+          <Wrapper>
+            <b>Selected meal : {searchResults}</b>
+          </Wrapper>
+        ) : (<p>Please select a meal</p>)}
 
-        <StyledButton variant="contained" href="/findrecipes">
+        <StyledButton variant="contained" href="/addmealplantable">
           Submit
         </StyledButton>
       </Form>
