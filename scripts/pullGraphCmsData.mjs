@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import fs from "fs/promises";
+import md5 from "md5"
 const GET_ALL_RECIPE_DATA_QUERY = `
 {
   recipes {
@@ -30,11 +31,21 @@ const init = async () => {
   );
 
   const recipePromiseArray = recipes.map(async (singleRecipe) => {
+   const stringVersion = JSON.stringify(singleRecipe);
     await fs.writeFile(
       `./public/data/recipes/${singleRecipe.id}.json`,
-      JSON.stringify(singleRecipe)
+      stringVersion
     );
+    return md5(stringVersion)
   });
-  await Promise.all(recipePromiseArray);
+  const hashes = await Promise.all(recipePromiseArray).catch(console.error);
+  const primaryHash = md5(hashes);
+  await fs.writeFile(
+    `./public/data/recipe-hashes.json`,
+    JSON.stringify({
+      primary:primaryHash,
+      array:hashes,
+    })
+  );
 };
 init();
