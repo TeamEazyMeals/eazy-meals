@@ -6,6 +6,7 @@ import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+import { location } from "query-string";
 //import Dropdownlist from "react-dropdown";
 
 const Header = styled.h1`
@@ -79,12 +80,11 @@ const MealPlan = () => {
     console.log(e.target.value);
     setMealTypeValue(e.target.value);
   };
-  // const { recipeId } = useParams()
+  const queryString = require('query-string');
+  console.log(location.search);
+  const parsed = queryString.parse(location.search);
+  console.log(parsed);
 
-  // useEffect(() =>  {
-  //   fetch(`http://localhost:3001/mealplan/addmealplantable${recipeId}`)
-  //     .then(setrecipe)
-  // }, recipeId)
 
   if (!recipeData) {
     return <title> Loading recipes.....</title>;
@@ -155,11 +155,11 @@ const MealPlan = () => {
         ) : (
           <p>Please select Meal Type and Day.</p>
         )}
-        {mealSelectValue === "" ? (
+        {/* {mealSelectValue === "" ? (
           <Wrapper>
             <b>Selected meal : {searchResults}</b>
           </Wrapper>
-        ) : (<p>Please select a meal</p>)}
+        ) : (<p>Please select a meal</p>)} */}
 
         <StyledButton variant="contained" href="/addmealplantable">
           Submit

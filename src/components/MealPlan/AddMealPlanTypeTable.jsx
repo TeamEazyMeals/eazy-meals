@@ -2,7 +2,7 @@ import React from "react";
 //import { useState, useEffect } from "react";
 //import { useParams } from "react-router";
 import DataTable from "react-data-table-component";
-import DeleteIcon from "@material-ui/icons/Delete";
+//import DeleteIcon from "@material-ui/icons/Delete";
 
 const data = [
   { id: 1, Type: "Type" },
