@@ -8,7 +8,7 @@ const dbConnection = openDB("internal-recipes", 1, {
     }
   },
 });
-const sync = async (onEvent, auto = false) => {
+const sync = async (auto = false) => {
   const db = await dbConnection;
   const { data: remoteHashes } = await axios.get("/data/recipe-hashes.json");
   const localHashes = (await db.get("meta", "hashes")) || {
@@ -45,7 +45,7 @@ const sync = async (onEvent, auto = false) => {
         return;
       }
       const { data } = await axios.get(`/data/recipes/${remoteRecipeId}.json`);
-
+      console.log(data, "dataaaaaaaaaaa");
       /*
        * If the recipe ID is in remote DB, but not on local DB that means that the recipe was created synce on the remote DB since the last sync, and should also be created on the local DB
        */
