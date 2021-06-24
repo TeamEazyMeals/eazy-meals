@@ -11,7 +11,7 @@ const useUploadCustom = () => {
   const [duration, setDuration] = useState(0);
   const [recipeObject, setRecipeObject] = useState("");
   const [editRecipe, setEditRecipe] = useState(false);
-
+ 
   const recipeNameHandler = (e) => {
     setRecipeName(e.target.value);
     console.log(recipeName);
@@ -43,10 +43,11 @@ const useUploadCustom = () => {
   const handleEditRecipe = () => {
     setEditRecipe(!editRecipe);
   };
-
+  console.log(recipeName, servings, selectedFile);
   const fileDataHandler = async (e) => {
     e.preventDefault();
     const id = createId();
+    
     const customRecipe = await recipesDB
       .createRecipe({
         id,
@@ -60,12 +61,18 @@ const useUploadCustom = () => {
       .catch((error) => {
         console.log("creation error", error);
       });
+
     console.log(customRecipe);
     setRecipeObject({
       ...customRecipe,
       photo: URL.createObjectURL(customRecipe.photo),
     });
   };
+
+  const editRecipeSubmitForm =(e)=>{
+    handleEditRecipe();
+    fileDataHandler(e);
+  }
 
   return {
     recipeObject,
@@ -83,6 +90,7 @@ const useUploadCustom = () => {
     fileDataHandler,
     handleEditRecipe,
     editRecipe,
+    editRecipeSubmitForm,
   };
 };
 

@@ -69,7 +69,9 @@ const StyledImage = styled.img`
 `;
 
 const ViewCustomRecipe = ({...state }) => {
+console.log(state, "updatedObj" )
 
+useEffect(()=>console.log(state.recipeObject),[state.recipeObject])
   return (
 
     <Wrapper>

@@ -1,5 +1,5 @@
 import axios from "axios";
-// import app from "../app/app"
+
 const GET_ALL_RECIPE_DATA_QUERY = `
 {
   recipes {
