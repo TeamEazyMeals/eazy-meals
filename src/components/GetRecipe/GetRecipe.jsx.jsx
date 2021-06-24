@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
-import Timer from "../Timer/Timer";
 
 const Body = styled.div`
   text-align: center;
@@ -40,7 +39,7 @@ const GetRecipe = () => {
 
   const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
-  console.log(recipes)
+  // console.log(recipes)
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
@@ -54,6 +53,8 @@ const GetRecipe = () => {
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
     setrecipe(foundRecipe);
+    console.log(foundRecipe)
+    
   };
   useEffect(() => getRecipe(), []);
 
@@ -67,8 +68,9 @@ const GetRecipe = () => {
         <Title>Eazy Meals</Title>
       </Header>
       <Body>
+     
         <h1>{recipes.name}</h1>
-        {console.log(recipes)}
+        {/* {console.log(recipes)} */}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
         <a href={`/allrecipes/${id}/addrecipetomealplan`}>
           Add {recipes.name}to meal plan
@@ -82,6 +84,7 @@ const GetRecipe = () => {
         {showrecipe && (
           <div>
             {recipes.ingredients.map((recp) => {
+           
               return (
                 <ul key={uuidv4()}>
                   <span>{recp.name} </span> {recp.amount * count}
@@ -89,15 +92,19 @@ const GetRecipe = () => {
                 </ul>
               );
             })}
+         
+
           </div>
         )}
+        
 
         <div>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
         </div>
-        <Timer />
+      
+        <button>skip Timer</button>
       </Body>
     </React.Fragment>
   );

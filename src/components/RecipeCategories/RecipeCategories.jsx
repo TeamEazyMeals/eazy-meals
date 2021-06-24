@@ -1,10 +1,8 @@
 import React from "react";
 import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import styled from "styled-components";
-import SearchIcon from "@material-ui/icons/Search";
-import Sort from "../SortRecipes/SortRecipes";
-import useFetchRecipes from "./useFetchRecipes";
-import RecipeCategories from "../RecipeCategories/RecipeCategories";
+import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+
 
 const Title = styled.h1`
   font-family: Arial, sans-serif;
@@ -30,7 +28,7 @@ const Image = styled.img`
   height: auto;
 `;
 
-const FetchRecipes = () => {
+const RecipeCategories= () => {
   const {
     recipeData,
     searchItem,
@@ -38,32 +36,19 @@ const FetchRecipes = () => {
     handleSort,
     searchResults,
   } = useFetchRecipes();
+  // console.log (searchResults)
   
-
-console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Rosted Salmon"))
+ 
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
+  
   }
 
-  return (
-    <Content>
-      <Title>eazy-meals</Title>
-
-      <div>
-        <SearchIcon fontSize="small"></SearchIcon>
-        <input
-          type="text"
-          value={searchItem}
-          placeholder="search recipes.."
-          onChange={handleOnSearch}
-        />
-
-        <Sort handleSort={handleSort}></Sort>
-      </div>
-
-      {searchResults.map(
-        ({ id, name, photo, ingredients, description, timeInMinutes,tags }) => {
-          console.log(tags)
+  return(
+  <>
+  
+  {searchResults.map(
+        ({ id, name, photo, ingredients, description, timeInMinutes }) => {
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -77,7 +62,7 @@ console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Ro
                 <h4>Time in minutes:{timeInMinutes}</h4>
 
                 <RecipeIngredients ingredients={ingredients} />
-                <RecipeCategories tags={tags}/>
+                <RecipeCategories ingredients={ingredients}/>
                 <Title>Method</Title>
                 <li>{description}</li>
               </List>
@@ -85,7 +70,9 @@ console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Ro
           );
         }
       )}
-    </Content>
-  );
+    </>
+  
+
+  ) 
 };
-export default FetchRecipes;
+export default RecipeCategories;
