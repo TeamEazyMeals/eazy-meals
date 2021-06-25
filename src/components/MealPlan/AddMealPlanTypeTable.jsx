@@ -1,8 +1,8 @@
 import React from "react";
-//import { useState, useEffect } from "react";
-//import { useParams } from "react-router";
 import DataTable from "react-data-table-component";
-//import DeleteIcon from "@material-ui/icons/Delete";
+import { parse } from "query-string";
+import { Checkbox, IconButton} from "@material-ui/core";
+import { Delete, Edit } from "@material-ui/icons";
 
 const data = [
   { id: 1, Type: "Type" },
@@ -27,26 +27,48 @@ const columns = [
   { name: "Saturday" },
 ];
 
-const handleChange = (state) => {
-  console.log("Selected Rows: ", state.selectedRows);
-};
-// const handleDeleteItem = () => onDeleteItem();
-
 const AddMealPlanTypeTable = () => {
+  const query = parse(window.location.search);
+  const ExpandableComponent = [
+    { name: `${query.dayValue}` },
+    { name: `${query.mealTypeValue}` },
+    { name: `${query.mealSelectValue}` },
+  ];
+  console.log(ExpandableComponent);
+
+  // const rows = [{name: `${query.dayValue}`},
+  // {name: `${query.mealTypeValue}`},
+  // {name: `${query.mealSelectValue}`}];
+
   
- 
+
+  const handleChange = (state) => {
+    console.log("Selected Rows: ", state.selectedRows);
+  
+  }
+  // const Task = (props) => {
+  //   const { onDeleteItem } = props;
+  //   //  const handleDeleteItem = () => onDeleteItem()}
+
+  // const handleDeleteItem = () => onDeleteItem();
+
   return (
     <>
+      {/* <div> {dayValue} {mealTypeValue} {mealSelectValue} </div> */}
       <DataTable
         title="Meal Table"
-        columns={columns}
+        // columns={columns}
         data={data}
-        
+        // columns={rows}
         selectableRows //add for checkbox selection
         Clicked
         onSelectedRowsChange={handleChange}
-        //onChange={changeMealPlanTable}
+        onChange
+        columns ={ExpandableComponent}
+        // onClick={handleDeleteItem}
+       
       />
+            
       {/* <DeleteIcon onClick={handleDeleteItem}>
         <DeleteIcon />
       </DeleteIcon> */}

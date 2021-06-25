@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { stringify } from "query-string";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
-import { location } from "query-string";
-//import Dropdownlist from "react-dropdown";
 
 const Header = styled.h1`
   font-size: 64px;
@@ -20,16 +19,16 @@ const Container = styled.h2`
   text-align: center;
   font: Robot;
 `;
-const Form = styled.label`
-  top-padding: 8rem;
-  top-margin: 9rem;
-  botton-nargin: 4rem;
+const Form = styled.form`
+  padding-top: 8rem;
+  margin-top: 9rem;
+  margin-bottom: 4rem;
   text-align: center;
 `;
 
 const StyledButton = styled(Button)`
   && {
-    top-padding: 50px;
+    padding-top: 50px;
     height: 40px;
     width: 250px;
     border: 1px solid #34a853;
@@ -44,6 +43,7 @@ const Wrapper = styled.div`
 `;
 
 const MealPlan = () => {
+  const history = useHistory();
   const [dayValue, setDayValue] = useState("");
   const [mealTypeValue, setMealTypeValue] = useState("");
   const { recipeId: id } = useParams();
@@ -80,14 +80,15 @@ const MealPlan = () => {
     console.log(e.target.value);
     setMealTypeValue(e.target.value);
   };
-  const queryString = require('query-string');
-  console.log(location.search);
-  const parsed = queryString.parse(location.search);
-  console.log(parsed);
 
 
   if (!recipeData) {
     return <title> Loading recipes.....</title>;
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const query = stringify({ dayValue, mealTypeValue, mealSelectValue })
+    history.push(`/addmealplantable?${query}`)
   }
   return (
     <div>
@@ -116,8 +117,8 @@ const MealPlan = () => {
         </div>
       </content>
 
-      <Form>
-        <label for="days">
+      <Form onSubmit={handleSubmit}>
+        <label htmlFor="days">
           Please select a day:
           <select id="dropdown" onChange={handleDaySelect}>
             <option value=""></option>
@@ -131,7 +132,7 @@ const MealPlan = () => {
           </select>
         </label>
 
-        <label for="days">
+        <label htmlFor="days">
           Please select a Type:
           <select id="dropdown" onChange={handleMealTypeSelect}>
             <option value=""></option>
@@ -155,13 +156,13 @@ const MealPlan = () => {
         ) : (
           <p>Please select Meal Type and Day.</p>
         )}
-        {/* {mealSelectValue === "" ? (
+        {mealSelectValue !== "" ? (
           <Wrapper>
-            <b>Selected meal : {searchResults}</b>
+            <b>Selected meal : {mealSelectValue}</b>
           </Wrapper>
-        ) : (<p>Please select a meal</p>)} */}
+        ) : (<p>Please select a meal</p>)}
 
-        <StyledButton variant="contained" href="/addmealplantable">
+        <StyledButton type="submit" variant="contained">
           Submit
         </StyledButton>
       </Form>
