@@ -46,11 +46,7 @@ const AddMealPlanTypeTable = () => {
     console.log("Selected Rows: ", state.selectedRows);
   
   }
-  // const Task = (props) => {
-  //   const { onDeleteItem } = props;
-  //   //  const handleDeleteItem = () => onDeleteItem()}
-
-  // const handleDeleteItem = () => onDeleteItem();
+  
 
   return (
     <>
@@ -59,19 +55,16 @@ const AddMealPlanTypeTable = () => {
         title="Meal Table"
         // columns={columns}
         data={data}
-        // columns={rows}
         selectableRows //add for checkbox selection
         Clicked
         onSelectedRowsChange={handleChange}
         onChange
         columns ={ExpandableComponent}
-        // onClick={handleDeleteItem}
+        onClick
        
       />
             
-      {/* <DeleteIcon onClick={handleDeleteItem}>
-        <DeleteIcon />
-      </DeleteIcon> */}
+     
     </>
   );
 };
