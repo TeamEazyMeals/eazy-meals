@@ -44,20 +44,23 @@ const sync = async (auto = false) => {
       if (remoteRecipeHash === localRecipeHash) {
         return;
       }
-      const { data } = await axios.get(`/data/recipes/${remoteRecipeId}.json`);
-      console.log(data, "dataaaaaaaaaaa");
+      const { singleRemoteRecipe } = await axios.get(
+        `/data/recipes/${remoteRecipeId}.json`
+      );
+      console.log(singleRemoteRecipe, "dataaaaaaaaaaa");
       /*
-       * If the recipe ID is in remote DB, but not on local DB that means that the recipe was created synce on the remote DB since the last sync, and should also be created on the local DB
+       * If the recipe ID is in remote DB, but not on local DB that means that the recipe was created on the remote DB since the last sync, and should also be created on the local DB
        */
       if (!localRecipeIdList.includes(remoteRecipeId)) {
-        await db.add("data", data);
+        await db.add("data", singleRemoteRecipe);
       }
       /**
        * If none of the above are true, then it means that the recipe exists in the local and remote DB, but the data has changed in the remote DB since the last time it was synced. This means that the local DB recipe should be updated to be the same as the remote recipe.
        */
-      await db.put("data", data);
+      await db.put("data", singleRemoteRecipe);
     });
     await Promise.all(remotePromises);
+    console.log("putting in meta");
     await db.put("meta", remoteHashes);
   };
   if (auto) {
