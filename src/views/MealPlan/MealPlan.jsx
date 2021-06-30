@@ -6,7 +6,7 @@ import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
-import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+import useFetchRecipes from "../../components/FetchRecipes/useFetchRecipes";
 
 const Header = styled.h1`
   font-size: 64px;
