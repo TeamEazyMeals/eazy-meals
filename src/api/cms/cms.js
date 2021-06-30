@@ -35,7 +35,11 @@ const syncRecipes = async () => {
     return {
       ...singleRecipe,
       ingredients: singleRecipe.ingredients[0].ingredients,
-      photo: singleRecipe.photo && singleRecipe.photo.url
+      photo: singleRecipe.photo && singleRecipe.photo.url,
+      tags:
+        singleRecipe.tags
+          && singleRecipe.tags[0]
+          
     };
 
   });

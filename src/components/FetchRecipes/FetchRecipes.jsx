@@ -38,9 +38,8 @@ const FetchRecipes = () => {
     handleSort,
     searchResults,
   } = useFetchRecipes();
-  
-  
-console.log(searchResults)
+
+  console.log(searchResults);
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
   }
@@ -62,9 +61,17 @@ console.log(searchResults)
       </div>
 
       {searchResults.map(
-        ({ id, name, photo, ingredients, description, timeInMinutes,tags }) => {
-          // console.log(tags)
-         
+        ({
+          id,
+          name,
+          photo,
+          ingredients,
+          description,
+          timeInMinutes,
+          tags,
+        }) => {
+          console.log(tags);
+
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -76,10 +83,15 @@ console.log(searchResults)
                 </li>
                 <li>{photo && <Image src={photo} alt={name} />}</li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
-          
 
                 <RecipeIngredients ingredients={ingredients} />
-                <RecipeCategories tags={tags}/>
+                  {Object.keys(tags).map((tag) => {
+                    <ul>
+                      <li>{tag.name}</li>
+                      <li>{tag.description}</li>
+                    </ul>
+                  })
+                }
                 <Title>Method</Title>
                 <li>{description}</li>
               </List>
