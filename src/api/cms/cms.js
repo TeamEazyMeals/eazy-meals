@@ -1,5 +1,5 @@
 import axios from "axios";
-// import app from "../app/app"
+
 const GET_ALL_RECIPE_DATA_QUERY = `
 {
   recipes {
@@ -13,6 +13,11 @@ const GET_ALL_RECIPE_DATA_QUERY = `
     ingredients
 
     steps
+    tags {
+    
+      name
+      description
+    }
   }
 }
 `;
@@ -30,7 +35,11 @@ const syncRecipes = async () => {
     return {
       ...singleRecipe,
       ingredients: singleRecipe.ingredients[0].ingredients,
-      photo: singleRecipe.photo && singleRecipe.photo.url
+      photo: singleRecipe.photo && singleRecipe.photo.url,
+      tags:
+        singleRecipe.tags
+          && singleRecipe.tags[0]
+          
     };
 
   });
