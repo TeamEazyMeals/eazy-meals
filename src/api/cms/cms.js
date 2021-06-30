@@ -37,7 +37,7 @@ const syncRecipes = async () => {
       ingredients: singleRecipe.ingredients[0].ingredients,
       photo: singleRecipe.photo && singleRecipe.photo.url,
       tags:
-        singleRecipe.tags
+        singleRecipe.tags 
           && singleRecipe.tags[0]
           
     };
