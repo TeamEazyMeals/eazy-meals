@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
-import Timer from "../Timer/Timer";
 
 const Body = styled.div`
   text-align: center;
@@ -37,7 +36,6 @@ const Text = styled.p`
   line-hieght: 25px;
 `;
 const GetRecipe = () => {
-
   const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
   console.log(recipes)
@@ -54,6 +52,7 @@ const GetRecipe = () => {
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
     setrecipe(foundRecipe);
+    // console.log(foundRecipe);
   };
   useEffect(() => getRecipe(), []);
 
@@ -70,9 +69,7 @@ const GetRecipe = () => {
         <h1>{recipes.name}</h1>
         {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
-        <a href={`/allrecipes/${id}/addrecipetomealplan`}>
-          Add {recipes.name}to meal plan
-        </a>
+       
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
@@ -89,19 +86,23 @@ const GetRecipe = () => {
                 </ul>
               );
             })}
+            
           </div>
         )}
+
+        
 
         <div>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
         </div>
-        <Timer />
+        
+ 
+        <button>skip Timer</button>
       </Body>
     </React.Fragment>
   );
 };
-
 
 export default GetRecipe;

@@ -13,6 +13,11 @@ const GET_ALL_RECIPE_DATA_QUERY = `
     ingredients
 
     steps
+    tags {
+    
+      name
+      description
+    }
   }
 }
 `;

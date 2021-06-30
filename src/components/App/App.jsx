@@ -17,6 +17,7 @@ import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
+import RecipeCategories from "../RecipeCategories/RecipeCategories"
 
 internalRecipes.sync();
 
@@ -51,7 +52,7 @@ const App = () => {
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
           <Route path="/mealplan" children={<MealPlan />} />
-
+          <Route path="/categories" children={<RecipeCategories />} />
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
