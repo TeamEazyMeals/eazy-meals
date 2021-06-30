@@ -36,10 +36,9 @@ const Text = styled.p`
   line-hieght: 25px;
 `;
 const GetRecipe = () => {
-
   const { recipeId: id } = useParams();
   const [recipes, setrecipe] = useState([]);
-  // console.log(recipes)
+  console.log(recipes)
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
@@ -53,8 +52,7 @@ const GetRecipe = () => {
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
     setrecipe(foundRecipe);
-    console.log(foundRecipe)
-    
+    // console.log(foundRecipe);
   };
   useEffect(() => getRecipe(), []);
 
@@ -68,13 +66,10 @@ const GetRecipe = () => {
         <Title>Eazy Meals</Title>
       </Header>
       <Body>
-     
         <h1>{recipes.name}</h1>
-        {/* {console.log(recipes)} */}
+        {console.log(recipes)}
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
-        <a href={`/allrecipes/${id}/addrecipetomealplan`}>
-          Add {recipes.name}to meal plan
-        </a>
+       
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
@@ -84,7 +79,6 @@ const GetRecipe = () => {
         {showrecipe && (
           <div>
             {recipes.ingredients.map((recp) => {
-           
               return (
                 <ul key={uuidv4()}>
                   <span>{recp.name} </span> {recp.amount * count}
@@ -92,10 +86,10 @@ const GetRecipe = () => {
                 </ul>
               );
             })}
-         
-
+            
           </div>
         )}
+
         
 
         <div>
@@ -103,12 +97,12 @@ const GetRecipe = () => {
 
           <StepsSwiper steps={recipes.steps} />
         </div>
-      
+        
+ 
         <button>skip Timer</button>
       </Body>
     </React.Fragment>
   );
 };
-
 
 export default GetRecipe;

@@ -39,8 +39,8 @@ const FetchRecipes = () => {
     searchResults,
   } = useFetchRecipes();
   
-
-console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Rosted Salmon"))
+  
+console.log(searchResults)
   if (!recipeData) {
     return <Title> Loading recipes.....</Title>;
   }
@@ -63,7 +63,8 @@ console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Ro
 
       {searchResults.map(
         ({ id, name, photo, ingredients, description, timeInMinutes,tags }) => {
-          console.log(tags)
+          // console.log(tags)
+         
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -75,6 +76,7 @@ console.log(searchResults.some(searchResults=>searchResults.name =="Blackened Ro
                 </li>
                 <li>{photo && <Image src={photo} alt={name} />}</li>
                 <h4>Time in minutes:{timeInMinutes}</h4>
+          
 
                 <RecipeIngredients ingredients={ingredients} />
                 <RecipeCategories tags={tags}/>

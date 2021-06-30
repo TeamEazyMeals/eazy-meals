@@ -1,7 +1,8 @@
-import React from "react";
-import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
+import React, { Fragment } from "react"
+import FetchRecipes from "../FetchRecipes/FetchRecipes";
+import uuid from "react-uuid";
 import styled from "styled-components";
-import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+
 
 
 const Title = styled.h1`
@@ -28,51 +29,19 @@ const Image = styled.img`
   height: auto;
 `;
 
-const RecipeCategories= () => {
-  const {
-    recipeData,
-    searchItem,
-    handleOnSearch,
-    handleSort,
-    searchResults,
-  } = useFetchRecipes();
-  // console.log (searchResults)
-  
- 
-  if (!recipeData) {
-    return <Title> Loading recipes.....</Title>;
-  
-  }
-
-  return(
-  <>
-  
-  {searchResults.map(
-        ({ id, name, photo, ingredients, description, timeInMinutes }) => {
-          return (
-            <div key={id}>
-              <Title3>All Recipes</Title3>
-              <List>
-                <li>
-                  <Title>
-                    <a href={`/allrecipes/${id}`}>{name}</a>
-                  </Title>
-                </li>
-                <li>{photo && <Image src={photo} alt={name} />}</li>
-                <h4>Time in minutes:{timeInMinutes}</h4>
-
-                <RecipeIngredients ingredients={ingredients} />
-                <RecipeCategories ingredients={ingredients}/>
-                <Title>Method</Title>
-                <li>{description}</li>
-              </List>
-            </div>
-          );
-        }
-      )}
-    </>
-  
-
-  ) 
+const RecipeCategories= ({tags}) => {
+  if(tags!=[]){}
+  return tags.map((tag) => {
+    return (
+      <Fragment key={uuid()}>
+        <List>
+          <li>
+            {tag.name} {tag.amount} {tag.unit}
+          </li>
+        </List>
+      </Fragment>
+    );
+  });
 };
+   
 export default RecipeCategories;

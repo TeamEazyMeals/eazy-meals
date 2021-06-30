@@ -17,6 +17,7 @@ import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
+import RecipeCategories from "../RecipeCategories/RecipeCategories"
 
 internalRecipes.sync();
 
