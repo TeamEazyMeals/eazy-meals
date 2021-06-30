@@ -1,71 +1,125 @@
-import React from "react";
-import DataTable from "react-data-table-component";
+import React, { useState } from "react";
+import { v4 as createId} from "uuid";
 import { parse } from "query-string";
-import { Checkbox, IconButton} from "@material-ui/core";
-import { Delete, Edit } from "@material-ui/icons";
+import styled from "styled-components";
 
-const data = [
-  { id: 1, Type: "Type" },
-  { id: 2, Sunday: "Sunday" },
-  { id: 2, Sunday: "Monday" },
-  { id: 2, Sunday: "Tuesday" },
-  { id: 2, Sunday: "Wednesday" },
-  { id: 2, Sunday: "Thursday" },
-  { id: 2, Sunday: "Friday" },
-  { id: 2, Sunday: "Saturday" },
-];
-const columns = [
-  {
-    name: "Type",
+const Cell = styled.td`
+  border: 1px solid grey;
+  width: ${100 / 7}%;
+`;
+
+const Table = styled.table`
+  width: 100%;
+`;
+
+const columns = {
+  mon: {
+    title: "Monday",
+    id: "mon",
   },
-  { name: "Sunday" },
-  { name: "Monday" },
-  { name: "Tuesday" },
-  { name: "Wednesday" },
-  { name: "Thursday" },
-  { name: "Friday" },
-  { name: "Saturday" },
-];
+  tue: {
+    title: "Tuesday",
+    id: "tue",
+  },
+  wed: {
+    title: "Wednesday",
+    id: "wed",
+  },
+  thu: {
+    title: "Thursday",
+    id: "thu",
+  },
+  fri: {
+    title: "Friday",
+    id: "fri",
+  },
+  sat: {
+    title: "Saturday",
+    id: "sat",
+  },
+  sun: {
+    title: "Sunday",
+    id: "sun",
+  },
+};
+/**
+ * 
+ * @typedef {'mon' | 'tue'| 'wed'| 'thu'| 'fri'| 'sat' | 'sun'} day
+ *  
+ */
+/**
+ * 
+ * @typedef {'breakfast' | 'lunch' | 'snack' | 'dinner'} type
+ */
+/**
+ * @typedef {object} slot
+ * @property {string} id
+ * @property {string} meal
+ * @property {type} type
+ * @property {day} day
+ */
+const useAddMealPlanTypeTable = (startingSlot) => {
+  /**
+   * @type {[slot[], (newSlots: slot[]) => void]}
+   */
+  const [slots, setSlots] = useState(!startingSlot ? [] : [{ id: createId(), startingSlot }]);
 
+  /**
+   * @param {string} id
+   */
+  const remove = (id) => setSlots(slots.filter(singleSlot => singleSlot.id !== id))
+  /**
+   * @param {slot} newSlot
+   */
+  const add = (newSlot) => setSlots([...slots, newSlot]);
+  // const update = () => {};
+
+  return {
+    slots,
+    remove,
+    add
+  };
+};
+
+ const { mealSelectValue, mealTypeValue, dayValue } = parse(window.location.search);
+ /**
+  * 
+  * @returns {slot[]}
+  */
+ const createInitialSlot = () => {
+   if (!dayValue || !mealTypeValue || !mealSelectValue) return []
+   return[{
+     id: createId(),
+     dayValue,
+     mealSelectValue,
+     mealTypeValue,
+   }]
+ }
 const AddMealPlanTypeTable = () => {
-  const query = parse(window.location.search);
-  const ExpandableComponent = [
-    { name: `${query.dayValue}` },
-    { name: `${query.mealTypeValue}` },
-    { name: `${query.mealSelectValue}` },
-  ];
-  console.log(ExpandableComponent);
-
-  // const rows = [{name: `${query.dayValue}`},
-  // {name: `${query.mealTypeValue}`},
-  // {name: `${query.mealSelectValue}`}];
-
+  const { slots } = useAddMealPlanTypeTable({mealSelectValue, mealTypeValue, dayValue});
+  // const query = parse(window.location.search);
   
-
-  const handleChange = (state) => {
-    console.log("Selected Rows: ", state.selectedRows);
-  
-  }
-  
-
   return (
-    <>
-      {/* <div> {dayValue} {mealTypeValue} {mealSelectValue} </div> */}
-      <DataTable
-        title="Meal Table"
-        // columns={columns}
-        data={data}
-        selectableRows //add for checkbox selection
-        Clicked
-        onSelectedRowsChange={handleChange}
-        onChange
-        columns ={ExpandableComponent}
-        onClick
-       
-      />
-            
-     
-    </>
+    <Table>
+      <thead>
+        <tr>
+          {Object.values(columns).map(({ id, title}) => {
+            return ( 
+            <Cell key={id} as="th">{title}</Cell>
+            );
+          })}
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {slots.map((singleSlot) => singleSlot.id)} 
+          <Cell>
+            {mealSelectValue}({mealTypeValue})
+          </Cell>
+        </tr>
+      </tbody>
+    </Table>
   );
 };
 
