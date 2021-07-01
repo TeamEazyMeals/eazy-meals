@@ -98,12 +98,21 @@ const useAddMealPlanTypeTable = (startingSlot) => {
 const AddMealPlanTypeTable = () => {
   const { slots } = useAddMealPlanTypeTable({mealSelectValue, mealTypeValue, dayValue});
   // const query = parse(window.location.search);
+  const columnStructure = Object.values(columns).map((singleColumn) => {
+    return{
+      ...singleColumn,
+      slots: slots.filter((slotFromState) => slotFromState.day === singleColumn.id)
+      
+    }
+  })
+  const maxColumnSlots = Math.max(...columnStructure.map(({ slots }) => slots.length))
+  const emptyRowsArray = new Array(maxColumnSlots).fill(null).map((value, index) => index)
   
   return (
     <Table>
       <thead>
         <tr>
-          {Object.values(columns).map(({ id, title}) => {
+          {columnStructure.map(({ id, title}) => {
             return ( 
             <Cell key={id} as="th">{title}</Cell>
             );
@@ -112,12 +121,19 @@ const AddMealPlanTypeTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {slots.map((singleSlot) => singleSlot.id)} 
-          <Cell>
-            {mealSelectValue}({mealTypeValue})
-          </Cell>
-        </tr>
+      {emptyRowsArray.map((number) => {
+          return (
+            <tr>
+              {columnStructure.map(({id, title, slots}) => {
+                const currentSlot = slots[number];
+                const content = currentSlot ? `${currentSlot.meal} (${currentSlot.type})` : '';
+                return (
+                  <Cell key={`${number}-${id}`}>{content})</Cell>)}
+                )
+              }
+            </tr>
+          )
+        })}
       </tbody>
     </Table>
   );
