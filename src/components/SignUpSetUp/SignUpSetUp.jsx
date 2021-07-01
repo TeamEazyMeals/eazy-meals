@@ -38,7 +38,7 @@ const CancelButton = styled(Button)`
   }
 `;
 const Nav = styled.nav`
-bacground-color:grey;
+background-color:grey;
 `
 
 const PasswordAndEyeDiv = styled.div``;

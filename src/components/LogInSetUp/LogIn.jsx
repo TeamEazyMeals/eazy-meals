@@ -55,10 +55,11 @@ const Link = styled.a`
   white-space: nowrap;
 `;
 const LogIn = () => {
+  
   const { handleEmailInput, handlePasswordInput, handleLoginForm } = useAuth({
     shouldNotBeLoggedIn: true,
   });
-
+  
   return (
     <div>
       <nav>
