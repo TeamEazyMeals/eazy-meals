@@ -12,8 +12,8 @@ import HealthConditions from "../../views/HealthConditions/HealthConditions";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
-import MealPlan from "../MealPlan/MealPlan";
-import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
+import MealPlan from "../../views/MealPlan/MealPlan";
+import AddMealPlanTypeTable from "../../views/MealPlan/AddMealPlanTypeTable";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
@@ -46,8 +46,8 @@ const App = () => {
           />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
           <Route
-            path="/allrecipes/:recipeId/addrecipetomealplan"
-            children={<AddRecipeToMealPlan />}
+            path="views/mealplan/addmealplantypetable"
+            children={<AddMealPlanTypeTable />}
           />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
