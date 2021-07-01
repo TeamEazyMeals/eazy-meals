@@ -88,7 +88,7 @@ const MealPlan = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const query = stringify({ dayValue, mealTypeValue, mealSelectValue })
-    history.push(`../addmealplantable?${query}`)
+    history.push(`/mealplan/addmealplantypetable?${query}`);
   }
   return (
     <div>
