@@ -46,7 +46,7 @@ const App = () => {
           />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
           <Route
-            path="views/mealplan/addmealplantypetable"
+            path="/mealplan/addmealplantypetable"
             children={<AddMealPlanTypeTable />}
           />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
