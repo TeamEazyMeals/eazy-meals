@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import useAuth from "../../utility/useAuth";
 import styled from "styled-components";
@@ -55,7 +55,7 @@ const Link = styled.a`
   white-space: nowrap;
 `;
 const LogIn = () => {
-  
+  const [passwordShown, setPasswordShown] = useState(false);
   const { handleEmailInput, handlePasswordInput, handleLoginForm } = useAuth({
     shouldNotBeLoggedIn: true,
   });
@@ -85,6 +85,7 @@ const LogIn = () => {
                 name="password"
                 placeholder="Enter Password"
                 autoComplete="on"
+                type={passwordShown ? "text" : "password"}
                 required
                 onChange={handlePasswordInput}
               />
