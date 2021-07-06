@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
+import RecipeCatergories from "../RecipeCategories/RecipeCategories";
 
 const Title = styled.h1`
   font-family: Arial, sans-serif;
@@ -69,7 +70,6 @@ const FetchRecipes = () => {
           timeInMinutes,
           tags,
         }) => {
-
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -86,8 +86,10 @@ const FetchRecipes = () => {
                 <Title>Method</Title>
                 <li>{description}</li>
                 <h3>Recipe tags:</h3>
+
                 {tags != undefined ? (
                   Object.values(tags).map((tag) => {
+                    <RecipeCatergories tags={tags} />;
                     return <p>{tag}</p>;
                   })
                 ) : (
