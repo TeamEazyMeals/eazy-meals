@@ -1,5 +1,5 @@
 const staticCacheName = "site-static-v1";
-const dynamicCacheName = "site-dynamic-v2";
+const dynamicCacheName = "site-dynamic-v1";
 
 const assets = self.__WB_MANIFEST;
 
@@ -14,7 +14,6 @@ self.addEventListener("install", (evt) => {
   );
 });
 
-// listening for the activate event
 self.addEventListener("activate", (evt) => {
   evt.waitUntil(
     caches.keys().then((keys) => {
