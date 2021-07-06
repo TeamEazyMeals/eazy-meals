@@ -6,8 +6,9 @@ const RecipeCategories = () => {
   const { searchResults } = useFetchRecipes();
 console.log(searchResults, "all tags")
   return (
-    <>
+<>
       {searchResults.map(({ tags }) => {
+          console.log(tags)
         return (
           <>
             {Object.keys(tags)
