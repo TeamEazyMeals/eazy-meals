@@ -36,14 +36,10 @@ const syncRecipes = async () => {
       ...singleRecipe,
       ingredients: singleRecipe.ingredients[0].ingredients,
       photo: singleRecipe.photo && singleRecipe.photo.url,
-      tags:
-        singleRecipe.tags 
-          && singleRecipe.tags[0]
-          
+      tags: singleRecipe.tags && singleRecipe.tags[0],
     };
-
   });
-  
+
   window.localStorage.setItem("recipes", JSON.stringify(transformedRecipes));
   return transformedRecipes;
 };
