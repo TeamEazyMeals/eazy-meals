@@ -17,6 +17,7 @@ const RecipeCategories=({tags})=>{
                </ul>
            )
         })} */}
+        
         </>
     )
 }
