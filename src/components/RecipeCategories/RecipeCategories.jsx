@@ -14,13 +14,13 @@ const RecipeCategories = () => {
             {Object.values(tags)
               .filter(recipeTag => recipeTag.name === "chicken"
               )
-              .map((recipeName) => {
+              .map(() => {
                 return (
                   <div key={uuid()}>
                     <h1>chicken Recipes</h1>
 
                     <ul>
-                      <li>{recipeName}</li>
+                      <li></li>
                     </ul>
                   </div>
                 );
