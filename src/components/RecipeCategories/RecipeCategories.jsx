@@ -4,17 +4,16 @@ import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
 
 const RecipeCategories = () => {
   const { searchResults } = useFetchRecipes();
-console.log(searchResults, "all tags")
+
   return (
-<>
+    <>
       {searchResults.map(({ tags }) => {
-          console.log(tags)
+        console.log(tags)
         return (
           <>
-            {Object.keys(tags)
-              .filter((recipeTag) => {
-                return recipeTag === "chicken";
-              })
+            {Object.values(tags)
+              .filter(recipeTag => recipeTag.name === "chicken"
+              )
               .map((recipeName) => {
                 return (
                   <div key={uuid()}>
