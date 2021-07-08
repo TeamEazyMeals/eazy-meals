@@ -18,6 +18,7 @@ import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
+import Fallback from "../../views/FallBack/FallBack";
 
 internalRecipes.sync();
 
@@ -31,7 +32,6 @@ const App = () => {
             path="/config/familyallergies"
             children={<FamilyAllergies />}
           />
-
           <Route
             path="/config/healthconditions"
             children={<HealthConditions />}
@@ -56,6 +56,7 @@ const App = () => {
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
+          <Route path="/fallback" children={<Fallback />}></Route>
           <Route path="/" children={<HomePage />} />
         </Switch>
       </BrowserRouter>
