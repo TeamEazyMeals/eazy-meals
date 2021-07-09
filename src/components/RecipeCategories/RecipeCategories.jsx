@@ -4,15 +4,16 @@ import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
 
 const RecipeCategories = () => {
   const { searchResults } = useFetchRecipes();
-
+console.log( searchResults,"gggggg")
   return (
     <>
       {searchResults.map(({ tags }) => {
-        console.log(tags)
+        // const {name}= tags
+        // console.log(tags)
         return (
           <>
             {Object.values(tags)
-              .filter(recipeTag => recipeTag.name === "chicken"
+              .filter(recipeTag => recipeTag.name=== "chicken"
               )
               .map((recipename) => {
                 return (
@@ -20,11 +21,12 @@ const RecipeCategories = () => {
                     <h1>chicken Recipes</h1>
 
                     <ul>
-                      <li>{recipe}</li>
+                      <li>{recipename}</li>
                     </ul>
                   </div>
                 );
               })}
+              {/* {Object.values(tags).forEach(val => console.log(val))} */}
           </>
         );
       })}
