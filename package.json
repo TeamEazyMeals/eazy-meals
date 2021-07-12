@@ -34,6 +34,7 @@
     "swiper": "^6.7.0",
     "uuid": "^8.3.2",
     "validator": "^13.6.0",
+    "web-push": "^3.4.5",
     "web-vitals": "^2.0.0"
   },
   "scripts": {

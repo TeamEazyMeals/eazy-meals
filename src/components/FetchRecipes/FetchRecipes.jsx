@@ -29,6 +29,11 @@ const Image = styled.img`
   width: 10%;
   height: auto;
 `;
+const OfflineDiv = styled.div`
+  padding-left: 10%;
+  color: #9f6000;
+  background-color: #feefb3;
+`;
 
 const FetchRecipes = () => {
   const {
@@ -37,6 +42,7 @@ const FetchRecipes = () => {
     handleOnSearch,
     handleSort,
     searchResults,
+    mode,
   } = useFetchRecipes();
 
   if (!recipeData) {
@@ -45,6 +51,13 @@ const FetchRecipes = () => {
 
   return (
     <Content>
+      <OfflineDiv>
+        {mode === "offline" ? (
+          <h3>
+            Currently In Offline Mode / Connection Error
+          </h3>
+        ) : null}
+      </OfflineDiv>
       <Title>eazy-meals</Title>
 
       <div>
@@ -88,11 +101,9 @@ const FetchRecipes = () => {
 
                 {tags != undefined ? (
                   Object.values(tags).map((tag) => {
-                   
                     <RecipeCategories tag={tag} />;
                     return <p>{tag}</p>;
                   })
-                  
                 ) : (
                   <p>no tags</p>
                 )}
