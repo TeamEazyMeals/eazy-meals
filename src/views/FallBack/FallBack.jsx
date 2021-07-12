@@ -1,6 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import useAuth from "../../utility/useAuth";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
@@ -20,27 +18,21 @@ const StyledButton = styled(Button)`
     color:white;
     margin-top:50px;
     font-size:20px;
-    margin-left:20%;
-
-    
+  margin-left: 20%;
 `;
 const StyledDiv = styled.div`
   margin: auto;
   width: 50%;
   padding: 10px;
-  alighn-items:center;
+  alighn-items: center;
 `;
 
 const StyledP = styled.p`
-color: black;
+  color: green;
   font-weight: bold;
-  font-size:1.5rem;
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  padding: 1rem;
-  text-align: center;
-  white-space: nowrap;`;
+  font-size: 1.5rem;
+  padding:0.5rem;
+`;
 
 const FallBack = () => {
   return (
@@ -48,8 +40,7 @@ const FallBack = () => {
       <Header>OOPS!!</Header>
       <StyledP>Currently you cannot view this page offline</StyledP>
 
-     <StyledButton href="/">Go to Homepage</StyledButton>
-  
+      <StyledButton href="/">Go to Homepage</StyledButton>
     </StyledDiv>
   );
 };

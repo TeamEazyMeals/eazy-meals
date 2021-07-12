@@ -35,24 +35,34 @@ text-transform uppercase;
 const Text = styled.p`
   line-hieght: 25px;
 `;
+
+const OfflineDiv = styled.div`
+  padding-left: 10%;
+  color: #9f6000;
+  background-color: #feefb3;
+`;
 const GetRecipe = () => {
   const { recipeId: id } = useParams();
-  const [recipes, setrecipe] = useState([]);
-  console.log(recipes)
+  const [recipes, setRecipe] = useState([]);
+ const [mode, setMode] = useState("online");
   const [count, setCount] = useState(1);
   const [showrecipe, setShowRecipe] = useState(false);
 
   const getRecipe = async () => {
     if (app.calcIfShouldSync()) {
-      const response = await cms.syncRecipes();
-      setrecipe(response);
+      const response = await cms.syncRecipes().catch((err) => {
+        setMode("offline")
+      const response = JSON.parse(window.localStorage.getItem("recipes"));
+      setRecipe(response);
+      });
+      setRecipe(response);
     }
     const response = JSON.parse(window.localStorage.getItem("recipes"));
-    setrecipe(response);
+    setRecipe(response);
 
     const foundRecipe = response.find((recipe) => recipe.id === id);
-    setrecipe(foundRecipe);
-    // console.log(foundRecipe);
+    setRecipe(foundRecipe);
+   
   };
   useEffect(() => getRecipe(), []);
 
@@ -62,14 +72,17 @@ const GetRecipe = () => {
 
   return (
     <React.Fragment>
+      <OfflineDiv>
+        {mode === "offline" ? <h3>Currently In Offline Mode / Connection Error</h3> : null}
+      </OfflineDiv>
       <Header>
         <Title>Eazy Meals</Title>
       </Header>
       <Body>
         <h1>{recipes.name}</h1>
-        {console.log(recipes)}
+
         {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
-       
+
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
         <p>{recipes.description}</p>
@@ -86,19 +99,15 @@ const GetRecipe = () => {
                 </ul>
               );
             })}
-            
           </div>
         )}
-
-        
 
         <div>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
         </div>
-        
- 
+
         <button>skip Timer</button>
       </Body>
     </React.Fragment>
