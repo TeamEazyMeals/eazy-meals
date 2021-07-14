@@ -21,8 +21,7 @@ const StyledButton = styled(Button)`
     padding: 17px 70px;
     color:white;
     margin-top:70px;
-
-    
+ 
 `;
 const Title = styled.h1`
   text-align: center;

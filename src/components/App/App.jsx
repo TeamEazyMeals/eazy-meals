@@ -14,10 +14,15 @@ import Goals from "../../views/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../../views/MealPlan/MealPlan";
 import AddMealPlanTypeTable from "../../views/MealPlan/AddMealPlanTypeTable";
-import HomePage from "../../views/AllRecipes/HomePage";
+
+import { SignIn } from "../../views/SignIn/SignIn";
+import { Patterns } from "../../views/Patterns/Patterns";
+import { tokens } from "../../data/Tokens";
+import HomePage from "../../views/HomePages/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
+import Landing from "../../views/Landing";
 
 internalRecipes.sync();
 
@@ -56,6 +61,11 @@ const App = () => {
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
+          <Route path="/landing" children={<Landing />} />
+
+          <Route path="/patterns" children={<Patterns />} />
+          <Route path="/signin" children={<SignIn />} />
+           
           <Route path="/" children={<HomePage />} />
         </Switch>
       </BrowserRouter>
