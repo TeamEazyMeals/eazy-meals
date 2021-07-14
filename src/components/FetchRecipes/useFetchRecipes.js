@@ -13,6 +13,9 @@ const reducer = (state, action) => {
   if (action.type === "SORT_VALUE") {
     return { ...state, sortValue: action.payload };
   }
+   if (action.type === "Mode") {
+     return { ...state, mode: action.payload };
+   }
   throw new Error("invalid type selected");
 };
 
@@ -20,6 +23,7 @@ const defaultState = {
   recipeData: [],
   searchItem: "",
   sortValue: "",
+  mode:"online"
 };
 
 const useFetchRecipes = () => {
@@ -31,7 +35,14 @@ const useFetchRecipes = () => {
 
   const getRecipeData = async () => {
     if (app.calcIfShouldSync()) {
-      await cms.syncRecipes();
+      await cms.syncRecipes()
+      .catch((err) => {
+      const recipesString = window.localStorage.getItem("recipes");
+      const data = JSON.parse(recipesString);
+        dispatch({ type: "RECIPE_DATA", payload: data });
+        dispatch({type:"Mode", payload: "offline"})
+        return data;
+      });
     }
     const recipesString = window.localStorage.getItem("recipes");
     const data = JSON.parse(recipesString);

@@ -7,7 +7,7 @@
   "theme_color": "#b7faac",
   "icons": [
     {
-      "src": "/images/salad512*512px.png",
+      "src": "/images/salad512x512px.png",
       "type": "image/png",
       "sizes": "512x512"
     },
@@ -16,22 +16,22 @@
       "sizes": "256x256"
     },
     {
-      "src": "/images/salad128*128px.png",
+      "src": "/images/salad128x128px.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "/images/salad64*64px.png",
+      "src": "/images/salad64x64px.png",
       "type": "image/png",
       "sizes": "64x64"
     },
     {
-      "src": "/images/salad32*32px.png",
+      "src": "/images/salad32x32px.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "/images/salad24*24px.png",
+      "src": "/images/salad24x24px.png",
       "type": "image/png",
       "sizes": "24x24"
     }
