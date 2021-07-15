@@ -12,10 +12,15 @@ import HealthConditions from "../../views/HealthConditions/HealthConditions";
 import Preferences from "../../views/Preferences";
 import Goals from "../../views/Goals/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
-import MealPlan from "../MealPlan/MealPlan";
-import AddRecipeToMealPlan from "../MealPlan/AddRecipeToMealPlan";
+import MealPlan from "../../views/MealPlan/MealPlan";
+import AddMealPlanTypeTable from "../../views/MealPlan/AddMealPlanTypeTable";
 import HomePage from "../../views/AllRecipes/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
+import internalRecipes from "../../api/cms/internalRecipes";
+import RecipeCategories from "../RecipeCategories/RecipeCategories";
+import Fallback from "../../views/FallBack/FallBack";
+
+internalRecipes.sync();
 
 const App = () => {
   return (
@@ -27,7 +32,6 @@ const App = () => {
             path="/config/familyallergies"
             children={<FamilyAllergies />}
           />
-
           <Route
             path="/config/healthconditions"
             children={<HealthConditions />}
@@ -41,16 +45,18 @@ const App = () => {
             children={<UploadCustomRecipe />}
           />
           <Route path="/allrecipes/getrecipe" children={<GetRecipe />} />
-          <Route path="/allrecipes/:recipeId/addrecipetomealplan"
-            children={<AddRecipeToMealPlan />}
+          <Route
+            path="/mealplan/addmealplantypetable"
+            children={<AddMealPlanTypeTable />}
           />
           <Route path="/allrecipes/:recipeId" children={<GetRecipe />} />
           <Route path="/allrecipes" children={<AllRecipes />} />
           <Route path="/mealplan" children={<MealPlan />} />
-
+          <Route path="/categories" children={<RecipeCategories />} />
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
+          <Route path="/fallback" children={<Fallback />}></Route>
           <Route path="/" children={<HomePage />} />
         </Switch>
       </BrowserRouter>

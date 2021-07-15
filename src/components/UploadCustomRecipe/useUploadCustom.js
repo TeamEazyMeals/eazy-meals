@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { v4 as createId } from "uuid";
 import recipesDB from "../../api/app/indexedDB";
-import ReactFileReader from "react-file-reader";
 
 const useUploadCustom = () => {
   const [recipeName, setRecipeName] = useState("");
@@ -10,8 +9,9 @@ const useUploadCustom = () => {
   const [ingredients, setIngredients] = useState("");
   const [method, setMethod] = useState("");
   const [duration, setDuration] = useState(0);
-  const [recipeObject, setRecipeObject] = useState({});
-
+  const [recipeObject, setRecipeObject] = useState("");
+  const [editRecipe, setEditRecipe] = useState(false);
+ 
   const recipeNameHandler = (e) => {
     setRecipeName(e.target.value);
     console.log(recipeName);
@@ -26,65 +26,55 @@ const useUploadCustom = () => {
   };
 
   const selectedFileHandler = (e) => {
-     const file = e.target.files[0];
-      setSelectedFile(file)
+    const file = e.target.files[0];
+    setSelectedFile(file);
   };
-
-
 
   const ingredientsHandler = (e) => {
     setIngredients(e.target.value);
+    console.log(ingredients);
   };
 
   const methodHandler = (e) => {
     setMethod(e.target.value);
+    console.log(method);
   };
-  const fileDataHandler = (e) => {
+
+  const handleEditRecipe = () => {
+    setEditRecipe(!editRecipe);
+  };
+  console.log(recipeName, servings, selectedFile);
+  const fileDataHandler = async (e) => {
     e.preventDefault();
-    console.log("hello")
-    const id =  createId();
-  console.log( selectedFile);
-    recipesDB
-      .createRecipe({ id, recipeName, servings, ingredients, method, selectedFile, duration })
+    const id = createId();
+    
+    const customRecipe = await recipesDB
+      .createRecipe({
+        id,
+        recipeName,
+        servings,
+        ingredients,
+        method,
+        selectedFile,
+        duration,
+      })
       .catch((error) => {
         console.log("creation error", error);
       });
 
+    console.log(customRecipe);
+    setRecipeObject({
+      ...customRecipe,
+      photo: URL.createObjectURL(customRecipe.photo),
+    });
   };
 
-  const getRecipeObject =()=>{
-    return (recipesDB
-      .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
-    .then((result) => { 
-       console.log(result);
-      setRecipeObject({...result,photo: URL.createObjectURL(result.photo)})}))
-   
+  const editRecipeSubmitForm =(e)=>{
+    handleEditRecipe();
+    fileDataHandler(e);
   }
-  console.log(recipeObject)
-
-  // const RecipeObj =()=>{
-  //   {recipesDB
-  //     .readRecipe("b056903e-988a-4e20-b00c-85752a8e8a05")
-  //     .then((result) => {
-  //       const customRecipe = Object.keys(result);
-  //       console.log(Array.isArray(customRecipe),customRecipe);
-  //       Object.keys(result).map((item) => {
-  //         return (
-  //           <ul>
-  //             <li>{item.name}</li>
-  //             <li>{item.serves}</li>
-  //             <li>{item.photo}</li>
-  //             <li>{item.ingredients}</li>
-  //             <li>{item.method}</li>
-  //           </ul>
-  //         );
-  //       });
-  //     });
-  // } 
-    // 
 
   return {
-     getRecipeObject,
     recipeObject,
     method,
     methodHandler,
@@ -98,6 +88,9 @@ const useUploadCustom = () => {
     recipeName,
     recipeNameHandler,
     fileDataHandler,
+    handleEditRecipe,
+    editRecipe,
+    editRecipeSubmitForm,
   };
 };
 

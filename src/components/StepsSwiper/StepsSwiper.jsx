@@ -4,17 +4,17 @@ import { useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import MobileStepper from "@material-ui/core/MobileStepper";
-import styled from "styled-components"
+import styled from "styled-components";
+import Timer from "../Timer/Timer";
 
-
-const Container =styled.div`
-justify-content: center;
-`
+const Container = styled.div`
+  justify-content: center;
+`;
 
 const StepsSwiper = (props) => {
   const { steps = [] } = props;
 
-  console.log(steps);
+  // console.log(steps);
   const theme = useTheme();
 
   const forwardButton = () => {
@@ -26,13 +26,13 @@ const StepsSwiper = (props) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   return (
-    <Container 
+    <Container
       style={{
         marginLeft: "40%",
       }}
     >
       <MobileStepper
-        steps={5}
+        steps={10}
         variant="dots"
         style={{
           flexGrow: 1,
@@ -41,7 +41,7 @@ const StepsSwiper = (props) => {
         activeStep={INDEX}
         position="static"
         nextButton={
-          <Button size="small" onClick={previousButton} disabled={INDEX === 4}>
+          <Button size="small" onClick={previousButton} disabled={INDEX === 9}>
             Next
             {theme.direction !== "rtl" ? (
               <KeyboardArrowRight />
@@ -62,7 +62,8 @@ const StepsSwiper = (props) => {
         }
       />
       <p>{steps[INDEX]}</p>
-    </Container >
+      <Timer />
+    </Container>
   );
 };
 

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
+import RecipeCategories from "../RecipeCategories/RecipeCategories";
+
 const Title = styled.h1`
   font-family: Arial, sans-serif;
   letter-spacing: -1px;
@@ -27,6 +29,11 @@ const Image = styled.img`
   width: 10%;
   height: auto;
 `;
+const OfflineDiv = styled.div`
+  padding-left: 10%;
+  color: #9f6000;
+  background-color: #feefb3;
+`;
 
 const FetchRecipes = () => {
   const {
@@ -35,6 +42,7 @@ const FetchRecipes = () => {
     handleOnSearch,
     handleSort,
     searchResults,
+    mode,
   } = useFetchRecipes();
 
   if (!recipeData) {
@@ -43,6 +51,13 @@ const FetchRecipes = () => {
 
   return (
     <Content>
+      <OfflineDiv>
+        {mode === "offline" ? (
+          <h3>
+            Currently In Offline Mode / Connection Error
+          </h3>
+        ) : null}
+      </OfflineDiv>
       <Title>eazy-meals</Title>
 
       <div>
@@ -58,7 +73,15 @@ const FetchRecipes = () => {
       </div>
 
       {searchResults.map(
-        ({ id, name, photo, ingredients, description, timeInMinutes }) => {
+        ({
+          id,
+          name,
+          photo,
+          ingredients,
+          description,
+          timeInMinutes,
+          tags,
+        }) => {
           return (
             <div key={id}>
               <Title3>All Recipes</Title3>
@@ -74,6 +97,16 @@ const FetchRecipes = () => {
                 <RecipeIngredients ingredients={ingredients} />
                 <Title>Method</Title>
                 <li>{description}</li>
+                <h3>Recipe tags:</h3>
+
+                {tags != undefined ? (
+                  Object.values(tags).map((tag) => {
+                    <RecipeCategories tag={tag} />;
+                    return <p>{tag}</p>;
+                  })
+                ) : (
+                  <p>no tags</p>
+                )}
               </List>
             </div>
           );

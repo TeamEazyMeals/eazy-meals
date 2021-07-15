@@ -14,8 +14,11 @@
     "gotrue-js": "^0.9.29",
     "har-validator": "^5.1.5",
     "idb": "^6.1.2",
+    "md5": "^2.3.0",
     "netlify-identity-widget": "^1.9.1",
+    "query-string": "^7.0.0",
     "react": "^17.0.2",
+    "react-data-table-component": "^6.11.7",
     "react-dom": "^17.0.2",
     "react-dropdown": "^1.9.2",
     "react-file-reader": "^1.1.4",
@@ -24,12 +27,14 @@
     "react-redirect": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "react-select": "^4.3.1",
+    "react-select": "^3.1.0",
     "react-uuid": "^1.0.2",
+    "serve": "^12.0.0",
     "styled-components": "^5.3.0",
     "swiper": "^6.7.0",
     "uuid": "^8.3.2",
     "validator": "^13.6.0",
+    "web-push": "^3.4.5",
     "web-vitals": "^2.0.0"
   },
   "scripts": {
@@ -38,7 +43,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "updateData": "node ./scripts/pullGraphCmsData.mjs"
   },
   "eslintConfig": {
     "extends": [

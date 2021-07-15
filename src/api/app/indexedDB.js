@@ -17,10 +17,8 @@ const createRecipe = async ({
   duration,
   selectedFile,
 }) => {
-  console.log("creating recipe");
   const db = await dbConnection;
-  console.log(id);
-  await db.add("recipes", {
+  const newRecipe = {
     id,
     name: recipeName,
     serves: servings,
@@ -28,13 +26,14 @@ const createRecipe = async ({
     ingredientList: ingredients,
     steps: method,
     timeInMinutes: duration,
-  });
+  };
+  await db.add("recipes", newRecipe);
+  return newRecipe;
 };
-
 
 const readRecipe = async (id) => {
   const db = await dbConnection;
-  if (typeof id === "string") return db.get("recipes",id);
+  if (typeof id === "string") return db.get("recipes", id);
   if (Array.isArray(id)) return db.getAll();
   throw new Error("invalid ID query");
 };
