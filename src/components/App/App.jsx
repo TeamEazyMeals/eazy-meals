@@ -22,11 +22,7 @@ import HomePage from "../../views/HomePages/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import internalRecipes from "../../api/cms/internalRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
-<<<<<<< HEAD
-import Landing from "../../views/Landing";
-=======
 import Fallback from "../../views/FallBack/FallBack";
->>>>>>> c642607d245cf8243fbe75842b2dc885f2f10a4e
 
 internalRecipes.sync();
 
