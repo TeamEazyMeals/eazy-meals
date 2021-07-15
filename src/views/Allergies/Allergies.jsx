@@ -38,6 +38,8 @@ const Allergies = (props) => {
 
     setAllergies([...allergies, event.target.value]);
   };
+
+  
   return (
     <div>
       <h2>Allergies</h2>
@@ -56,9 +58,9 @@ const Allergies = (props) => {
       />
       Nuts
       <input
-        selected={allergies.includes("Diary")}
+        selected={allergies.includes("Dairy")}
         type="checkbox"
-        value="Diary"
+        value="Dairy"
         onChange={handleAllergiesInput}
       />
       Diary
