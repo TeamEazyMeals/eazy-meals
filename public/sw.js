@@ -1,8 +1,16 @@
-// const staticCacheName = "site-static-v1";
-// const dynamicCacheName = "site-dynamic-v1";
-// // const assets = self.__WB_MANIFEST || ["/fallback"];
-// const assets = ["/fallback"];
-// console.log("all Files", assets);
+const staticCacheName = "site-static-v1";
+const dynamicCacheName = "site-dynamic-v1";
+const assets = [
+  "/manifest.json",
+  "/static/js/main.chunk.js",
+  "/static/js/vendors~main.chunk.js",
+  "/static/js/bundle.js",
+  "/https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap",
+  "/fallback",
+  "/",
+];
+
+console.log("all Files", assets);
 
 // // cache size limit function
 
@@ -37,26 +45,26 @@
 //   );
 // });
 
-// self.addEventListener("fetch", (evt) => {
-//   evt.respondWith(
-//     caches
-//       .match(evt.request)
-//       .then((cacheResponse) => {
-//         return (
-//           cacheResponse ||
-//           fetch(evt.request).then((fetchResponse) => {
-//             return caches.open(dynamicCacheName).then((cache) => {
-//               cache.put(evt.request.url, fetchResponse.clone());
-//               limitCacheSize(dynamicCacheName, 20);
-//               return fetchResponse;
-//             });
-//           })
-//         );
-//       })
-//       .catch(() => {
-//         if (evt.request.url.indexOf(".jsx") > -1) {
-//           return caches.match("/fallback");
-//         }
-//       })
-//   );
-// });
+self.addEventListener("fetch", (evt) => {
+  evt.respondWith(
+    caches
+      .match(evt.request)
+      .then((cacheResponse) => {
+        return (
+          cacheResponse ||
+          fetch(evt.request).then((fetchResponse) => {
+            return caches.open(dynamicCacheName).then((cache) => {
+              if (evt.request.url.indexOf("http") > -1) {
+                cache.put(evt.request.url, fetchResponse.clone());
+                limitCacheSize(dynamicCacheName, 100);
+                return fetchResponse;
+              }
+            });
+          })
+        );
+      })
+      .catch(() => {
+        return caches.match("/fallback");
+      })
+  );
+});

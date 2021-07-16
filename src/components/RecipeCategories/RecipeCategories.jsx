@@ -8,4 +8,4 @@ export const RecipeCategories = () => {
   
 };
 
-export default RecipeCategories;
+// export default RecipeCategories;
