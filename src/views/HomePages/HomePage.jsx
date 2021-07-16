@@ -7,7 +7,7 @@ import { Button } from "../../components/Button/Button";
 
 const Base = styled.div`
   min-height: 100vh;
-  /* background: ${tokens.shades.green.solid}; */
+  background: ${tokens.shades.green.solid};
   display: flex;
   flex-direction: column;
   padding: ${tokens.spacing.xl} ${tokens.spacing.l};
