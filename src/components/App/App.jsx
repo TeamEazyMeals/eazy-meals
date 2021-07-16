@@ -60,7 +60,7 @@ const App = () => {
           <Route path="/forgotpassword" children={<ForgotPassword />} />
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
-          <Route path="/landing" children={<Landing />} />
+          {/* <Route path="/landing" children={<Landing />} /> */}
 
           <Route path="/patterns" children={<Patterns />} />
           <Route path="/signin" children={<SignIn />} />

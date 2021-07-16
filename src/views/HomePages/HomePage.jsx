@@ -7,31 +7,30 @@ import { Button } from "../../components/Button/Button";
 
 const Base = styled.div`
   min-height: 100vh;
-  background: ${tokens.shades.green.solid};
+  /* background: ${tokens.shades.green.solid}; */
   display: flex;
   flex-direction: column;
   padding: ${tokens.spacing.xl} ${tokens.spacing.l};
 `;
 const Padded = styled.div`
-  padding: ${tokens.spacing.l} ${tokens.spacing.l} ${tokens.spacing.xl};
+  /* padding: ${tokens.spacing.l} ${tokens.spacing.l} ${tokens.spacing.xl};
+  color: ${tokens.highlights.white.heavy}; */
 
 `;
 const ButtonWrap = styled(Button)`
-  padding: 0.25rem 0;
+  /* padding: 0.25rem 0; */
 `;
-const Content = styled.div`
-  flex-grow: 1;
-`;
+// const Content = styled.div`
+//   flex-grow: 3;
+// `;
 
 export const HomePage = () => {
   return (
     <Base>
-      <Content>
-        <Padded>
+      <Padded>
           <Title inverse>Eazy Meals</Title>
-        </Padded>
-      </Content>
-
+      </Padded>
+    
       <ButtonWrap>
         <Button full inverse>
           Sign In
