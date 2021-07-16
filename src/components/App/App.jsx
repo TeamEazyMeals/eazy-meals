@@ -10,7 +10,7 @@ import Allergies from "../../views/Allergies";
 import FamilyAllergies from "../../views/Allergies/FamilyAllergies";
 import HealthConditions from "../../views/HealthConditions/HealthConditions";
 import Preferences from "../../views/Preferences";
-import Goals from "../../views/Goals";
+import Goals from "../../views/Goals/Goals";
 import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../../views/MealPlan/MealPlan";
 import AddMealPlanTypeTable from "../../views/MealPlan/AddMealPlanTypeTable";
