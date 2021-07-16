@@ -62,12 +62,13 @@ const useAddMealPlanTypeTable = (startingSlot) => {
   /**
    * @type {[slot[], (newSlots: slot[]) => void]}
    */
-  const [slots, setSlots] = useState(!startingSlot ? [] : [{ id: createId(), startingSlot }]);
+  const [slots, setSlots] = useState(startingSlot);
 
   /**
    * @param {string} id
    */
-  const remove = (id) => setSlots(slots.filter(singleSlot => singleSlot.id !== id))
+  const remove = (id) => 
+  setSlots(slots.filter((singleSlot) => singleSlot.id !== id));
   /**
    * @param {slot} newSlot
    */
@@ -83,20 +84,33 @@ const useAddMealPlanTypeTable = (startingSlot) => {
 
  const { mealSelectValue, mealTypeValue, dayValue } = parse(window.location.search);
  /**
-  * 
+  * @type {any} 
+  */
+ const day = dayValue;
+ /**
+  * @type {any} 
+  */
+  const type = mealTypeValue;
+  /**
+  * @type {any} 
+  */
+   const meal = mealSelectValue
+
+
+ /**
   * @returns {slot[]}
   */
- const createInitialSlot = () => {
+ const createInitialSlots = () => {
    if (!dayValue || !mealTypeValue || !mealSelectValue) return []
    return[{
      id: createId(),
-     dayValue,
-     mealSelectValue,
-     mealTypeValue,
+     day,
+     meal,
+     type,
    }]
  }
 const AddMealPlanTypeTable = () => {
-  const { slots } = useAddMealPlanTypeTable({mealSelectValue, mealTypeValue, dayValue});
+  const { slots } = useAddMealPlanTypeTable(createInitialSlots);
   // const query = parse(window.location.search);
   const columnStructure = Object.values(columns).map((singleColumn) => {
     return{
@@ -114,7 +128,9 @@ const AddMealPlanTypeTable = () => {
         <tr>
           {columnStructure.map(({ id, title}) => {
             return ( 
-            <Cell key={id} as="th">{title}</Cell>
+            <Cell key={id} as="th">
+              {title}
+            </Cell>
             );
           })}
          
@@ -128,11 +144,12 @@ const AddMealPlanTypeTable = () => {
                 const currentSlot = slots[number];
                 const content = currentSlot ? `${currentSlot.meal} (${currentSlot.type})` : '';
                 return (
-                  <Cell key={`${number}-${id}`}>{content})</Cell>)}
-                )
-              }
+                  <Cell key={`${number}-${id}`}>
+                    {content}
+                  </Cell>
+              )})}
             </tr>
-          )
+          );
         })}
       </tbody>
     </Table>

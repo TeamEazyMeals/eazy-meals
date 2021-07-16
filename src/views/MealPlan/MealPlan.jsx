@@ -8,17 +8,39 @@ import { useParams, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import useFetchRecipes from "../../components/FetchRecipes/useFetchRecipes";
 
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
+
 const Header = styled.h1`
-  font-size: 64px;
-  text-align: center;
-  color: white;
-  font: Robot;
-  background: #34a853;
+color: white;
+font-family: Roboto;
+font-size: 64px;
+font-style: normal;
+font-weight: 900;
+line-height: 66px;
+letter-spacing: 0px;
+text-align: center;
 `;
-const Container = styled.h2`
-  text-align: center;
-  font: Robot;
+const HeaderWrapper = styled.div`
+background-color: white;
+width: 40em;
+display:flex;
+align-items:center;
 `;
+
+const Wrapper = styled.nav`
+background: #34a853;
+margin-bottom: 4em;
+width:100em;
+`;
+
+// const Container = styled.h2`
+//   text-align: center;
+//   font: Robot;
+// `;
 const Form = styled.form`
   padding-top: 8rem;
   margin-top: 9rem;
@@ -38,7 +60,7 @@ const StyledButton = styled(Button)`
     float: center;
   }
 `;
-const Wrapper = styled.div`
+const SelectWrap = styled.div`
   text-align: center;
 `;
 
@@ -92,11 +114,16 @@ const MealPlan = () => {
   }
   return (
     <div>
-      <Header>Select Meal Plan</Header>
       <Container>
+       <HeaderWrapper>
+        <Wrapper>
+          <Header>Please select Meal Plan</Header>
+        </Wrapper>
+      </HeaderWrapper>
+      
         <h2>Welcome</h2>
         <p> Please select your meal plan</p>
-      </Container>
+      
       <content>
         <div>
           <SearchIcon fontSize="small"></SearchIcon>
@@ -146,13 +173,13 @@ const MealPlan = () => {
         {mealTypeValue === "" ? (
           <b></b>
         ) : dayValue !== "" ? (
-          <Wrapper>
+          <SelectWrap>
             <div>
               <b>Selected Meal Type: {mealTypeValue}</b> <br></br>
               <b>Selected Day:{dayValue}</b>
               <br />
             </div>
-          </Wrapper>
+          </SelectWrap>
         ) : (
           <p>Please select Meal Type and Day.</p>
         )}
@@ -166,6 +193,8 @@ const MealPlan = () => {
           Submit
         </StyledButton>
       </Form>
+      </Container>
+
     </div>
   );
 };
