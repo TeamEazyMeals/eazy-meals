@@ -13,12 +13,13 @@ const Base = styled.div`
   padding: ${tokens.spacing.xl} ${tokens.spacing.l};
 `;
 const Padded = styled.div`
-  /* padding: ${tokens.spacing.l} ${tokens.spacing.l} ${tokens.spacing.xl};
-  color: ${tokens.highlights.white.heavy}; */
+  padding: ${tokens.spacing.l} ${tokens.spacing.l};
+  color: ${tokens.highlights.white.heavy}; 
 
 `;
 const ButtonWrap = styled(Button)`
-  /* padding: 0.25rem 0; */
+  padding: 0.25rem 0;
+  
 `;
 // const Content = styled.div`
 //   flex-grow: 3;
