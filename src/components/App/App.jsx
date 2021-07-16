@@ -20,7 +20,7 @@ import internalRecipes from "../../api/cms/internalRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
 import Fallback from "../../views/FallBack/FallBack";
 
-internalRecipes.sync();
+internalRecipes.sync(true);
 
 const App = () => {
   return (

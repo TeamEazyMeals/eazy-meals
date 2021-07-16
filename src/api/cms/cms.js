@@ -7,19 +7,19 @@ const GET_ALL_RECIPE_DATA_QUERY = `
     timeInMinutes
     name
     description
+    ingredients
+    steps
+
     photo {
       url
     }
-    ingredients
 
-    steps
-    tags {
-    
-      name
-      description
+    tags{
+      id
+      
     }
+   }
   }
-}
 `;
 
 const syncRecipes = async () => {
