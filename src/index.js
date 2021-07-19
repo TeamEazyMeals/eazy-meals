@@ -29,17 +29,4 @@ const registerSw = async () => {
 
 registerSw();
  
-// if ("serviceWorker" in window.navigator) {
-//   window.navigator.serviceWorker
-//     .register(swURL)
-//     .then((response) => {
-//       console.log("service worker registered", response);
-//       response.pushManager.getSubscription().then((subscription) => {
-//         return response.pushManager.subscribe({
-//           userVisibleOnly: true,
-//           applicationServerKey: publicKey,
-//         });
-//       });
-//     })
-//     .catch((err) => console.log("service worker NOT registered", err));
-// }
+
