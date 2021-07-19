@@ -44,10 +44,10 @@ const sync = async (auto = false) => {
       if (remoteRecipeHash === localRecipeHash) {
         return;
       }
-      const { singleRemoteRecipe } = await axios.get(
+      const { data:singleRemoteRecipe } = await axios.get(
         `/data/recipes/${remoteRecipeId}.json`
       );
-      console.log(singleRemoteRecipe, "dataaaaaaaaaaa");
+     
       /*
        * If the recipe ID is in remote DB, but not on local DB that means that the recipe was created on the remote DB since the last sync, and should also be created on the local DB
        */
