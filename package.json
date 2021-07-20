@@ -18,6 +18,8 @@
     "idb": "^6.1.2",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
+    "netlify-cli": "^4.4.2",
+    "netlify-dev-plugin": "^1.0.28",
     "netlify-identity-widget": "^1.9.1",
     "polished": "^4.1.3",
     "query-string": "^7.0.0",
@@ -47,8 +49,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "netlify":"netlify dev",
+    "serve": "npm run build && serve build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "updateData": "node ./scripts/pullGraphCmsData.mjs"

@@ -14,7 +14,6 @@ const Container = styled.div`
 const StepsSwiper = (props) => {
   const { steps = [] } = props;
 
-  // console.log(steps);
   const theme = useTheme();
 
   const forwardButton = () => {
