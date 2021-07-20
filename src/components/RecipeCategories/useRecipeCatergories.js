@@ -1,16 +1,20 @@
-import { useMount,useToggle } from "react-use";
-import {internalRecipes} from "../../api/cms/internalRecipes";
+import { useState } from "react";
+import { useMount, useToggle } from "react-use";
+import { internalRecipes } from "../../api/cms/internalRecipes";
+import { tags } from "../../api/tags/tags";
 
-export const useRecipeCategories=()=>{
-    const [loading ,setloading] = useToggle(true)
+export const useRecipeCategories = () => {
+  const [filterTags, setFilterTags] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
-    useMount(async ()=>{
-        console.log("fire")
-console.log(await internalRecipes.read())
-
-    })
-    return {
-        loading
-    }
-}
+  useMount(async () => {
+    const tagsResponse = await tags.read();
+    setFilterTags(tagsResponse);
+    console.log(await tags.read());
+  });
+  return {
+    filterTags,
+    recipes,
+  };
+};
 export default useRecipeCategories;

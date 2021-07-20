@@ -27,12 +27,11 @@ const syncRecipes = async () => {
     data: {
       data: { recipes },
     },
-  } = await axios
-    .post(
-      "https://api-eu-central-1.graphcms.com/v2/cko2w2ux95cw901z18eesaeu8/master",
-      { query: GET_ALL_RECIPE_DATA_QUERY }
-    )
-   
+  } = await axios.post(
+    "https://api-eu-central-1.graphcms.com/v2/cko2w2ux95cw901z18eesaeu8/master",
+    { query: GET_ALL_RECIPE_DATA_QUERY }
+  );
+
   const transformedRecipes = recipes.map((singleRecipe) => {
     return {
       ...singleRecipe,

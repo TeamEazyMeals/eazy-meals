@@ -1,8 +1,7 @@
 import { openDB } from "idb";
 import axios from "axios";
 
-const createApi=()=>{
-
+const createApi = () => {
   const dbConnection = openDB("internal-recipes", 1, {
     upgrade: (db, oldVersion) => {
       if (oldVersion < 1) {
@@ -11,7 +10,7 @@ const createApi=()=>{
       }
     },
   });
-  
+
   const sync = async (auto = false) => {
     const db = await dbConnection;
     const { data: remoteHashes } = await axios.get("/data/recipe-hashes.json");
@@ -37,7 +36,7 @@ const createApi=()=>{
           await db.delete("data", localRecipeId);
         }
       });
-  
+
       await Promise.all(localPromises);
       const remotePromises = remoteRecipeIdList.map(async (remoteRecipeId) => {
         const remoteRecipeHash = remoteHashes.recipes[remoteRecipeId];
@@ -48,7 +47,7 @@ const createApi=()=>{
         if (remoteRecipeHash === localRecipeHash) {
           return;
         }
-        const {data: singleRemoteRecipe } = await axios.get(
+        const { data: singleRemoteRecipe } = await axios.get(
           `/data/recipes/${remoteRecipeId}.json`
         );
         console.log(singleRemoteRecipe, "data");
@@ -56,12 +55,18 @@ const createApi=()=>{
          * If the recipe ID is in remote DB, but not on local DB that means that the recipe was created on the remote DB since the last sync, and should also be created on the local DB
          */
         if (!localRecipeIdList.includes(remoteRecipeId)) {
-          await db.add("data", singleRemoteRecipe);
+          await db.add("data", {
+            ...singleRemoteRecipe,
+            tags:singleRemoteRecipe.tags.map(({id})=>id)
+          });
         }
         /**
          * If none of the above are true, then it means that the recipe exists in the local and remote DB, but the data has changed in the remote DB since the last time it was synced. This means that the local DB recipe should be updated to be the same as the remote recipe.
          */
-        await db.put("data", singleRemoteRecipe);
+        await db.put("data", {
+          ...singleRemoteRecipe,
+          tags: singleRemoteRecipe.tags.map(({ id }) => id),
+        });
       });
       await Promise.all(remotePromises);
       console.log("putting in meta");
@@ -73,20 +78,16 @@ const createApi=()=>{
     }
     return process;
   };
-  const read = async()=>{
+  const read = async () => {
     const db = await dbConnection;
-     return await db.getAll("data");
-
-  }
-  return{
+    return await db.getAll("data");
+  };
+  return {
     sync,
-    read
-  } 
+    read,
+  };
+};
 
-}
-
- export const internalRecipes = createApi()
-
-
+export const internalRecipes = createApi();
 
 export default internalRecipes;

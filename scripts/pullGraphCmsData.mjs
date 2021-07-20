@@ -8,14 +8,31 @@ const GET_ALL_RECIPE_DATA_QUERY = `
     timeInMinutes
     name
     description
+    ingredients
+    steps
+
     photo {
       url
     }
-    ingredients
-    steps
+    tags{
+      id
+      
+    }
+    
   }
 }
 `;
+
+const GET_ALL_TAG_DATA_QUERY=`
+{
+  tags{
+    id
+    name
+    description
+
+  }
+}
+`
 const init = async () => {
   const {
     data: {
@@ -51,6 +68,20 @@ const init = async () => {
       primary: primaryHash,
       recipes: recipeHashes,
     })
+  );
+  const {
+    data: {
+      data: { tags },
+    },
+  } = await axios.post(
+    "https://api-eu-central-1.graphcms.com/v2/cko2w2ux95cw901z18eesaeu8/master",
+    {
+      query: GET_ALL_TAG_DATA_QUERY,
+    }
+  );
+  await fs.writeFile(
+    "./public/data/recipe-tags.json",
+    JSON.stringify(tags)
   );
 };
 init();
