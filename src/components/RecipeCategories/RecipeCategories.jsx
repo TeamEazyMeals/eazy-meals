@@ -1,35 +1,21 @@
-// import React from "react";
-// import uuid from "react-uuid";
-// import useFetchRecipes from "../FetchRecipes/useFetchRecipes";
+import React from "react";
+import useRecipeCategories from "./useRecipeCatergories";
+import {Select,MenuItem} from '@material-ui/core'
+import { capitalize } from "lodash";
 
-// const RecipeCategories = () => {
-//   const { searchResults } = useFetchRecipes();
+export const RecipeCategories = () => {
+  const { recipes, filterTags } = useRecipeCategories();
 
-//   return (
-//     <>
-//       {searchResults.map(({ tags }) => {
-//         console.log(tags)
-//         return (
-//           <>
-//             {Object.values(tags)
-//               .filter(recipeTag => recipeTag.name === "chicken"
-//               )
-//               .map((recipename) => {
-//                 return (
-//                   <div key={uuid()}>
-//                     <h1>chicken Recipes</h1>
+  return ( 
+  <div>
+    <Select fullWidth variant='outlined' value ='any'>
+      <MenuItem><em>any</em></MenuItem>
+      {filterTags.map(({id,name})=><MenuItem key={id} value ={id}>{capitalize(name)}</MenuItem>)}
+      
+    </Select>
 
-//                     <ul>
-//                       <li>{recipe}</li>
-//                     </ul>
-//                   </div>
-//                 );
-//               })}
-//           </>
-//         );
-//       })}
-//     </>
-//   );
-// };
+  </div>
+  );
+};
 
-// export default RecipeCategories;
+export default RecipeCategories;
