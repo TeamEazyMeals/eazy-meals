@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StylesProvider } from '@material-ui/styles';
 import { Typography } from "@material-ui/core";
 import { tokens } from "../../data/Tokens";
 
@@ -8,19 +9,23 @@ const calcColor = ({ inverse }) => {
   return tokens.shades.black.heavier;
 };
 const Base = styled(Typography)`
-  font-size: ${tokens.fontSize.x1};
-  font-weight: ${tokens.fontWeight.black};
-  letter-spacing: ${tokens.letterSpacing.xl};
-  text-align: center;
-  color: ${calcColor};
+font-size: ${tokens.fontSize.xl};
+font-weight: ${tokens.fontWeight.black};
+letter-spacing: ${tokens.letterSpacing.xl};
+color: ${calcColor};
+text-align: center;
+  
 `;
 
 export const Title = (props) => {
   const { children, component = "h1", inverse } = props;
   return (
-    <Base component={component} inverse={inverse}>
+    <StylesProvider injectFirst>
+      <Base size="large"component={component} inverse={inverse}>
       {children}
     </Base>
+    </StylesProvider>
+    
   );
 };
 

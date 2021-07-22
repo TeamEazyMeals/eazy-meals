@@ -40,7 +40,6 @@ const Base = styled(MuiButton)`
   background: ${calcBackground};
   white-space: nowrap;
   width: ${({ full }) => (full ? "100%" : "auto")};
-
   &:hover {
     background: ${calcHover};
   }
@@ -49,7 +48,7 @@ const Base = styled(MuiButton)`
 export const Button = (props) => {
   const {
     full,
-    childern,
+    children,
     importance = "secondary",
     onClick,
     href,
@@ -71,7 +70,7 @@ export const Button = (props) => {
       full={full}
       importance={importance}
     >
-      {childern}
+      {children}
     </Base>
   );
 };
