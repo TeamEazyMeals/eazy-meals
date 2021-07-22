@@ -8,9 +8,11 @@ export const useRecipeCategories = () => {
   const [recipes, setRecipes] = useState([]);
 
   useMount(async () => {
+    
+    console.log(await internalRecipes.read('ckr57vb68a78c0c59quzekr2d'));
     const tagsResponse = await tags.read();
-    setFilterTags(tagsResponse);
-    console.log(await tags.read());
+    setFilterTags(tagsResponse.sort((a,b)=> a.name.localeCompare(b.name)));
+    
   });
   return {
     filterTags,

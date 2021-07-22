@@ -78,9 +78,29 @@ const createApi = () => {
     }
     return process;
   };
-  const read = async () => {
+  const read = async (query, range =[0,20]) => {
     const db = await dbConnection;
-    return await db.getAll("data");
+
+    if(!query) throw new Error('Query required')
+
+    if(typeof query === 'string'){
+      return db.get('data',query)
+    }
+    let cursor = await db.transaction('data').store.openCursor()
+    let results =[]
+    let count = 0
+
+    const limit = range[1] - range[0]
+
+    while (cursor && count < limit){
+      count += range[0]
+      const match = query(cursor.value)
+
+      if(match)results.push(cursor.value)
+      cursor = await cursor.continue()
+    }
+    return results;
+  
   };
   return {
     sync,
