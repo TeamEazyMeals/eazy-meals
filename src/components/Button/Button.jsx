@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button as MulButton } from "@material-ui/core";
+import { Button as MuiButton } from "@material-ui/core";
 import { tokens } from "../../data/Tokens";
 
 const calcBackground = ({ inverse, importance }) => {
@@ -19,7 +19,7 @@ const calcHover = ({ inverse, importance }) => {
 
 const calcColor = ({ inverse, importance }) => {
   if (
-    (inverse && importance === "contained") ||
+    (inverse && importance === "primary") ||
     (!inverse && importance !== "primary")
   ) {
     return tokens.shades.green.solid;
@@ -28,17 +28,18 @@ const calcColor = ({ inverse, importance }) => {
 };
 
 const calcBorder = ({ inverse, importance }) => {
-  if (importance === "primary") return `0 solid ${tokens.highlights.none}`;
+  if (importance === "primary") {
+    return `0 solid ${tokens.highlights.none}`;
+  }
   if (inverse) return `1px solid ${tokens.highlights.white.medium}`;
   return `1px solid ${tokens.colors.brand}`;
 };
-const Base = styled(MulButton)`
+const Base = styled(MuiButton)`
   color: ${calcColor};
   border: ${calcBorder};
   background: ${calcBackground};
   white-space: nowrap;
-  width: ${({ full}) => full ? '100%' : 'auto'};
-
+  width: ${({ full }) => (full ? "100%" : "auto")};
   &:hover {
     background: ${calcHover};
   }
@@ -47,7 +48,7 @@ const Base = styled(MulButton)`
 export const Button = (props) => {
   const {
     full,
-    childern,
+    children,
     importance = "secondary",
     onClick,
     href,
@@ -69,7 +70,7 @@ export const Button = (props) => {
       full={full}
       importance={importance}
     >
-      {childern}
+      {children}
     </Base>
   );
 };
