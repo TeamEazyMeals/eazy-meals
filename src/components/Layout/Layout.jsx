@@ -1,9 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+<<<<<<< HEAD
 import { tokens } from "../../data/Tokens";
 import { Text } from "../Text";
 import { Button } from "../Button";
 import { Link } from "../Link";
+=======
+import { tokens } from "../../data/tokens";
+import { Text } from "../Text";
+import { Button } from "../Button";
+// import { Link } from "../Link";
+>>>>>>> 290d171ffe207744e33578e3affa005be04b66a6
 import { Alert } from "../Alert";
 import { useHistory } from "react-router-dom";
 // import "../../types/action";
@@ -64,6 +71,7 @@ const AlertWrap = styled.div`
 const Header = styled.header`
   padding: ${tokens.spacing.xl} ${tokens.spacing.m} 0;
 `;
+<<<<<<< HEAD
 const Actions = styled.aside`
   padding: 0 ${tokens.spacing.m} ${tokens.spacing.l};
 `;
@@ -86,6 +94,13 @@ const Actions = styled.aside`
  * @param {props} props
  * @returns {JSX.Element}
  */
+=======
+// const Actions = styled.aside`
+//   padding: 0 ${tokens.spacing.m} ${tokens.spacing.l};
+// `;
+
+
+>>>>>>> 290d171ffe207744e33578e3affa005be04b66a6
 
 export const Layout = (props) => {
   const {
@@ -127,12 +142,20 @@ export const Layout = (props) => {
               <NestedChildren>{children} </NestedChildren>
             </Nested>
           </main>
+<<<<<<< HEAD
           <Actions aria-label="actions">
+=======
+          {/* <Actions aria-label="actions">
+>>>>>>> 290d171ffe207744e33578e3affa005be04b66a6
             {alert && (
               <AlertWrap>
                 <Alert {...alert} />
               </AlertWrap>
+<<<<<<< HEAD
             )}
+=======
+            )} */}
+>>>>>>> 290d171ffe207744e33578e3affa005be04b66a6
 
             {secondary && (
               <ButtonWrap>
@@ -163,17 +186,21 @@ export const Layout = (props) => {
 
             {extra && (
               <LinkWrap>
+<<<<<<< HEAD
                 <Link
+=======
+                {/* <Link
+>>>>>>> 290d171ffe207744e33578e3affa005be04b66a6
                   action={extra[1]}
                   detail={extra[2] || {}}
                   inverse={inverse}
                   full
                 >
                   {extra[0]}
-                </Link>
+                </Link> */}
               </LinkWrap>
             )}
-          </Actions>
+          {/* </Actions> */}
         </Content>
       </Base>
     </BaseWrap>

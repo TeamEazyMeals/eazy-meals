@@ -18,6 +18,7 @@ const Header = styled.header`
 const Title = styled.h1`
   font-family: Arial, sans-serif;
   letter-spacing: -1px;
+  
 `;
 const List = styled.ul`
   justify-content: center;

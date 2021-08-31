@@ -1,20 +1,41 @@
 import React from "react";
 import styled from "styled-components";
 import { Button as MuiButton } from "@material-ui/core";
-import { tokens } from "../../data/Tokens";
+import { tokens } from "../../data/tokens";
+import { Link } from "react-router-dom";
+// import "../../types/action";
 
-const calcBackground = ({ inverse, importance }) => {
-  if (inverse && importance === "primary") return tokens.highlights.white.solid;
-  if (importance === "primary") return tokens.shades.green.solid;
-  return tokens.highlights.white.none;
+const COLORS = {
+  white: `rgb(${tokens.colors.white})`,
+  green: `rgb(${tokens.colors.green})`,
+  black: `rgb(${tokens.colors.black})`,
+  none: `transparent`,
+  greenSubtler: `rgba(${tokens.colors.green}), ${tokens.opacity.subtler}`,
+  greenStronger: `rgba(${tokens.colors.green}), ${tokens.opacity.stronger}`,
+  whiteSubtler: `rgba(${tokens.colors.white}), ${tokens.opacity.subtler}`,
+  whiteStronger: `rgba(${tokens.colors.white}), ${tokens.opacity.stronger}`,
 };
-const calcHover = ({ inverse, importance }) => {
-  if (inverse && importance === "primary") {
-    return tokens.highlights.white.heavier;
-  }
-  if (importance === "primary") return tokens.shades.green.heavier;
-  if (inverse) return tokens.highlights.white.lighter;
-  return tokens.shades.green.lighter;
+
+const calcBackground = ({ importance, $inverse }) => {
+  if (importance === "primary" && $inverse) return COLORS.white;
+  if ($inverse || importance === "secondary") return COLORS.none;
+  return COLORS.green;
+};
+const calcColor = ({ importance, $inverse }) => {
+  if (importance === "primary" && $inverse) return COLORS.green;
+  if ($inverse || importance === "primary") return COLORS.white;
+  return COLORS.green;
+};
+const calcBorder = ({ importance, $inverse }) => {
+  if (importance === "primary") return `1px solid ${COLORS.none}`;
+  if ($inverse) return `1px solid ${COLORS.white}`;
+  return `1px solid ${COLORS.green}`;
+};
+const calcHover = ({ importance, $inverse }) => {
+  if (importance === "primary" && $inverse) return COLORS.whiteStronger;
+  if ($inverse) return COLORS.whiteSubtler;
+  if (importance === "primary") return COLORS.greenStronger;
+  return COLORS.greenSubtler;
 };
 
 const calcColor = ({ inverse, importance }) => {
@@ -28,52 +49,59 @@ const calcColor = ({ inverse, importance }) => {
   // return tokens.highlights.white.solid;
 };
 
-const calcBorder = ({ inverse, importance }) => {
-  if (importance === "primary") {
-    return `0 solid ${tokens.highlights.none}`;
+  if (!action) {
+    return {
+      // disabled: true,
+      type: "button"
+    };
   }
-  if (inverse) return `1px solid ${tokens.highlights.white.medium}`;
-  return `1px solid ${tokens.colors.brand}`;
+  if (typeof action !== "string")
+    return { component: "button", onClick: action, type: "button" };
+
+  return { component: Link, to: {pathname:action,state:detail},type: "button" };
 };
-const Base = styled(MuiButton)`
+
+const StyledButton = styled(MuiButton)`
   color: ${calcColor};
-  border: ${calcBorder};
   background: ${calcBackground};
-  white-space: nowrap;
-  width: ${({ full }) => (full ? "100%" : "auto")};
+  border: ${calcBorder};
+  padding: ${tokens.spacing.s};
   &:hover {
     background: ${calcHover};
   }
 `;
+/**
+ * @typedef {object} props
+ * @property {JSX.Elements} children
+ * @property {'primary' | 'secondary'} importance
+ * @property {boolean}  inverse
+ * @property {} action
+ */
+
+/**
+ * @param {props} props
+ * @returns {JSX.Element}
+ */
 
 export const Button = (props) => {
   const {
-    full,
     children,
+   inverse,
     importance = "secondary",
-    onClick,
-    href,
-    inverse,
+    action,
+    full = false,
   } = props;
-
-  if (href && onClick) {
-    throw new Error('can\'t have both "onClick" and "href"');
-  }
-  const component = href ? "a" : "button";
   const variant = importance === "primary" ? "contained" : "outlined";
-
+  const actionProps = calcActionProps(action);
   return (
-    <Base
-      size="large"
-      component={component}
-      variant={variant}
-      inverse={inverse}
-      full={full}
+    <StyledButton
       importance={importance}
-    >
-      {children}
-    </Base>
+      children={children}
+      fullWidth={full}
+      $inverse={inverse}
+      variant={variant}
+      {...actionProps}
+    />
   );
 };
-
 export default Button;

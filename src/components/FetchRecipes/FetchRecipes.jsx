@@ -5,10 +5,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
+import "./recipe.css";
 
-const Title = styled.h1`
-  font-family: Arial, sans-serif;
-  letter-spacing: -1px;
+const StyledA = styled.a`
+  list-style: none;
+  color: inherit;
 `;
 const Title3 = styled.h3`
   font-family: Arial, sans-serif;
@@ -46,19 +47,17 @@ const FetchRecipes = () => {
   } = useFetchRecipes();
 
   if (!recipeData) {
-    return <Title> Loading recipes.....</Title>;
+    return <h4> Loading recipes.....</h4>;
   }
 
   return (
     <Content>
       <OfflineDiv>
         {mode === "offline" ? (
-          <h3>
-            Currently In Offline Mode / Connection Error
-          </h3>
+          <h3>Currently In Offline Mode / Connection Error</h3>
         ) : null}
       </OfflineDiv>
-      <Title>eazy-meals</Title>
+      <h3>eazy-meals</h3>
 
       <div>
         <SearchIcon fontSize="small"></SearchIcon>
@@ -71,7 +70,7 @@ const FetchRecipes = () => {
 
         <Sort handleSort={handleSort}></Sort>
       </div>
-
+      <Title3>All Recipes</Title3>
       {searchResults.map(
         ({
           id,
@@ -84,30 +83,18 @@ const FetchRecipes = () => {
         }) => {
           return (
             <div key={id}>
-              <Title3>All Recipes</Title3>
-              <List>
-                <li>
-                  <Title>
-                    <a href={`/allrecipes/${id}`}>{name}</a>
-                  </Title>
-                </li>
-                <li>{photo && <Image src={photo} alt={name} />}</li>
-                <h4>Time in minutes:{timeInMinutes}</h4>
-
-                <RecipeIngredients ingredients={ingredients} />
-                <Title>Method</Title>
-                <li>{description}</li>
-                <h3>Recipe tags:</h3>
-
-                {tags != undefined ? (
-                  Object.values(tags).map((tag) => {
-                    <RecipeCategories tag={tag} />;
-                    return <p>{tag}</p>;
-                  })
-                ) : (
-                  <p>no tags</p>
-                )}
-              </List>
+              <article className="recipe">
+                <div className="recipe-img">
+                  {photo && (
+                    <img className="recipe-img" src={photo} alt={name} />
+                  )}
+                </div>
+                <div className="recipe-footer">
+                  <h4>{name}</h4>
+                  <StyledA href={`/allrecipes/${id}`}>More about {name}</StyledA>
+                </div>
+              </article>
+             
             </div>
           );
         }

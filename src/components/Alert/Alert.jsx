@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
-import { tokens } from "../../data/Tokens";
-
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { CircularProgress } from "@material-ui/core";
 import { Text } from "../Text";
-
+import { tokens } from "../../data/tokens";
 
 const SEREVITY_MAP = {
   error: "error",
