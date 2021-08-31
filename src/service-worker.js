@@ -12,7 +12,7 @@ const STATIC_ASSETS = [
   "/fonts/roboto/400.ttf",
   "/fonts/roboto/500.ttf",
   "/fonts/roboto/700.ttf",
-  "/"
+  "/",
 ];
 
 // eslint-disable-next-line no-restricted-globals
@@ -26,7 +26,7 @@ const installEvent = async (event) => {
   cache.addAll(urls);
 };
 const activeEvent = async (event) => {
-  console.log(event, "active")
+  console.log(event, "active");
   const cacheKeys = await caches.keys();
   const keysToDelete = cacheKeys.filter((key) => key !== hash);
   const promisesArray = keysToDelete.map((key) => caches.delete(key));
