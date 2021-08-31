@@ -10,23 +10,23 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-const registerSw = async () => {
+// const registerSw = async () => {
 
-  try {
+//   try {
     
-    if (
-      process.env.NODE_ENV ||
-      process.env.NODE_ENV === "development" &&
-      "serviceWorker" in navigator
-    ) {
-      await window.navigator.serviceWorker.register("/service-worker.js");
-      console.log("service worker registered");
-    }
-  } catch (error) {
-    console.error(error, "error mesage");
-  }
-};
+//     if (
+//       process.env.NODE_ENV ||
+//       process.env.NODE_ENV === "development" &&
+//       "serviceWorker" in navigator
+//     ) {
+//       await window.navigator.serviceWorker.register("/service-worker.js");
+//       console.log("service worker registered");
+//     }
+//   } catch (error) {
+//     console.error(error, "error mesage");
+//   }
+// };
 
-registerSw();
+// registerSw();
  
 

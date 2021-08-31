@@ -1,4 +1,4 @@
-import md5 from "md5";
+// import md5 from "md5";
 
 const STATIC_ASSETS = [
   "/images/salad24x24px.png",
@@ -15,10 +15,10 @@ const STATIC_ASSETS = [
   "/",
 ];
 
-// eslint-disable-next-line no-restricted-globals
-const dynamicUrls = self.__WB_MANIFEST;
-const urls = [...STATIC_ASSETS, ...dynamicUrls.map(({ url }) => url)];
-const hash = md5(JSON.stringify(urls));
+// // eslint-disable-next-line no-restricted-globals
+// const dynamicUrls = self.__WB_MANIFEST;
+// const urls = [...STATIC_ASSETS, ...dynamicUrls.map(({ url }) => url)];
+// const hash = md5(JSON.stringify(urls));
 
 const installEvent = async (event) => {
   console.log(event, "install");
@@ -41,14 +41,14 @@ const fetchEvent = async (event) => {
   return cacheResponse;
 };
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(installEvent(event));
-});
+// self.addEventListener("install", (event) => {
+//   event.waitUntil(installEvent(event));
+// });
 
-self.addEventListener("active", (event) => {
-  event.waitUntil(activeEvent(event));
-});
+// self.addEventListener("active", (event) => {
+//   event.waitUntil(activeEvent(event));
+// });
 
-self.addEventListener("fetch", (event) => {
-  event.waitUntil(fetchEvent(event));
-});
+// self.addEventListener("fetch", (event) => {
+//   event.waitUntil(fetchEvent(event));
+// });

@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Button as MuiButton } from "@material-ui/core";
+<<<<<<< HEAD
 import { tokens } from "../../data/tokens";
 import { Link } from "react-router-dom";
 // import "../../types/action";
+=======
+import { tokens } from "../../data/Tokens";
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
 
 const COLORS = {
   white: `rgb(${tokens.colors.white})`,
@@ -38,13 +42,23 @@ const calcHover = ({ importance, $inverse }) => {
   return COLORS.greenSubtler;
 };
 
+<<<<<<< HEAD
 const calcActionProps = (action,detail) => {
   if (action === true) {
     return {
       type: "submit"
     };
+=======
+const calcColor = ({ inverse, importance }) => {
+  if (
+    (inverse && importance === "primary") ||
+    (!inverse && importance !== "primary")
+  ) {
+    return tokens.shades.green.solid;
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
   }
 
+<<<<<<< HEAD
   if (!action) {
     return {
       // disabled: true,
@@ -58,10 +72,25 @@ const calcActionProps = (action,detail) => {
 };
 
 const StyledButton = styled(MuiButton)`
+=======
+const calcBorder = ({ inverse, importance }) => {
+  if (importance === "primary") {
+    return `0 solid ${tokens.highlights.none}`;
+  }
+  if (inverse) return `1px solid ${tokens.highlights.white.medium}`;
+  return `1px solid ${tokens.colors.brand}`;
+};
+const Base = styled(MuiButton)`
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
   color: ${calcColor};
   background: ${calcBackground};
+<<<<<<< HEAD
   border: ${calcBorder};
   padding: ${tokens.spacing.s};
+=======
+  white-space: nowrap;
+  width: ${({ full }) => (full ? "100%" : "auto")};
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
   &:hover {
     background: ${calcHover};
   }
@@ -81,8 +110,13 @@ const StyledButton = styled(MuiButton)`
 
 export const Button = (props) => {
   const {
+<<<<<<< HEAD
     children,
    inverse,
+=======
+    full,
+    children,
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
     importance = "secondary",
     action,
     full = false,
@@ -92,12 +126,18 @@ export const Button = (props) => {
   return (
     <StyledButton
       importance={importance}
+<<<<<<< HEAD
       children={children}
       fullWidth={full}
       $inverse={inverse}
       variant={variant}
       {...actionProps}
     />
+=======
+    >
+      {children}
+    </Base>
+>>>>>>> 19344f65dfd8f6bf43e892c231bbcff0f2a41b6d
   );
 };
 export default Button;
