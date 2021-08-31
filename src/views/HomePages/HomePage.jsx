@@ -5,6 +5,12 @@ import { tokens } from "../../data/Tokens";
 import { Title } from "../../components/Title";
 import { Button } from "../../components/Button";
 
+const calcColor = ({ inverse }) => {
+  if (inverse) return tokens.highlights.white.solid;
+  return tokens.shades.black.heavier;
+ 
+};
+
 const Base = styled.div`
   &&& {
     min-height: 100vh;
@@ -22,6 +28,7 @@ const Padded = styled.div`
 
 const ButtonWrap = styled.div`
   padding: 0.25rem 0;
+  color:${tokens.colors.calcColorj};
 `;
 
 const Content = styled.div`

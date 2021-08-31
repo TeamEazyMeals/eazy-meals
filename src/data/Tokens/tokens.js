@@ -1,4 +1,3 @@
-import React from "react";
 // import { SportsRugbySharp } from "@material-ui/icons"
 
 export const spacing = {

@@ -18,13 +18,14 @@ const calcHover = ({ inverse, importance }) => {
 };
 
 const calcColor = ({ inverse, importance }) => {
-  if (
-    (inverse && importance === "primary") ||
-    (!inverse && importance !== "primary")
-  ) {
-    return tokens.shades.green.solid;
-  }
-  return tokens.highlights.white.solid;
+  
+  // if (
+  //   (inverse && importance === "primary") ||
+  //   (!inverse && importance !== "primary")
+  // ) {
+  //   return tokens.shades.green.solid;
+  // }
+  // return tokens.highlights.white.solid;
 };
 
 const calcBorder = ({ inverse, importance }) => {
