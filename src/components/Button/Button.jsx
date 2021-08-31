@@ -38,28 +38,28 @@ const calcHover = ({ importance, $inverse }) => {
   return COLORS.greenSubtler;
 };
 
-const calcColor = ({ inverse, importance }) => {
+// const calcColor = ({ inverse, importance }) => {
   
-  // if (
-  //   (inverse && importance === "primary") ||
-  //   (!inverse && importance !== "primary")
-  // ) {
-  //   return tokens.shades.green.solid;
-  // }
-  // return tokens.highlights.white.solid;
-};
+//   // if (
+//   //   (inverse && importance === "primary") ||
+//   //   (!inverse && importance !== "primary")
+//   // ) {
+//   //   return tokens.shades.green.solid;
+//   // }
+//   // return tokens.highlights.white.solid;
+// };
 
-  if (!action) {
+  if (!action) 
     return {
       // disabled: true,
       type: "button"
-    };
-  }
+    }
+  
   if (typeof action !== "string")
     return { component: "button", onClick: action, type: "button" };
 
   return { component: Link, to: {pathname:action,state:detail},type: "button" };
-};
+  
 
 const StyledButton = styled(MuiButton)`
   color: ${calcColor};
