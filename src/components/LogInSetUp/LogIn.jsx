@@ -21,17 +21,16 @@ const Header = styled.h1`
   text-align: center;
 `;
 const HeaderWrapper = styled.div`
-  
   background-color: white;
   width: 40em;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 `;
 
 const Wrapper = styled.nav`
   background: #34a853;
   margin-bottom: 4em;
-  width:100em;
+  width: 100em;
 `;
 
 const Form = styled.form`
@@ -72,14 +71,15 @@ const Link = styled.a`
   white-space: nowrap;
 `;
 const StyledButton = styled(Button)`
-&& {
+  && {
     background: #34a853;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    // box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     padding: 17px 110px;
-    color:white;
-    margin-top:70px;}
- `;
-  
+    color: white;
+    font-weight: bold;
+    margin-top: 70px;
+  }
+`;
 
 const CancelButton = styled(Button)`
   && {
@@ -90,8 +90,8 @@ const CancelButton = styled(Button)`
   }
 `;
 const Nav = styled.nav`
-background-color:grey;
-`
+  background-color: grey;
+`;
 const LogIn = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const { handleEmailInput, handlePasswordInput, handleLoginForm } = useAuth({
@@ -136,14 +136,13 @@ const LogIn = () => {
           </p>
 
           <Label>
-          <StyledButton type="submit" variant="contained">
-            Sign In
-          </StyledButton>
-          <br></br>
-          <CancelButton variant="contained" href="/">
-            CANCEL
-          </CancelButton>
-           
+            <StyledButton type="submit" variant="contained">
+              Sign In
+            </StyledButton>
+            <br></br>
+            <CancelButton variant="contained" href="/">
+              CANCEL
+            </CancelButton>
           </Label>
         </Form>
       </Container>

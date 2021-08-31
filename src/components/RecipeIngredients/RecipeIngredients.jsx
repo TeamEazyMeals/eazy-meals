@@ -12,16 +12,11 @@ const List = styled.ul`
 `;
 
 const RecipeIngredients = ({ ingredients = [] }) => {
-
   return ingredients.map((ingredient) => {
     return (
-      <Fragment key={uuid()}>
-        <List>
-          <li>
-            {ingredient.name} {ingredient.amount} {ingredient.unit}
-          </li>
-        </List>
-      </Fragment>
+      <p key={uuid()}>
+        {ingredient.name} {ingredient.amount} {ingredient.unit}
+      </p>
     );
   });
 };
