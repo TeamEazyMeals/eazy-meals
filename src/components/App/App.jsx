@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import GetRecipe from "../GetRecipe/GetRecipe.jsx";
