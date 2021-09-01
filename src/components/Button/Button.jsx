@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button as MuiButton } from "@material-ui/core";
-import { tokens } from "../../data/tokens";
+import { tokens } from "../../data/Tokens";
 import { Link } from "react-router-dom";
 // import "../../types/action";
 
@@ -38,24 +38,28 @@ const calcHover = ({ importance, $inverse }) => {
   return COLORS.greenSubtler;
 };
 
-const calcActionProps = (action,detail) => {
-  if (action === true) {
-    return {
-      type: "submit"
-    };
-  }
+// const calcColor = ({ inverse, importance }) => {
+  
+//   // if (
+//   //   (inverse && importance === "primary") ||
+//   //   (!inverse && importance !== "primary")
+//   // ) {
+//   //   return tokens.shades.green.solid;
+//   // }
+//   // return tokens.highlights.white.solid;
+// };
 
-  if (!action) {
-    return {
-      // disabled: true,
-      type: "button"
-    };
-  }
-  if (typeof action !== "string")
-    return { component: "button", onClick: action, type: "button" };
+  // if (!action) 
+  //   return {
+  //     // disabled: true,
+  //     type: "button"
+  //   }
+  
+  // if (typeof action !== "string")
+  //   return { component: "button", onClick: action, type: "button" };
 
-  return { component: Link, to: {pathname:action,state:detail},type: "button" };
-};
+  // return { component: Link, to: {pathname:action,state:detail},type: "button" };
+  
 
 const StyledButton = styled(MuiButton)`
   color: ${calcColor};
@@ -88,7 +92,7 @@ export const Button = (props) => {
     full = false,
   } = props;
   const variant = importance === "primary" ? "contained" : "outlined";
-  const actionProps = calcActionProps(action);
+  // const actionProps = calcActionProps(action);
   return (
     <StyledButton
       importance={importance}
@@ -96,8 +100,9 @@ export const Button = (props) => {
       fullWidth={full}
       $inverse={inverse}
       variant={variant}
-      {...actionProps}
+      // {...actionProps}
     />
   );
 };
+
 export default Button;

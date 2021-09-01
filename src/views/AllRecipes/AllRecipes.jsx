@@ -7,7 +7,8 @@ const AllRecipes = () => {
     <Layout>
       <nav>
         <button onClick={handleLogoutButton}>Log out</button>
-      </nav>
+        </nav>
+     
       <FetchRecipes></FetchRecipes>
     </Layout>
   );

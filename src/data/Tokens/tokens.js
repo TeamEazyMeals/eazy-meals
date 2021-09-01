@@ -1,4 +1,3 @@
-import React from "react";
 // import { SportsRugbySharp } from "@material-ui/icons"
 
 export const spacing = {
@@ -54,10 +53,30 @@ export const radius = {
   l: "27px",
 };
 export const fontSize = {
-  s: "0.075rem",
-  m: "1rem",
-  l: "1.125rem",
-  xl: "3rem",
+  s: {
+    size: "0.875rem",
+    height: "110%",
+    weight: "400",
+    spacing: "1%",
+  },
+  m: {
+    size: "1rem",
+    weight: "400",
+    spacing: "0",
+    height: "100%",
+  },
+  l: {
+    size: "1,125rem",
+    weight: "700",
+    spacing: "-1%",
+    height: "95%",
+  },
+  xl: {
+    size: "3rem",
+    weight: "900",
+    spacing: "-2%",
+    height: "90%",
+  },
 };
 export const fontFamily = {
   general: 'Roboto, Arial, Helvetica,"Helvetica Neue", sans-serif',
@@ -75,6 +94,22 @@ export const letterSpacing = {
   l: "-0.5px",
   xl: "-1px",
 };
+export const images = {
+  xs: "0.875rem",
+  s: "4rem",
+  m: "8rem",
+  l: "13rem",
+};
+const opacity = {
+  none: "0",
+  subtler: "10%",
+  subtle: "25%",
+  medium: "50%",
+  strong: "75%",
+  stronger: "90%",
+  solid: "100%",
+};
+
 export const tokens = {
   spacing,
   colors,
@@ -85,6 +120,8 @@ export const tokens = {
   fontFamily,
   fontWeight,
   letterSpacing,
+  images,
+  opacity,
 };
 
 export default tokens;

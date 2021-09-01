@@ -2,44 +2,60 @@ import React, { useState, useEffect } from "react";
 import SetServings from "../../components/SetServings/SetServings";
 import StepsSwiper from "../StepsSwiper/StepsSwiper";
 import styled from "styled-components";
+import { tokens } from "../../data/Tokens"
 import { v4 as uuidv4 } from "uuid";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 import { useParams } from "react-router-dom";
 
+
 const Body = styled.div`
   text-align: center;
+
 `;
 const Header = styled.header`
-  background: #07393c;
-  color: white;
+  background: ${tokens.shades.green.heavy};
+  height: 6.5rem;
+  /* color: white; */
   text-align: center;
 `;
 const Title = styled.h1`
-  font-family: Arial, sans-serif;
-  letter-spacing: -1px;
-  
+  font-family:${tokens.fontFamily.general};
+  font-weight: ${tokens.fontWeight.black};
+  font-size: ${tokens.fontSize.xl};
+  padding-top: 1.5rem;
+  color: white;
+
 `;
-const List = styled.ul`
-  justify-content: center;
-`;
+
 const Button = styled.button`
 color: white;
-background: #07393c;
+background: ${tokens.shades.green.heavy};
 font-size: 1em;
-margin: 1em;
+margin: 2em;
+width: 25em;
+height: 50px;
 padding: 0.25em 1em;
-border: 1px solid black;
+border: ${tokens.radius.l};
 border-radius: 3px;
-text-transform uppercase;
+text-transform : uppercase;
+padding: ${tokens.spacing.s};
+
 `;
-const Text = styled.p`
-  line-hieght: 25px;
+const Text = styled.div`
+  text-align: center;
+`;
+const Image = styled.div`
+ position:relative;
+ border: ${tokens.radius.m};
+ width: 50%;
+ float: left;
+ padding-left: 60px;
 `;
 
 const OfflineDiv = styled.div`
   padding-left: 10%;
-  color: #9f6000;
+  color: ${tokens.shades.green};
   background-color: #feefb3;
 `;
 const GetRecipe = () => {
@@ -80,9 +96,9 @@ const GetRecipe = () => {
         <Title>Eazy Meals</Title>
       </Header>
       <Body>
-        <h1>{recipes.name}</h1>
+       <Text> <h1>{recipes.name}</h1>
 
-        {recipes.photo && <img src={recipes.photo} alt={recipes.photo} />}
+        <Image>{recipes.photo && <img src={recipes.photo} alt={recipes.photo} />} </Image>
 
         <h2>Time in Minutes:{recipes.timeInMinutes}</h2>
         <h2>Description</h2>
@@ -110,6 +126,7 @@ const GetRecipe = () => {
         </div>
 
         <button>skip Timer</button>
+        </Text>
       </Body>
     </React.Fragment>
   );

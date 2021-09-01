@@ -5,12 +5,20 @@ import { tokens } from "../../data/Tokens";
 import { Title } from "../../components/Title";
 import { Button } from "../../components/Button";
 
+const calcColor = ({ inverse }) => {
+  if (inverse) return tokens.highlights.white.solid;
+  return tokens.shades.black.heavier;
+ 
+};
+
 const Base = styled.div`
- &&&{ min-height: 100vh;
-  background: ${tokens.shades.green.solid};
-  display: flex;
-  flex-direction: column;
-  padding: ${tokens.spacing.xl} ${tokens.spacing.l};}
+  &&& {
+    min-height: 100vh;
+    background: ${tokens.shades.green.solid};
+    display: flex;
+    flex-direction: column;
+    padding: ${tokens.spacing.xl} ${tokens.spacing.l};
+  }
 `;
 
 const Padded = styled.div`
@@ -20,7 +28,7 @@ const Padded = styled.div`
 
 const ButtonWrap = styled.div`
   padding: 0.25rem 0;
-  
+  color:${tokens.colors.calcColorj};
 `;
 
 const Content = styled.div`
@@ -32,9 +40,8 @@ export const HomePage = () => {
     <Base full>
       <Content>
         <Padded>
-        <Title inverse>Eazy Meals</Title>
+          <Title inverse>Eazy Meals</Title>
         </Padded>
-        
       </Content>
 
       <ButtonWrap>

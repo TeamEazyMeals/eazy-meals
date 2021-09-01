@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { tokens } from "../../data/tokens";
+import { tokens } from "../../data/Tokens";
 import { Text } from "../Text";
 import { Button } from "../Button";
 // import { Link } from "../Link";

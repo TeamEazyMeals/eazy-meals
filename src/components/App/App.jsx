@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AllRecipes from "../../views/AllRecipes/AllRecipes";
 import LogIn from "../LogInSetUp/LogIn";
 import GetRecipe from "../GetRecipe/GetRecipe.jsx";
@@ -15,7 +15,7 @@ import UploadCustomRecipe from "../UploadCustomRecipe/UploadCustomRecipe";
 import MealPlan from "../../views/MealPlan/MealPlan";
 import AddMealPlanTypeTable from "../../views/MealPlan/AddMealPlanTypeTable";
 
-import { SignIn } from "../../views/SignIn/SignIn";
+// import { SignIn } from "../../views/SignIn/SignIn";
 import HomePage from "../../views/HomePages/HomePage";
 import AddOrFindRecipes from "../AddOrFindRecipes/AddOrFindRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
@@ -63,7 +63,6 @@ const App = () => {
           <Route path="/homepage/signup" children={<SignUp />} />
           <Route path="/homepage/login" children={<LogIn />} />
 
-          <Route path="/signin" children={<SignIn />} />
            
           <Route path="/fallback" children={<Fallback />}></Route>
           <Route path="/" children={<HomePage />} />
