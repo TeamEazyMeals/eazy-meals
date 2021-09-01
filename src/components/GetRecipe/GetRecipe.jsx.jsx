@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 const Body = styled.div`
   text-align: center;
-
+  word-spacing: ${tokens.spacing.m};
 `;
 const Header = styled.header`
   background: ${tokens.shades.green.heavy};
@@ -57,6 +57,10 @@ const OfflineDiv = styled.div`
   padding-left: 10%;
   color: ${tokens.shades.green};
   background-color: #feefb3;
+`;
+const Step = styled.div`
+  font-size: ${tokens.fontSize.m};
+  text-align: left;
 `;
 const GetRecipe = () => {
   const { recipeId: id } = useParams();
@@ -119,11 +123,11 @@ const GetRecipe = () => {
           </div>
         )}
 
-        <div>
+        <Step>
           <h2>Steps</h2>
 
           <StepsSwiper steps={recipes.steps} />
-        </div>
+        </Step>
 
         <button>skip Timer</button>
         </Text>
