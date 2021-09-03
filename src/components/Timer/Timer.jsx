@@ -63,11 +63,6 @@ const Timer = () => {
         />
         <input type="submit" value="Set Timer" />
 
-        <select id="timerInterval" onChange={handleChange}>
-         <option value="Hours">Hours</option>
-         <option value="Minutes">Minutes</option>
-        <option value="seconds">Seconds</option>
-       </select>
       </form>
 
       <h3>Countdown, timer in seconds:</h3>
