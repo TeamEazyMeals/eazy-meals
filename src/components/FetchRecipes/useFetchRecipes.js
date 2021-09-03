@@ -3,6 +3,7 @@ import Fuse from "fuse.js";
 import app from "../../api/app/app";
 import cms from "../../api/cms/cms";
 
+
 const reducer = (state, action) => {
   if (action.type === "SEARCH_ITEM_VALUE") {
     return { ...state, searchItem: action.payload };

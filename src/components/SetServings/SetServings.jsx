@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
+import { tokens } from "../../data/Tokens";
 const Serve = styled.span`
 font-size: 15px;
   padding:1rem;
-  background-colour;grey;
   
 `;
-const Content = styled.ul`
+const Content = styled.div`
   display: flex;
   justify-content: center;
+
 `;
+
 
 function SetServings(props) {
   const { count, setCount } = props;
@@ -20,8 +22,8 @@ function SetServings(props) {
       <Content>
         <Button
           variant="contained"
-          color="primary"
-          style={{ justifyContent: "center" }}
+          color={`${tokens.shades.green}`}
+          style={{ justifyContent: "center" }} 
           disabled={count === 1}
           onClick={() => setCount(count - 1)}
         >
@@ -30,7 +32,7 @@ function SetServings(props) {
         <Serve> {count}</Serve>
         <Button
           variant="contained"
-          color="primary"
+          color={`${tokens.shades.green}`}
           onClick={() => setCount(count + 1)}
         >
           +
