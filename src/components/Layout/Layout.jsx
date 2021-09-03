@@ -193,16 +193,7 @@ export const Layout = (props) => {
         </Content>
       </Base>
     </BaseWrap>
-    <BottomNavigation
-      value="one"
-      onChange={console.log}
-      showLabels
-      
-    >
-      <BottomNavigationAction value="one" label="Recents" icon={<Add />} />
-      <BottomNavigationAction value="two" label="Favorites" icon={<Add />} />
-      <BottomNavigationAction value="three" label="Nearby" icon={<Add />} />
-    </BottomNavigation>
+   
     </>
   );
 };
