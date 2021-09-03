@@ -2,7 +2,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Text from "../Text";
 import styled from "styled-components";
-import { tokens } from "../../data/tokens";
+import { tokens } from "../../data/Tokens";
 
 /**
  * @typedef {object} props

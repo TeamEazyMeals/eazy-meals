@@ -4,6 +4,7 @@ import { tokens } from "../../data/Tokens";
 
 import { Title } from "../../components/Title";
 import { Button } from "../../components/Button";
+import { Layout } from "../../components/Layout"
 
 const calcColor = ({ inverse }) => {
   if (inverse) return tokens.highlights.white.solid;

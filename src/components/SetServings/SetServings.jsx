@@ -22,7 +22,7 @@ function SetServings(props) {
       <Content>
         <Button
           variant="contained"
-          color="primary"
+          color={`${tokens.shades.green}`}
           style={{ justifyContent: "center" }} 
           disabled={count === 1}
           onClick={() => setCount(count - 1)}
@@ -32,7 +32,7 @@ function SetServings(props) {
         <Serve> {count}</Serve>
         <Button
           variant="contained"
-          color="primary"
+          color={`${tokens.shades.green}`}
           onClick={() => setCount(count + 1)}
         >
           +

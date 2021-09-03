@@ -1,10 +1,9 @@
 import React from "react";
-import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import styled from "styled-components";
+import { tokens } from "../../data/Tokens"
 import SearchIcon from "@material-ui/icons/Search";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
-import RecipeCategories from "../RecipeCategories/RecipeCategories";
 import "./recipe.css";
 
 const StyledA = styled.a`
@@ -14,6 +13,11 @@ const StyledA = styled.a`
 const Title3 = styled.h3`
   font-family: Arial, sans-serif;
   letter-spacing: -1px;
+`;
+const Header = styled.header`
+  background: ${tokens.shades.green.heavy};
+  height: 6.5rem;
+  text-align: center;
 `;
 const List = styled.ul`
   list-style: none;
@@ -70,7 +74,7 @@ const FetchRecipes = () => {
 
         <Sort handleSort={handleSort}></Sort>
       </div>
-      <Title3>All Recipes</Title3>
+      <Title3>All Recipes</Title3> 
       {searchResults.map(
         ({
           id,
