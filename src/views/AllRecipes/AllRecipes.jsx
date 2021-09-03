@@ -6,7 +6,7 @@ const AllRecipes = () => {
   return (
     <Layout>
       <nav>
-        <button onClick={handleLogoutButton}>Log out</button>
+        {/* <button onClick={handleLogoutButton}>Log out</button> */}
         </nav>
      
       <FetchRecipes></FetchRecipes>

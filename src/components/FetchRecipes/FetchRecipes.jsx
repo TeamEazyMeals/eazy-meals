@@ -1,7 +1,9 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
 import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
+import { InputAdornment } from "@material-ui/core";
 import Sort from "../SortRecipes/SortRecipes";
 import useFetchRecipes from "./useFetchRecipes";
 import RecipeCategories from "../RecipeCategories/RecipeCategories";
@@ -60,17 +62,27 @@ const FetchRecipes = () => {
       <h3>eazy-meals</h3>
 
       <div>
-        <SearchIcon fontSize="small"></SearchIcon>
-        <input
+        <TextField
+          size="small"
+          variant="outlined"
           type="text"
           value={searchItem}
           placeholder="search recipes.."
           onChange={handleOnSearch}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon edge="end" />
+              </InputAdornment>
+            ),
+          }}
         />
+        <span></span>
+        <Title3>All Recipes</Title3>
 
         <Sort handleSort={handleSort}></Sort>
       </div>
-      <Title3>All Recipes</Title3>
+
       {searchResults.map(
         ({
           id,
@@ -82,20 +94,23 @@ const FetchRecipes = () => {
           tags,
         }) => {
           return (
-            <div key={id}>
-              <article className="recipe">
-                <div className="recipe-img">
-                  {photo && (
-                    <img className="recipe-img" src={photo} alt={name} />
-                  )}
-                </div>
-                <div className="recipe-footer">
-                  <h4>{name}</h4>
-                  <StyledA href={`/allrecipes/${id}`}>More about {name}</StyledA>
-                </div>
-              </article>
-             
-            </div>
+            <section className="section">
+              <div key={id} className="recipes-center">
+                <article className="recipe">
+                  <div className="recipe-img">
+                    {photo && (
+                      <img className="recipe-img" src={photo} alt={name} />
+                    )}
+                  </div>
+                  <div className="recipe-footer">
+                    <h4>{name}</h4>
+                    <StyledA href={`/allrecipes/${id}`}>
+                      More about {name}
+                    </StyledA>
+                  </div>
+                </article>
+              </div>
+            </section>
           );
         }
       )}
