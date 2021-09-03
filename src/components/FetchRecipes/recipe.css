@@ -59,3 +59,15 @@ img {
   color: #afafaf;
   margin-bottom: 0.5rem;
 }
+
+.section {
+  padding: 2rem 0;
+}
+.recipes-center {
+  /* width: 85vw;; */
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}

@@ -1,8 +1,10 @@
+import {  Select, InputLabel } from "@material-ui/core";
+
 const Sort = (props) => {
   const { handleSort } = props;
   return (
     <div>
-      <select defaultValue="sort" onChange={handleSort}>
+      <Select fullWidth variant='outlined' defaultValue="sort" onChange={handleSort} size="small">
         <option value="sort" disabled>
           Sort Recipes
         </option>
@@ -12,7 +14,7 @@ const Sort = (props) => {
         <option value="longest time">longest time</option>
         <option value="least steps">least steps</option>
         <option value="most steps">most steps</option>
-      </select>
+      </Select>
     </div>
   );
 };
